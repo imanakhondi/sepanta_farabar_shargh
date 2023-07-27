@@ -17,6 +17,7 @@ const Modal = ({ id, title, children }) => {
 
   const showModal = () => {
     const element = document.querySelector(`#${id}`);
+    console.log("iman",element)
     element.style.display = "flex";
     dispatch(setShownModalAction(id));
     setTimeout(() => {

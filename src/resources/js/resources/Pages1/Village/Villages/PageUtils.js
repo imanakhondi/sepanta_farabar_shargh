@@ -40,4 +40,14 @@ export class PageUtils extends BasePageUtils {
     const promise = this.entity.getAll();
     super.fillForm(promise);
   }
+
+  propsIfOK(result) {
+    try {
+      return {
+        items: result.items,
+        items: result.items,
+        itemsCount: result.count,
+      };
+    } catch {}
+  }
 }

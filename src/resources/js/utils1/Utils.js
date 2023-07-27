@@ -163,7 +163,6 @@ const getLSUser = () => {
 
     return null;
   }
-
   return user;
 };
 

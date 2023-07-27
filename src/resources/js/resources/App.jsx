@@ -1,30 +1,29 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-
-import store from "../state/store";
-import ErrorBoundary from "./components/Error/ErrorBoundry";
+import store from "./state/store";
 import { Routes } from "./navigation";
-
-const ServerConfig = require("../../../server-config.json");
+import "./index.css";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
-  const { environment } = ServerConfig;
-
-  return (
-    <Provider store={store}>
-      {environment === "local" && <Routes />}
-      {environment !== "local" && (
-        <ErrorBoundary>
-          <Routes />
-        </ErrorBoundary>
-      )}
-    </Provider>
-  );
+    return (
+        <div className=" bg-[#EAEDF4] overflow-hidden font-IRANSansWeb">
+            <Routes />
+        </div>
+    );
 }
 
 export default App;
 
 if (document.getElementById("root")) {
-  createRoot(document.getElementById("root")).render(<App />);
+    createRoot(document.getElementById("root")).render(
+        <BrowserRouter>
+            <Provider store={store}>
+                <React.StrictMode>
+                    <App />
+                </React.StrictMode>
+            </Provider>
+        </BrowserRouter>
+    );
 }
