@@ -1,4 +1,4 @@
-import { BASE_PATH } from "../../constants";
+import { BASE_PATH, BASE_URL } from "../../constants";
 import utils from "../../utils/Utils";
 import Entity from "./Entity";
 
@@ -20,10 +20,11 @@ export class User extends Entity {
   }
 
   async loginUser(username, password) {
-    return await this.handlePost(`${BASE_PATH}/u/users/login`, {
+    const result= await this.handlePost(`${BASE_URL}/u/users/login`, {
       username,
       password,
     });
+    return result
   }
 
   async storeUser(

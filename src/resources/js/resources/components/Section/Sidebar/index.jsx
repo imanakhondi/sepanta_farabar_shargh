@@ -1,9 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { sidebar } from "../../../constants/strings/fa";
 import React, { useState } from "react";
 import logo from "../../../images/logo-sepanta.png";
+import { User } from "../../../http/entities/User";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogOut } from "../../../state/user/userAction";
 
 const Siderbar = () => {
+    const userState = useSelector((state) => state.userReducer);
+    const dispatch = useDispatch();
+    const user = new User();
+    const navigate = useNavigate();
     const menuItems = [
         { title: `${sidebar.dashboard}`, icon: "category4", to: "dashboard" },
         {
@@ -89,7 +96,11 @@ const Siderbar = () => {
     ];
 
     const logoutHandler = () => {
-        console.log("logoutHandler");
+        if (userState.isAuthenticated) {
+            user.logOut();
+            dispatch(userLogOut());
+            navigate("/login");
+        }
     };
 
     return (

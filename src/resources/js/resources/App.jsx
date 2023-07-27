@@ -18,12 +18,12 @@ export default App;
 
 if (document.getElementById("root")) {
     createRoot(document.getElementById("root")).render(
-        <BrowserRouter>
-            <Provider store={store}>
-                <React.StrictMode>
+        <Provider store={store}>
+            <React.StrictMode>
+                <BrowserRouter>
                     <App />
-                </React.StrictMode>
-            </Provider>
-        </BrowserRouter>
+                </BrowserRouter>
+            </React.StrictMode>
+        </Provider>
     );
 }

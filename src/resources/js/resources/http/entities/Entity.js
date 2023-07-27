@@ -88,7 +88,7 @@ export default class Entity {
         this.errorMessage = utilsMSG.notValidJson;
         return null;
       }
-      if (response.data._result !== 1) {
+      if (response.data._result !== "1") {
         this.errorMasage = response.data._error;
         this.errorCode = response.datd._errorCode;
         this.handleError();

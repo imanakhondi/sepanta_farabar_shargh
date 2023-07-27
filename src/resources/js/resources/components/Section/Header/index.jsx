@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import profile from "../../../images/profile.jpeg";
 import Modal from "../../../common/Modal";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { header } from "../../../constants/strings/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { User } from "../../../http/entities/User";
+import { userLogOut } from "../../../state/user/userAction";
 const Header = () => {
     const [modal, setModal] = useState(false);
+    const user = new User();
     const userState = useSelector((state) => state.userReducer);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const logoutHandler = () => {
-        if (userState) {
-            console.log(userState);
-            //logout
+        if (userState.isAuthenticated) {
+            user.logOut();
+            dispatch(userLogOut());
+            navigate("/login");
         }
     };
 

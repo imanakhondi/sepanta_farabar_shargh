@@ -9,16 +9,15 @@ const PanelLayout = () => {
     const navigate = useNavigate();
     const userState = useSelector((state) => state.userReducer);
     const location = useLocation();
-
+    
     useEffect(() => {
-        if (location.pathname === "/panel") {
-            navigate("/panel/dashboard");
+        if (!userState.isAuthenticated) {
+            navigate("/login");
         }
     }, []);
-
     useEffect(() => {
-        if (userState.isAthenticated) {
-            navigate("/login");
+        if (location.pathname === "/panel" && userState.isAuthenticated) {
+            navigate("/panel/dashboard");
         }
     }, []);
 
