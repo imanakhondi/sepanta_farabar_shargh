@@ -24,7 +24,7 @@ export default function authRoute() {
                 <Route path="car/edit" element={<Pages.EditCars />} />
                 <Route path="drivers" element={<Pages.Drivers />} />
                 <Route path="driver/add" element={<Pages.AddDrivers />} />
-                <Route path="driver/edit" element={<Pages.EditDrivers />} />
+                <Route path="driver/edit/:id" element={<Pages.EditDrivers />} />
                 <Route path="tanks" element={<Pages.Tanks />} />
                 <Route path="tank/add" element={<Pages.AddTanks />} />
                 <Route path="tank/edit" element={<Pages.EditTanks />} />

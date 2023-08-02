@@ -1,4 +1,4 @@
-import { BASE_PATH, BASE_URL } from "../../constants";
+import {  BASE_URL } from "../../constants";
 import utils from "../../utils/Utils";
 import Entity from "./Entity";
 
@@ -8,15 +8,16 @@ export class User extends Entity {
   }
 
   async getUser(id) {
-    return await this.handelPost(`${BASE_PATH}/a/users/show/${id}`);
+    console.log(id);
+    return await this.handlePost(`${BASE_URL}/a/users/show/${id}`);
   }
 
   async fetchUser() {
-    return await this.handlePost(`${BASE_PATH}/u/users/auth`);
+    return await this.handlePost(`${BASE_URL}/u/users/auth`);
   }
 
   async getAllUsers() {
-    return await this.handlePost(`${BASE_PATH}/a/users`);
+    return await this.handlePost(`${BASE_URL}/a/users`);
   }
 
   async loginUser(username, password) {
@@ -28,7 +29,7 @@ export class User extends Entity {
   }
 
   async storeUser(
-    userName,
+    username,
     name,
     family,
     nationalCode,
@@ -37,20 +38,21 @@ export class User extends Entity {
     password,
     confirmPassword
   ) {
-    return await this.handlePost(`${BASE_PATH}/a/users/store`, {
-      userName,
+    return await this.handlePost(`${BASE_URL}/a/users/store`, {
+      username,
       name,
       family,
-      national_code: nationalCode,
+      national_no: nationalCode,
       mobile,
       email,
       password,
       password_confirmation: confirmPassword,
     });
   }
+ 
 
   async updateUser(id, name, family, nationalCode, mobile, email) {
-    return await this.handlePost(`${BASE_PATH}/a/users/update/${id}`, {
+    return await this.handlePost(`${BASE_URL}/a/users/update/${id}`, {
       name,
       family,
       national_code: nationalCode,
@@ -60,24 +62,24 @@ export class User extends Entity {
   }
 
   async deleteUser(id) {
-    return await this.handlePost(`${BASE_PATH}/a/users/delete/${id}`);
+    return await this.handlePost(`${BASE_URL}/a/users/delete/${id}`);
   }
 
   async forgotPassword(email) {
-    return await this.handlePost(`${BASE_PATH}/u/users/forgot_password`, {
+    return await this.handlePost(`${BASE_URL}/u/users/forgot_password`, {
       email,
     });
   }
 
   async changePassword(id, newPassword, confirmPassword) {
-    return await this.handlePost(`${BASE_PATH}/a/users/change_password/${id}`, {
+    return await this.handlePost(`${BASE_URL}/a/users/change_password/${id}`, {
       new_password: newPassword,
       new_password_confirmation: confirmPassword,
     });
   }
 
   async changePasswordFromUser(newPassword, confirmPassword) {
-    return await this.handlePost(`${BASE_PATH}/u/users/change_password`, {
+    return await this.handlePost(`${BASE_URL}/u/users/change_password`, {
       new_password: newPassword,
       new_password_confirmation: confirmPassword,
     });

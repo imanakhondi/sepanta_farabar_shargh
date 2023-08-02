@@ -21,6 +21,7 @@ class UserFactory extends Factory
             'password' => '123456789a',
             'name' => fake()->firstName(),
             'family' => fake()->lastName(),
+            'mobile' => '0' . fake()->numberBetween(1111111111, 9999999999),
             'email' => fake()->email(),
             'is_active' => rand(0, 1),
         ];

@@ -4,7 +4,7 @@
   "environment": "local",
 
   "*relativePublicPath": "./../public_html",
-  "*baseUrl": "https://toptradersfunding.com",
+  "*baseUrl": "http://refahi.raakcms.ir",
   "*environment": "production"
 }
 

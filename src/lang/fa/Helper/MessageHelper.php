@@ -2,12 +2,14 @@
 
 $templateMessages = [
     'required' => 'لطفا :field را وارد نمایید.',
+    'sizeString' => 'طول فیلد :field باید :length حرف باشد.',
     'minString' => 'طول فیلد :field حداقل باید :length حرف باشد.',
     'maxString' => 'طول فیلد :field حداکثر باید :length حرف باشد.',
     'numeric' => 'مقدار فیلد :field تنها باید شامل اعداد باشد.',
     'minNumeric' => 'مقدار فیلد :field حداقل باید برابر یا بزرگ‌تر از :value باشد.',
     'maxNumeric' => 'مقدار فیلد :field حداکثر باید برابر یا کم‌تر ز :value باشد.',
     'digits' => 'طول فیلد :field باید :length رقم باشد.',
+    'minDigits' => 'حداقل طول فیلد :field باید :length رقم باشد.',
     'maxDigits' => 'حداکثر طول فیلد :field باید :length رقم باشد.',
     'gtNumeric' => 'مقدار فیلد :field باید بزرگ‌تر از :value  باشد.',
     'gteNumeric' => 'مقدار فیلد :field باید برابر یا بزرگ‌تر از :value باشد.',
@@ -19,6 +21,13 @@ $requiredMessage = function ($field) use ($templateMessages) {
     $message = $templateMessages['required'];
 
     return str_replace(':field', $field, $message);
+};
+
+$sizeStringMessage = function ($field, $length) use ($templateMessages) {
+    $message = $templateMessages['sizeString'];
+    $message = str_replace(':field', $field, $message);
+
+    return str_replace(':length', $length, $message);
 };
 
 $minStringMessage = function ($field, $length) use ($templateMessages) {
@@ -55,9 +64,18 @@ $maxNumericMessage = function ($field, $value) use ($templateMessages) {
     return str_replace(':value', $value, $message);
 };
 
-$digitsMessage = function ($field) use ($templateMessages) {
+$digitsMessage = function ($field, $value) use ($templateMessages) {
     $message = $templateMessages['digits'];
-    return str_replace(':field', $field, $message);
+    $message = str_replace(':field', $field, $message);
+
+    return str_replace(':length', $value, $message);
+};
+
+$minDigitsMessage = function ($field, $length) use ($templateMessages) {
+    $message = $templateMessages['minDigits'];
+    $message = str_replace(':field', $field, $message);
+
+    return str_replace(':length', $length, $message);
 };
 
 $maxDigitsMessage = function ($field, $length) use ($templateMessages) {

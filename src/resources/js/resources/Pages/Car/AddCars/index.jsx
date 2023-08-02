@@ -1,38 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import FormikForm from "../../../common/FormikForm";
 import * as Yup from "yup";
 import FormikControl from "../../../common/FormikControl";
 import { addCarPage } from "../../../constants/strings/fa";
 import { Car } from "../../../http/entities/Car";
+import { useDispatch, useSelector } from "react-redux";
+import { clearMessageAction, setMessageAction } from "../../../state/message/messageAction";
+import { toast } from "react-toastify";
 
+let initialValues = {
+    name: "",
+    family: "",
+    nationalCode: "",
+    mobile: "",
+    carLicensePlateNum: "",
+    carTransitLicensePlateNum: "",
+    CLPN1: "",
+    CLPN2: "",
+    CLPN3: "",
+    CLPN4: "",
+    CTLPN1: "",
+    CTLPN2: "",
+    CTLPN3: "",
+    CTLPN4: "",
+};
+const validationSchema = Yup.object({
+    name: Yup.string(),
+    family: Yup.string(),
+    carLicensePlateNum: Yup.string(),
+    carTransitLicensePlateNum: Yup.string(),
+});
 const AddCars = () => {
     const car = new Car();
-
-    let initialValues = {
-        name: "",
-        family: "",
-        nationalCode: "",
-        mobile: "",
-        carLicensePlateNum: "",
-        carTransitLicensePlateNum: "",
-        CLPN1: "",
-        CLPN2: "",
-        CLPN3: "",
-        CLPN4: "",
-        CTLPN1: "",
-        CTLPN2: "",
-        CTLPN3: "",
-        CTLPN4: "",
-    };
-    const validationSchema = Yup.object({
-        name: Yup.string(),
-        family: Yup.string(),
-        carLicensePlateNum: Yup.string(),
-        carTransitLicensePlateNum: Yup.string(),
-    });
+    const messageState = useSelector((state) => state.messageReducer);
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        dispatch(clearMessageAction());
+    }, []);
 
     const onSubmit = async (values) => {
+        values.carLicensePlateNum = `${values.CLPN1}${values.CLPN2}${values.CLPN3}${values.CLPN4}`;
+        values.carTransitLicensePlateNum = `${values.CTLPN1}${values.CTLPN2}${values.CTLPN3}${values.CTLPN4}`;
         const {
             name,
             family,
@@ -40,20 +50,9 @@ const AddCars = () => {
             mobile,
             carLicensePlateNum,
             carTransitLicensePlateNum,
-            CLPN1,
-            CLPN2,
-            CLPN3,
-            CLPN4,
-            CTLPN1,
-            CTLPN2,
-            CTLPN3,
-            CTLPN4,
         } = values;
-        values.carLicensePlateNum = `${CLPN1}-${CLPN2}-${CLPN3}-${CLPN4}`;
-        values.carTransitLicensePlateNum = `${CTLPN1}-${CTLPN2}-${CTLPN3}-${CTLPN4}`;
-        console.log("Form data", values);
-        console.log(
-            "Form ",
+        setLoading(true);
+        const result = await car.storeCar(
             name,
             family,
             nationalCode,
@@ -61,15 +60,16 @@ const AddCars = () => {
             carLicensePlateNum,
             carTransitLicensePlateNum
         );
-        const result = await car.storeCar({
-            name,
-            family,
-            nationalCode,
-            mobile,
-            carLicensePlateNum,
-            carTransitLicensePlateNum,
-        });
-        console.log("result", result);
+        if (result === null) {
+            //show message failure
+            dispatch(setMessageAction(car.errorMessage, car.errorCode));
+            setLoading(false);
+
+            return;
+        }
+        setLoading(false);
+        toast.success(`${addCarPage.submitted}`)
+        window.location.reload();
     };
 
     const formik = useFormik({
@@ -80,7 +80,13 @@ const AddCars = () => {
     });
 
     return (
-        <FormikForm onSubmit={formik.handleSubmit}>
+        <FormikForm
+            onSubmit={formik.handleSubmit}
+            loading={loading}
+            error={messageState}
+            title={`${addCarPage._title}`}
+            subTitle={`${addCarPage._subTitle}`}
+        >
             <FormikControl
                 control="input"
                 name="name"
@@ -98,14 +104,12 @@ const AddCars = () => {
                 name="nationalCode"
                 formik={formik}
                 pageString={addCarPage}
-                type="number"
             />
             <FormikControl
                 control="input"
                 name="mobile"
                 formik={formik}
                 pageString={addCarPage}
-                type="number"
             />
             <span className="block w-full text-xs mt-5 text-black/50">
                 {addCarPage.carLicensePlateNum}

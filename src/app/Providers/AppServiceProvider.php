@@ -3,53 +3,28 @@
 namespace App\Providers;
 
 use App\Constants\Theme;
-use App\Http\Controllers\Administrator\AppRuleController;
-use App\Http\Controllers\Administrator\CampaignController;
-use App\Http\Controllers\Administrator\ChallengeBalanceController;
-use App\Http\Controllers\Administrator\ChallengeController;
-use App\Http\Controllers\Administrator\ChallengeLeverageController;
-use App\Http\Controllers\Administrator\ChallengePlatformController;
-use App\Http\Controllers\Administrator\ChallengeRuleController;
-use App\Http\Controllers\Administrator\ChallengeServerController;
 use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Administrator\DriverController;
 use App\Http\Controllers\Administrator\ErrorController;
-use App\Http\Controllers\Administrator\TicketController;
+use App\Http\Controllers\Administrator\TankController;
+use App\Http\Controllers\Administrator\TruckController;
 use App\Http\Controllers\Administrator\UserController;
-use App\Http\Controllers\User\AppRuleController as UserAppRuleController;
-use App\Http\Controllers\User\CampaignController as UserCampaignController;
-use App\Http\Controllers\User\ChallengeBalanceController as UserChallengeBalanceController;
-use App\Http\Controllers\User\ChallengeController as UserChallengeController;
-use App\Http\Controllers\User\ChallengeLeverageController as UserChallengeLeverageController;
-use App\Http\Controllers\User\ChallengePlatformController as UserChallengePlatformController;
-use App\Http\Controllers\User\ChallengeRuleController as UserChallengeRuleController;
-use App\Http\Controllers\User\ChallengeServerController as UserChallengeServerController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
-use App\Http\Controllers\User\TicketController as UserTicketController;
+use App\Http\Controllers\User\DriverController as UserDriverController;
+use App\Http\Controllers\User\TankController as UserTankController;
+use App\Http\Controllers\User\TruckController as UserTruckController;
 use App\Http\Controllers\User\UserController as UserUserController;
-use App\Http\Resources\AppRule\AppRuleResource;
-use App\Http\Resources\Campaign\CampaignResource;
-use App\Http\Resources\Challenge\ChallengeResource;
-use App\Http\Resources\ChallengeBalance\ChallengeBalanceResource;
-use App\Http\Resources\ChallengeLeverage\ChallengeLeverageResource;
-use App\Http\Resources\ChallengePlatform\ChallengePlatformResource;
-use App\Http\Resources\ChallengeRule\ChallengeRuleResource;
-use App\Http\Resources\ChallengeServer\ChallengeServerResource;
+use App\Http\Resources\Driver\DriverResource;
 use App\Http\Resources\Error\ErrorResource;
-use App\Http\Resources\Ticket\TicketResource;
+use App\Http\Resources\Tank\TankResource;
+use App\Http\Resources\Truck\TruckResource;
 use App\Http\Resources\User\UserResource;
 use App\Packages\Helper;
 use App\Packages\JsonResponse;
-use App\Services\AppRuleService;
-use App\Services\CampaignService;
-use App\Services\ChallengeBalanceService;
-use App\Services\ChallengeLeverageService;
-use App\Services\ChallengePlatformService;
-use App\Services\ChallengeRuleService;
-use App\Services\ChallengeServerService;
-use App\Services\ChallengeService;
+use App\Services\DriverService;
 use App\Services\ErrorService;
-use App\Services\SendMail;
-use App\Services\TicketService;
+use App\Services\TankService;
+use App\Services\TruckService;
 use App\Services\UserService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -93,76 +68,28 @@ class AppServiceProvider extends ServiceProvider
             return new UserUserController(new JsonResponse(UserResource::class), $app->make(UserService::class));
         });
 
-        $this->app->bind(AppRuleController::class, function ($app) {
-            return new AppRuleController(new JsonResponse(AppRuleResource::class), $app->make(AppRuleService::class));
+        $this->app->bind(TankController::class, function ($app) {
+            return new TankController(new JsonResponse(TankResource::class), $app->make(TankService::class));
         });
 
-        $this->app->bind(UserAppRuleController::class, function ($app) {
-            return new UserAppRuleController(new JsonResponse(AppRuleResource::class), $app->make(AppRuleService::class));
+        $this->app->bind(UserTankController::class, function ($app) {
+            return new UserTankController(new JsonResponse(TankResource::class), $app->make(TankService::class));
         });
 
-        $this->app->bind(CampaignController::class, function ($app) {
-            return new CampaignController(new JsonResponse(CampaignResource::class), $app->make(CampaignService::class));
+        $this->app->bind(TruckController::class, function ($app) {
+            return new TruckController(new JsonResponse(TruckResource::class), $app->make(TruckService::class));
         });
 
-        $this->app->bind(UserCampaignController::class, function ($app) {
-            return new UserCampaignController(new JsonResponse(CampaignResource::class), $app->make(CampaignService::class));
+        $this->app->bind(UserTruckController::class, function ($app) {
+            return new UserTruckController(new JsonResponse(TruckResource::class), $app->make(TruckService::class));
         });
 
-        $this->app->bind(TicketController::class, function ($app) {
-            return new TicketController(new JsonResponse(TicketResource::class), $app->make(TicketService::class));
+        $this->app->bind(DriverController::class, function ($app) {
+            return new DriverController(new JsonResponse(DriverResource::class), $app->make(DriverService::class));
         });
 
-        $this->app->bind(UserTicketController::class, function ($app) {
-            return new UserTicketController(new JsonResponse(TicketResource::class), $app->make(TicketService::class));
-        });
-
-        $this->app->bind(ChallengeServerController::class, function ($app) {
-            return new ChallengeServerController(new JsonResponse(ChallengeServerResource::class), $app->make(ChallengeServerService::class));
-        });
-
-        $this->app->bind(UserChallengeServerController::class, function ($app) {
-            return new UserChallengeServerController(new JsonResponse(ChallengeServerResource::class), $app->make(ChallengeServerService::class));
-        });
-
-        $this->app->bind(ChallengeBalanceController::class, function ($app) {
-            return new ChallengeBalanceController(new JsonResponse(ChallengeBalanceResource::class), $app->make(ChallengeBalanceService::class));
-        });
-
-        $this->app->bind(UserChallengeBalanceController::class, function ($app) {
-            return new UserChallengeBalanceController(new JsonResponse(ChallengeBalanceResource::class), $app->make(ChallengeBalanceService::class));
-        });
-
-        $this->app->bind(ChallengeLeverageController::class, function ($app) {
-            return new ChallengeLeverageController(new JsonResponse(ChallengeLeverageResource::class), $app->make(ChallengeLeverageService::class));
-        });
-
-        $this->app->bind(UserChallengeLeverageController::class, function ($app) {
-            return new UserChallengeLeverageController(new JsonResponse(ChallengeLeverageResource::class), $app->make(ChallengeLeverageService::class));
-        });
-
-        $this->app->bind(ChallengeRuleController::class, function ($app) {
-            return new ChallengeRuleController(new JsonResponse(ChallengeRuleResource::class), $app->make(ChallengeRuleService::class));
-        });
-
-        $this->app->bind(UserChallengeRuleController::class, function ($app) {
-            return new UserChallengeRuleController(new JsonResponse(ChallengeRuleResource::class), $app->make(ChallengeRuleService::class));
-        });
-
-        $this->app->bind(ChallengePlatformController::class, function ($app) {
-            return new ChallengePlatformController(new JsonResponse(ChallengePlatformResource::class), $app->make(ChallengePlatformService::class));
-        });
-
-        $this->app->bind(UserChallengePlatformController::class, function ($app) {
-            return new UserChallengePlatformController(new JsonResponse(ChallengePlatformResource::class), $app->make(ChallengePlatformService::class));
-        });
-
-        $this->app->bind(ChallengeController::class, function ($app) {
-            return new ChallengeController(new JsonResponse(ChallengeResource::class), $app->make(ChallengeService::class));
-        });
-
-        $this->app->bind(UserChallengeController::class, function ($app) {
-            return new UserChallengeController(new JsonResponse(ChallengeResource::class), $app->make(ChallengeService::class));
+        $this->app->bind(UserDriverController::class, function ($app) {
+            return new UserDriverController(new JsonResponse(DriverResource::class), $app->make(DriverService::class));
         });
     }
 }

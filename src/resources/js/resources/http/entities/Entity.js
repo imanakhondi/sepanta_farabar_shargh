@@ -89,8 +89,9 @@ export default class Entity {
         return null;
       }
       if (response.data._result !== "1") {
-        this.errorMasage = response.data._error;
-        this.errorCode = response.datd._errorCode;
+        this.errorMessage = response.data._error;
+        this.errorCode = response.data._errorCode;
+        console.log("errorMessage:",response.data._error,"errorCode",response.data._errorCode);
         this.handleError();
         return null;
       }
@@ -120,7 +121,7 @@ export default class Entity {
       utils.clearLS();
 
       post(`${BASE_URL}/u/users/logout`);
-      window.location.href = `${BASE_PATH}/users/login`;
+      window.location.href = `${BASE_URL}/login`;
     } catch (error) {
       console.log(error);
     }

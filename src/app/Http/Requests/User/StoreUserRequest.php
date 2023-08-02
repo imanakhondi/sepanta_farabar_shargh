@@ -17,6 +17,7 @@ class StoreUserRequest extends FormRequest
         throw new ValidationException($validator, $response);
     }
 
+
     public function rules()
     {
         return [
@@ -25,6 +26,8 @@ class StoreUserRequest extends FormRequest
             'password' => 'required|min:6|max:50|confirmed',
             'name' => 'required|min:2|max:50',
             'family' => 'required|min:2|max:50',
+            'national_no' => 'required|min:2|max:50',
+            'mobile' => 'required|min:2|max:50',
         ];
     }
 

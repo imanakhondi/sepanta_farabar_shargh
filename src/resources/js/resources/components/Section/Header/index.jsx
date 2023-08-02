@@ -6,6 +6,7 @@ import { header } from "../../../constants/strings/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { User } from "../../../http/entities/User";
 import { userLogOut } from "../../../state/user/userAction";
+import Search from "../../../common/Input/Search"
 const Header = () => {
     const [modal, setModal] = useState(false);
     const user = new User();
@@ -22,14 +23,14 @@ const Header = () => {
     };
 
     return (
-        <div className="h-16 my-3 ml-5">
+        <div className="h-16 my-3 ml-5 container">
             <div className="flex items-center justify-between h-full">
-                <h1>داشبورد من</h1>
+                <Search />
                 <div className="flex ">
                     <img
                         src={profile}
                         alt=""
-                        className="h-7 w-7 cursor-pointer"
+                        className="h-10 w-10 cursor-pointer"
                         onClick={() => setModal(!modal)}
                     />
                     {modal && (

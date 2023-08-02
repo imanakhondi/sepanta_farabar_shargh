@@ -1,4 +1,4 @@
-import { BASE_PATH } from "../../constants";
+import {  BASE_URL } from "../../constants";
 import Entity from "./Entity";
 
 export class Driver extends Entity {
@@ -7,11 +7,11 @@ export class Driver extends Entity {
   }
 
   async getDriver(id) {
-    return await this.handlePostFile(`${BASE_PATH}/a/drivers/show/${id}`);
+    return await this.handlePostFile(`${BASE_URL}/a/drivers/show/${id}`);
   }
 
   async getAllDrivers() {
-    return await this.handlePost(`${BASE_PATH}/a/drivers`);
+    return await this.handlePost(`${BASE_URL}/u/drivers`);
   }
 
   async storeDriver(
@@ -22,17 +22,17 @@ export class Driver extends Entity {
     driverLicenseNum,
     driverSmartCard
   ) {
-    return await this.handlePost(`${BASE_PATH}/a/drivers/store`, {
+    return await this.handlePost(`${BASE_URL}/a/drivers/store`, {
       name,
       family,
-      national_code: nationalCode,
+      national_no: nationalCode,
       mobile,
-      driver_license_num: driverLicenseNum,
-      driver_smart_card: driverSmartCard,
+      license_no: driverLicenseNum,
+      card_no: driverSmartCard,
     });
   }
 
   async deleteDriver(id) {
-    return await this.handlePost(`${BASE_PATH}/a/drivers/delete/${id}`);
+    return await this.handlePost(`${BASE_URL}/a/drivers/delete/${id}`);
   }
 }

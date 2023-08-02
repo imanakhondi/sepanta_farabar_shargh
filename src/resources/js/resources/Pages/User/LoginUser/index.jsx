@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { loginUserPage } from "../../../constants/strings/fa";
 import * as Yup from "yup";
@@ -9,6 +9,8 @@ import { fetchLoginAction } from "../../../state/user/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import useQuery from "../../../hooks/useQuery";
 import { useEffect } from "react";
+import Loading from "../../../common/Input/Loading";
+import { clearMessageAction } from "../../../state/message/messageAction";
 
 const LoginUser = () => {
     const query = useQuery();
@@ -16,6 +18,11 @@ const LoginUser = () => {
     const navigate = useNavigate();
     const userState = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
+    const messageState = useSelector((state) => state.messageReducer);
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        dispatch(clearMessageAction());
+    }, []);
 
     useEffect(() => {
         if (userState.isAuthenticated) {
@@ -49,6 +56,7 @@ const LoginUser = () => {
         <div className=" overflow-hidden">
             <div className="flex mx-auto ">
                 <div className="flex-1 min-h-screen h-full flex flex-col items-center justify-center bg-white">
+                    {userState.loading && <Loading />}
                     <h2 className="font-bold mb-3 text-2xl">
                         {loginUserPage._title}
                     </h2>
@@ -58,6 +66,8 @@ const LoginUser = () => {
                         customStyle="!bg-transparent shadow-none"
                         customStyleBtn="bg-gradient-to-r from-[#3c3d5e] to-[#63647F] mt-7"
                         customStyleForm="!block"
+                        loading={loading}
+                        error={messageState}
                     >
                         <FormikControl
                             control="input"

@@ -1,5 +1,5 @@
 import Entity from "./Entity";
-import { BASE_PATH } from "../../constants";
+import { BASE_URL } from "../../constants";
 
 export class Car extends Entity {
   constructor() {
@@ -7,11 +7,11 @@ export class Car extends Entity {
   }
 
   async getCar(id) {
-    return await this.handlePost(`${BASE_PATH}/a/cars/show/${id}`);
+    return await this.handlePost(`${BASE_URL}/a/trucks/show/${id}`);
   }
 
   async getAllCars() {
-    return await this.handlePost(`${BASE_PATH}/a/cars`);
+    return await this.handlePost(`${BASE_URL}/u/trucks`);
   }
 
   async storeCar(
@@ -22,17 +22,17 @@ export class Car extends Entity {
     carLicensePlateNum,
     carTransitLicensePlateNum
   ) {
-    return await this.handlePost(`${BASE_PATH}/a/cars/store`, {
+    return await this.handlePost(`${BASE_URL}/a/trucks/store`, {
       name,
       family,
-      national_code: nationalCode,
+      national_no: nationalCode,
       mobile,
-      car_license_plate_num: carLicensePlateNum,
-      car_transit_license_plate_num: carTransitLicensePlateNum,
+      ir_no: carLicensePlateNum,
+      transit_no: carTransitLicensePlateNum,
     });
   }
 
   async deleteCar(id) {
-    return await this.handlePost(`${BASE_PATH}/a/cars/delete/${id}`);
+    return await this.handlePost(`${BASE_URL}/a/trucks/delete/${id}`);
   }
 }

@@ -2,7 +2,7 @@
 
 return
     [
-        '_title' => 'Top Traders Funding',
+        '_title' => 'Sepantafarbar',
         'server_error' => 'خطایی رخ داد',
         'store_error' => 'خطایی در ثبت داده رخ داد',
         'update_error' => 'خطایی در ویرایش داده رخ داد',
