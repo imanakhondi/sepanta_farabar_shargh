@@ -10,18 +10,19 @@ import {
     setMessageAction,
 } from "../../../state/message/messageAction";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const initialValues = {
     name: "",
     family: "",
-    nationalCode: "",
+    nationalNo: "",
     mobile: "",
-    tankNum: "",
+    tankNo: "",
 };
 const validationSchema = Yup.object({
     name: Yup.string(),
     family: Yup.string(),
-    tankNum: Yup.string(),
+    tankNo: Yup.string(),
 });
 
 const AddTanks = () => {
@@ -34,13 +35,14 @@ const AddTanks = () => {
     }, []);
 
     const onSubmit = async (values) => {
-        const { name, family, nationalCode, mobile, tankNum } = values;
+        const { name, family, nationalNo, mobile, tankNo } = values;
+        setLoading(true);
         const result = await tank.storeTank(
             name,
             family,
-            nationalCode,
+            nationalNo,
             mobile,
-            tankNum
+            tankNo
         );
 
         if (result === null) {
@@ -50,6 +52,7 @@ const AddTanks = () => {
             return;
         }
         setLoading(false);
+        toast.success(`${addTankPage.submitted}`)
         window.location.reload();
         //show message success
     };
@@ -83,7 +86,7 @@ const AddTanks = () => {
             />
             <FormikControl
                 control="input"
-                name="nationalCode"
+                name="nationalNo"
                 formik={formik}
                 pageString={addTankPage}
             />
@@ -95,7 +98,7 @@ const AddTanks = () => {
             />
             <FormikControl
                 control="input"
-                name="tankNum"
+                name="tankNo"
                 formik={formik}
                 pageString={addTankPage}
                 type="number"

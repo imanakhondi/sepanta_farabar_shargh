@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import FormikForm from "../../../common/FormikForm";
 import * as Yup from "yup";
 import FormikControl from "../../../common/FormikControl";
-import { addDriverPage } from "../../../constants/strings/fa";
+import { editDriverPage } from "../../../constants/strings/fa";
 import { Driver } from "../../../http/entities/Driver";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -12,26 +12,32 @@ import {
     setMessageAction,
 } from "../../../state/message/messageAction";
 import { toast } from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
+import { BASE_PATH } from "../../../constants";
 
 const initialValues = {
     name: "",
     family: "",
-    nationalCode: "",
+    nationalNo: "",
     mobile: "",
-    driverLicenseNum: "",
-    driverSmartCard: "",
+    licenseNo: "",
+    cardNo: "",
 };
 const validationSchema = Yup.object({
     name: Yup.string(),
     family: Yup.string(),
-    nationalCode: Yup.string(),
+    nationalNo: Yup.string(),
     mobile: Yup.string(),
-    driverLicenseNum: Yup.string(),
-    driverSmartCard: Yup.string(),
+    licenseNo: Yup.string(),
+    cardNo: Yup.string(),
 });
 
 const EditDrivers = () => {
+    const params=useParams()
+    const driverId=params.id
+    const navigate=useNavigate()
     const driver = new Driver();
+    const [formValues, setFormValues] = useState(null);
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
@@ -39,24 +45,38 @@ const EditDrivers = () => {
     useEffect(() => {
         dispatch(clearMessageAction());
     }, []);
+    const getDriver = async () => {
+        setLoading(true);
+        const result = await driver.getDriver(driverId);
+        if (result !== null) {
+            setLoading(false);
+            setFormValues(result.item);
+        }
+    };
+
+    useEffect(() => {
+        getDriver();
+    }, []);
+
 
     const onSubmit = async (values) => {
         const {
             name,
             family,
-            nationalCode,
+            nationalNo,
             mobile,
-            driverLicenseNum,
-            driverSmartCard,
+            licenseNo,
+            cardNo,
         } = values;
         setLoading(true);
-        const result = await driver.storeDriver(
+        const result = await driver.updateDriver(
+            driverId,
             name,
             family,
-            nationalCode,
+            nationalNo,
             mobile,
-            driverLicenseNum,
-            driverSmartCard
+            licenseNo,
+            cardNo
         );
         if (result === null) {
             //show message failure
@@ -66,61 +86,62 @@ const EditDrivers = () => {
             return;
         }
         setLoading(false);
-        toast.success(`${addDriverPage.submitted}`);
-        window.location.reload();
+        toast.success(`${editDriverPage.submitted}`);
+        navigate(`${BASE_PATH}/drivers`)
         //show message success
     };
 
     const formik = useFormik({
-        initialValues,
+        initialValues: formValues || initialValues,
         onSubmit,
         validationSchema,
         validateOnMount: true,
+        enableReinitialize: true,
     });
     return (
         <FormikForm
             onSubmit={formik.handleSubmit}
             loading={loading}
             error={messageState}
-            title={`${addDriverPage._title}`}
-            subTitle={`${addDriverPage._subTitle}`}
+            title={`${editDriverPage._title}`}
+            subTitle={`${editDriverPage._subTitle}`}
         >
             <FormikControl
                 control="input"
                 name="name"
                 formik={formik}
-                pageString={addDriverPage}
+                pageString={editDriverPage}
             />
             <FormikControl
                 control="input"
                 name="family"
                 formik={formik}
-                pageString={addDriverPage}
+                pageString={editDriverPage}
             />
             <FormikControl
                 control="input"
-                name="nationalCode"
+                name="nationalNo"
                 formik={formik}
-                pageString={addDriverPage}
+                pageString={editDriverPage}
             />
             <FormikControl
                 control="input"
                 name="mobile"
                 formik={formik}
-                pageString={addDriverPage}
+                pageString={editDriverPage}
             />
             <FormikControl
                 control="input"
-                name="driverLicenseNum"
+                name="licenseNo"
                 formik={formik}
-                pageString={addDriverPage}
+                pageString={editDriverPage}
                 type="number"
             />
             <FormikControl
                 control="input"
-                name="driverSmartCard"
+                name="cardNo"
                 formik={formik}
-                pageString={addDriverPage}
+                pageString={editDriverPage}
                 type="number"
             />
         </FormikForm>

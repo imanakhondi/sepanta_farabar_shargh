@@ -18,16 +18,16 @@ export default function authRoute() {
                     element={<Pages.ChangePassword />}
                 />
                 <Route path="user/add" element={<Pages.AddUser />} />
-                <Route path="edit" element={<Pages.Edituser />} />
+                <Route path="user/edit/:id" element={<Pages.Edituser />} />
                 <Route path="cars" element={<Pages.Cars />} />
                 <Route path="car/add" element={<Pages.AddCars />} />
-                <Route path="car/edit" element={<Pages.EditCars />} />
+                <Route path="car/edit/:id" element={<Pages.EditCars />} />
                 <Route path="drivers" element={<Pages.Drivers />} />
                 <Route path="driver/add" element={<Pages.AddDrivers />} />
                 <Route path="driver/edit/:id" element={<Pages.EditDrivers />} />
                 <Route path="tanks" element={<Pages.Tanks />} />
                 <Route path="tank/add" element={<Pages.AddTanks />} />
-                <Route path="tank/edit" element={<Pages.EditTanks />} />
+                <Route path="tank/edit/:id" element={<Pages.EditTanks />} />
             </Route>
         </Routes>
     );

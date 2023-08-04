@@ -5,31 +5,34 @@ import Operation from "../../../components/Table/Operation";
 import Table from "../../../components/Table/Table";
 import { useSelector } from "react-redux";
 import Loading from "../../../common/Input/Loading";
+import { BASE_PATH } from "../../../constants";
 
 const Users = () => {
     const user = new User();
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
+    const [count, setCount] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const pageSize = 5;
+    const pageSize = 10;
     const lastIndex = currentPage * pageSize;
     const firstIndex = lastIndex - pageSize;
     const userState = useSelector((state) => state.userReducer);
     const filterdData = data
         .sort((a, b) => b.id - a.id)
-        .slice(firstIndex, lastIndex);
+        // .slice(firstIndex, lastIndex);
     const getUsers = async () => {
         setLoading(true);
-        const result = await user.getAllUsers();
+        const result = await user.getAllUsers(pageSize, currentPage);
         if (result !== null) {
             setLoading(false);
             setData(result.items);
+            setCount(result.count);
         }
     };
 
     useEffect(() => {
         getUsers();
-    }, []);
+    }, [currentPage]);
 
     const renderHeader = () => {
         return (
@@ -55,7 +58,6 @@ const Users = () => {
 
     const renderItems = () => {
         return (
-            filterdData &&
             filterdData.map((item, index) => {
                 return (
                     <tr key={index} className="">
@@ -71,7 +73,7 @@ const Users = () => {
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
                             {item.mobile}
                         </td>
-                        <Operation />
+                        <Operation link={`${BASE_PATH}/user/edit/${item.id}`}/>
                     </tr>
                 );
             })
@@ -87,6 +89,7 @@ const Users = () => {
                         renderHeader={renderHeader}
                         renderItems={renderItems}
                         items={data}
+                        count={count}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                         title={`${UserPage._title}`}

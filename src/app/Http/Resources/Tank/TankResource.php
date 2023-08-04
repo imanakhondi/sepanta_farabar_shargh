@@ -15,8 +15,7 @@ class TankResource extends JsonResource
             'family' => Helper::localeNumbers($this->family),
             'nationalNo' => $this->national_no,
             'mobile' => $this->mobile,
-            'irNo' => $this->ir_no,
-            'transitNo' => $this->transit_no,
+            'tankNo' => $this->tank_no,
         ];
     }
 }

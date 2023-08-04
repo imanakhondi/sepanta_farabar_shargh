@@ -24,8 +24,8 @@ class StoreTruckRequest extends FormRequest
             'family' => 'required|min:2|max:50',
             'national_no' => 'required|digits:10|gt:0',
             'mobile' => 'required|digits:11|gt:0',
-            'ir_no' => 'required|size:8',
-            'transit_no' => 'required|size:8',
+            'ir_no' => 'required|size:9',
+            'transit_no' => 'required|size:9',
         ];
     }
 

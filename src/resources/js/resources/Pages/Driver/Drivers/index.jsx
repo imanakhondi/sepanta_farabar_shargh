@@ -13,25 +13,26 @@ const Drivers = () => {
     const driver = new Driver();
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
+    const [count, setCount] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const pageSize = 10;
+    // const lastIndex = currentPage * pageSize;
+    // const firstIndex = lastIndex - pageSize;
+    const filterdData = data.sort((a, b) => b.id - a.id);
+    // .slice(firstIndex, lastIndex);
     const getDrivers = async () => {
         setLoading(true);
-        const result = await driver.getAllDrivers();
+        const result = await driver.getAllDrivers(pageSize, currentPage);
         if (result !== null) {
             setLoading(false);
             setData(result.items);
+            setCount(result.count);
         }
     };
 
     useEffect(() => {
         getDrivers();
     }, []);
-    const [currentPage, setCurrentPage] = useState(1);
-    const pageSize = 10;
-    const lastIndex = currentPage * pageSize;
-    const firstIndex = lastIndex - pageSize;
-    const filterdData = data
-        .sort((a, b) => b.id - a.id)
-        .slice(firstIndex, lastIndex);
 
     const renderHeader = () => {
         return (
@@ -71,7 +72,7 @@ const Drivers = () => {
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
                         {item.mobile}
                     </td>
-                    <Operation link={`/panel/driver/edit/${item.id}`}/>
+                    <Operation link={`/panel/driver/edit/${item.id}`} />
                 </tr>
             );
         });
@@ -86,6 +87,7 @@ const Drivers = () => {
                         renderHeader={renderHeader}
                         renderItems={renderItems}
                         items={data}
+                        count={count}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                         title={`${DriverPage._title}`}

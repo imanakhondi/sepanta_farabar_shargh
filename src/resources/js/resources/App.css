@@ -82,3 +82,6 @@ content: "\ea79";
 .icon-sun-1:before {
 content: "\f0aa";
 }
+.Toastify div {
+  font-family: IRANSansWeb;
+}

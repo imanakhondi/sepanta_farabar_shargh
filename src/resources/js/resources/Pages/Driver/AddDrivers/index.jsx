@@ -15,18 +15,18 @@ import { toast } from "react-toastify";
 const initialValues = {
     name: "",
     family: "",
-    nationalCode: "",
+    nationalNo: "",
     mobile: "",
-    driverLicenseNum: "",
-    driverSmartCard: "",
+    licenseNo: "",
+    cardNo: "",
 };
 const validationSchema = Yup.object({
     name: Yup.string(),
     family: Yup.string(),
-    nationalCode: Yup.string(),
+    nationalNo: Yup.string(),
     mobile: Yup.string(),
-    driverLicenseNum: Yup.string(),
-    driverSmartCard: Yup.string(),
+    licenseNo: Yup.string(),
+    cardNo: Yup.string(),
 });
 
 const AddDrivers = () => {
@@ -43,19 +43,19 @@ const AddDrivers = () => {
         const {
             name,
             family,
-            nationalCode,
+            nationalNo,
             mobile,
-            driverLicenseNum,
-            driverSmartCard,
+            licenseNo,
+            cardNo,
         } = values;
         setLoading(true);
         const result = await driver.storeDriver(
             name,
             family,
-            nationalCode,
+            nationalNo,
             mobile,
-            driverLicenseNum,
-            driverSmartCard
+            licenseNo,
+            cardNo
         );
         if (result === null) {
             //show message failure
@@ -98,7 +98,7 @@ const AddDrivers = () => {
             />
             <FormikControl
                 control="input"
-                name="nationalCode"
+                name="nationalNo"
                 formik={formik}
                 pageString={addDriverPage}
             />
@@ -110,14 +110,14 @@ const AddDrivers = () => {
             />
             <FormikControl
                 control="input"
-                name="driverLicenseNum"
+                name="licenseNo"
                 formik={formik}
                 pageString={addDriverPage}
                 type="number"
             />
             <FormikControl
                 control="input"
-                name="driverSmartCard"
+                name="cardNo"
                 formik={formik}
                 pageString={addDriverPage}
                 type="number"

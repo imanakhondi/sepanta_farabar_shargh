@@ -15,7 +15,7 @@ const initialValues = {
     username: "",
     name: "",
     family: "",
-    nationalCode: "",
+    nationalNo: "",
     mobile: "",
     email: "",
     password: "",
@@ -25,7 +25,7 @@ const validationSchema = Yup.object({
     username: Yup.string(),
     name: Yup.string(),
     family: Yup.string(),
-    nationalCode: Yup.string(),
+    nationalNo: Yup.string(),
     mobile: Yup.string(),
     email: Yup.string(),
     password: Yup.string(),
@@ -44,20 +44,22 @@ const AddUser = () => {
             username,
             name,
             family,
-            nationalCode,
+            nationalNo,
             mobile,
             email,
             password,
+            confirmPassword,
         } = values;
         setLoading(true);
         const result = await user.storeUser(
             username,
             name,
             family,
-            nationalCode,
+            nationalNo,
             mobile,
             email,
-            password
+            password,
+            confirmPassword
         );
 
         if (result === null) {
@@ -105,7 +107,7 @@ const AddUser = () => {
             />
             <FormikControl
                 control="input"
-                name="nationalCode"
+                name="nationalNo"
                 formik={formik}
                 pageString={addUserPage}
             />

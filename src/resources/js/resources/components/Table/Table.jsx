@@ -5,13 +5,14 @@ const Table = ({
     pageSize,
     renderHeader,
     items,
+    count,
     renderItems,
     currentPage,
     setCurrentPage,
     title,
     subTitle,
 }) => {
-    const pageNumber = Math.ceil(items.length / pageSize);
+    const pageNumber = Math.ceil(count / pageSize);
     const numbers = [...Array(pageNumber + 1).keys()].slice(1);
 
     return (

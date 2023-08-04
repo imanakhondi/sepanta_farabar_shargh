@@ -6,7 +6,7 @@ const Operation = ({link}) => {
             <Link to={link}>
                 <i className="icon-edit4 before:content-['\e88c'] text-2xl cursor-pointer font-bold text-green-500"></i>
             </Link>
-            <i className="icon-trash4 before:content-['\eaa0'] text-2xl cursor-pointer font-bold text-red-500"></i>
+            {/* <i className="icon-trash4 before:content-['\eaa0'] text-2xl cursor-pointer font-bold text-red-500"></i> */}
         </td>
     );
 };

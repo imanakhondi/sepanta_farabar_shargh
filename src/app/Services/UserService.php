@@ -27,11 +27,13 @@ class UserService
         return Model::where('username', 'LIKE', '%' . $username . '%')->where('name', 'LIKE', '%' . $name . '%')->where('family', 'LIKE', '%' . $family . '%')->orderBy('family', 'ASC')->orderBy('name', 'ASC')->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
-    public function store(string $username, string $password, string $name, string $family, string $nationalNo, string $mobile, string $email, int $role, int $isActive): mixed
+    public function store(string $username, string $password, string $name, string $family, string $nationalNo, string $mobile, string $email,
+    //  int $role, int $isActive
+     ): mixed
     {
         $this->throwIfEmailNotUnique($email);
-        $role = ($role >= Role::USER && $role <= Role::ADMINISTRATOR) ? $role : Role::USER;
-        $isActive = $isActive === Status::ACTIVE ? Status::ACTIVE : Status::NOT_ACTIVE;
+        // $role = ($role >= Role::USER && $role <= Role::ADMINISTRATOR) ? $role : Role::USER;
+        // $isActive = $isActive === Status::ACTIVE ? Status::ACTIVE : Status::NOT_ACTIVE;
         $data = [
             'username' => $username,
             'password' => $password,
@@ -40,25 +42,27 @@ class UserService
             'national_no' => $nationalNo,
             'mobile' => $mobile,
             'email' => $email,
-            'role' => $role,
-            'is_active' => $isActive,
+            // 'role' => $role,
+            // 'is_active' => $isActive,
         ];
         return Model::create($data) ?? null;
     }
 
-    public function update(Model $model, string $name, string $family, string $nationalNo, string $mobile, string $email, int $role, int $isActive): bool
+    public function update(Model $model, string $name, string $family, string $nationalNo, string $mobile, string $email,
+    //  int $role, int $isActive
+     ): bool
     {
         $this->throwIfEmailNotUnique($email, $model);
-        $role = ($role >= Role::USER && $role <= Role::ADMINISTRATOR) ? $role : Role::USER;
-        $isActive = $isActive === Status::ACTIVE ? Status::ACTIVE : Status::NOT_ACTIVE;
+        // $role = ($role >= Role::USER && $role <= Role::ADMINISTRATOR) ? $role : Role::USER;
+        // $isActive = $isActive === Status::ACTIVE ? Status::ACTIVE : Status::NOT_ACTIVE;
         $data = [
             'name' => $name,
             'family' => $family,
             'national_no' => $nationalNo,
             'mobile' => $mobile,
             'email' => $email,
-            'role' => $role,
-            'is_active' => $isActive,
+            // 'role' => $role,
+            // 'is_active' => $isActive,
         ];
 
         return $model->update($data);

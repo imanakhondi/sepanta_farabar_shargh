@@ -6,16 +6,81 @@ import FormikControl from "../../../common/FormikControl";
 import { addCarPage } from "../../../constants/strings/fa";
 import { Car } from "../../../http/entities/Car";
 import { useDispatch, useSelector } from "react-redux";
-import { clearMessageAction, setMessageAction } from "../../../state/message/messageAction";
+import {
+    clearMessageAction,
+    setMessageAction,
+} from "../../../state/message/messageAction";
 import { toast } from "react-toastify";
+
+const AlphabetPersianOptions = [
+    { id: "الف", title: "الف" },
+    { id: "ب", title: "ب" },
+    { id: "پ", title: "پ" },
+    { id: "ت", title: "ت" },
+    { id: "ج", title: "ج" },
+    { id: "چ", title: "چ" },
+    { id: "ح", title: "ح" },
+    { id: "خ", title: "خ" },
+    { id: "د", title: "د" },
+    { id: "ذ", title: "ذ" },
+    { id: "ر", title: "ر" },
+    { id: "ز", title: "ز" },
+    { id: "ژ", title: "ژ" },
+    { id: "س", title: "س" },
+    { id: "ش", title: "ش" },
+    { id: "ص", title: "ص" },
+    { id: "ض", title: "ض" },
+    { id: "ط", title: "ط" },
+    { id: "ظ", title: "ظ" },
+    { id: "ع", title: "ع" },
+    { id: "غ", title: "غ" },
+    { id: "ف", title: "ف" },
+    { id: "ق", title: "ق" },
+    { id: "ک", title: "ک" },
+    { id: "گ", title: "گ" },
+    { id: "ل", title: "ل" },
+    { id: "م", title: "م" },
+    { id: "ن", title: "ن" },
+    { id: "و", title: "و" },
+    { id: "ه", title: "ه" },
+    { id: "ی", title: "ی" },
+];
+const AlphabetEnglishOptions = [
+    { id: "A", title: "A" },
+    { id: "B", title: "B" },
+    { id: "C", title: "C" },
+    { id: "D", title: "D" },
+    { id: "E", title: "E" },
+    { id: "F", title: "F" },
+    { id: "G", title: "G" },
+    { id: "H", title: "H" },
+    { id: "I", title: "I" },
+    { id: "G", title: "G" },
+    { id: "K", title: "K" },
+    { id: "L", title: "L" },
+    { id: "M", title: "M" },
+    { id: "N", title: "N" },
+    { id: "O", title: "O" },
+    { id: "P", title: "P" },
+    { id: "Q", title: "Q" },
+    { id: "R", title: "R" },
+    { id: "S", title: "S" },
+    { id: "T", title: "T" },
+    { id: "U", title: "U" },
+    { id: "V", title: "V" },
+    { id: "W", title: "W" },
+    { id: "X", title: "X" },
+    { id: "Y", title: "Y" },
+    { id: "Z", title: "Z" },
+];
 
 let initialValues = {
     name: "",
     family: "",
-    nationalCode: "",
+    nationalNo: "",
     mobile: "",
-    carLicensePlateNum: "",
-    carTransitLicensePlateNum: "",
+    irNo: "",
+    transitNo: "",
     CLPN1: "",
     CLPN2: "",
     CLPN3: "",
@@ -28,8 +93,8 @@ let initialValues = {
 const validationSchema = Yup.object({
     name: Yup.string(),
     family: Yup.string(),
-    carLicensePlateNum: Yup.string(),
-    carTransitLicensePlateNum: Yup.string(),
+    irNo: Yup.string(),
+    transitNo: Yup.string(),
 });
 const AddCars = () => {
     const car = new Car();
@@ -41,24 +106,18 @@ const AddCars = () => {
     }, []);
 
     const onSubmit = async (values) => {
-        values.carLicensePlateNum = `${values.CLPN1}${values.CLPN2}${values.CLPN3}${values.CLPN4}`;
-        values.carTransitLicensePlateNum = `${values.CTLPN1}${values.CTLPN2}${values.CTLPN3}${values.CTLPN4}`;
-        const {
-            name,
-            family,
-            nationalCode,
-            mobile,
-            carLicensePlateNum,
-            carTransitLicensePlateNum,
-        } = values;
+        values.irNo = `${values.CLPN1}${values.CLPN2}${values.CLPN3}-${values.CLPN4}`;
+        values.transitNo = `${values.CTLPN1}${values.CTLPN2}${values.CTLPN3}-${values.CTLPN4}`;
+        const { name, family, nationalNo, mobile, irNo, transitNo } = values;
         setLoading(true);
+        console.log(name, family, nationalNo, mobile, irNo, transitNo);
         const result = await car.storeCar(
             name,
             family,
-            nationalCode,
+            nationalNo,
             mobile,
-            carLicensePlateNum,
-            carTransitLicensePlateNum
+            irNo,
+            transitNo
         );
         if (result === null) {
             //show message failure
@@ -68,7 +127,7 @@ const AddCars = () => {
             return;
         }
         setLoading(false);
-        toast.success(`${addCarPage.submitted}`)
+        toast.success(`${addCarPage.submitted}`);
         window.location.reload();
     };
 
@@ -101,7 +160,7 @@ const AddCars = () => {
             />
             <FormikControl
                 control="input"
-                name="nationalCode"
+                name="nationalNo"
                 formik={formik}
                 pageString={addCarPage}
             />
@@ -111,8 +170,9 @@ const AddCars = () => {
                 formik={formik}
                 pageString={addCarPage}
             />
+
             <span className="block w-full text-xs mt-5 text-black/50">
-                {addCarPage.carLicensePlateNum}
+                {addCarPage.irNo}
             </span>
             <div className="flex gap-x-2">
                 <FormikControl
@@ -121,34 +181,33 @@ const AddCars = () => {
                     formik={formik}
                     pageString={addCarPage}
                     custom="!w-[50px] md:!w-[100px]"
-                    //   type="number"
                 />
                 <FormikControl
                     control="input"
                     name="CLPN3"
                     formik={formik}
                     pageString={addCarPage}
-                    //   type="number"
                     custom="!w-[50px] md:!w-[100px]"
                 />
                 <FormikControl
-                    control="input"
+                    control="select"
                     name="CLPN2"
                     formik={formik}
-                    custom="!w-[50px]"
+                    custom="!w-[120px]"
+                    customStyleInput="rounded-xl text-xs"
                     pageString={addCarPage}
+                    selectOptions={AlphabetPersianOptions}
                 />
                 <FormikControl
                     control="input"
                     name="CLPN1"
                     formik={formik}
                     pageString={addCarPage}
-                    //   type="number"
                     custom="!w-[50px] md:!w-[100px]"
                 />
             </div>
             <span className="block w-full text-xs mt-5 text-black/50">
-                {addCarPage.carTransitLicensePlateNum}
+                {addCarPage.transitNo}
             </span>
             <div className="flex gap-x-2">
                 <FormikControl
@@ -168,11 +227,13 @@ const AddCars = () => {
                     custom="!w-[50px] md:!w-[100px]"
                 />
                 <FormikControl
-                    control="input"
+                    control="select"
                     name="CTLPN2"
                     formik={formik}
-                    custom="!w-[50px]"
+                    custom="!w-[120px]"
+                    customStyleInput="rounded-xl text-xs"
                     pageString={addCarPage}
+                    selectOptions={AlphabetEnglishOptions}
                 />
                 <FormikControl
                     control="input"

@@ -1,38 +1,60 @@
-import {  BASE_URL } from "../../constants";
+import { BASE_URL } from "../../constants";
 import Entity from "./Entity";
 
 export class Driver extends Entity {
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  async getDriver(id) {
-    return await this.handlePostFile(`${BASE_URL}/a/drivers/show/${id}`);
-  }
+    async getDriver(id) {
+        return await this.handlePost(`${BASE_URL}/u/drivers/show/${id}`);
+    }
 
-  async getAllDrivers() {
-    return await this.handlePost(`${BASE_URL}/u/drivers`);
-  }
+    async getAllDrivers(_pi, _pn) {
+        return await this.handlePost(`${BASE_URL}/u/drivers`, {
+            _pn,
+            _pi,
+        });
+    }
 
-  async storeDriver(
-    name,
-    family,
-    nationalCode,
-    mobile,
-    driverLicenseNum,
-    driverSmartCard
-  ) {
-    return await this.handlePost(`${BASE_URL}/a/drivers/store`, {
+    async storeDriver(
       name,
-      family,
-      national_no: nationalCode,
-      mobile,
-      license_no: driverLicenseNum,
-      card_no: driverSmartCard,
-    });
-  }
+        family,
+        nationalNo,
+        mobile,
+        licenseNo,
+        cardNo
+    ) {
+        return await this.handlePost(`${BASE_URL}/a/drivers/store`, {
+            name,
+            family,
+            national_no: nationalNo,
+            mobile,
+            license_no: licenseNo,
+            card_no: cardNo,
+        });
+    }
 
-  async deleteDriver(id) {
-    return await this.handlePost(`${BASE_URL}/a/drivers/delete/${id}`);
-  }
+    async updateDriver(
+        id,
+        name,
+        family,
+        nationalNo,
+        mobile,
+        licenseNo,
+        cardNo
+    ) {
+        return await this.handlePost(`${BASE_URL}/a/drivers/update/${id}`, {
+            name,
+            family,
+            national_no: nationalNo,
+            mobile,
+            license_no: licenseNo,
+            card_no: cardNo,
+        });
+    }
+
+    async deleteDriver(id) {
+        return await this.handlePost(`${BASE_URL}/a/drivers/delete/${id}`);
+    }
 }
