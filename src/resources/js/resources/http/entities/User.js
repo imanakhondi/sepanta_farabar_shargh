@@ -8,7 +8,6 @@ export class User extends Entity {
     }
 
     async getUser(id) {
-        console.log(id);
         return await this.handlePost(`${BASE_URL}/a/users/show/${id}`);
     }
 

@@ -6,7 +6,7 @@ import { User } from "../../../http/entities/User";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogOut } from "../../../state/user/userAction";
 
-const Siderbar = () => {
+const Siderbar = ({customStyle=""}) => {
     const userState = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
     const user = new User();
@@ -104,7 +104,7 @@ const Siderbar = () => {
     };
 
     return (
-        <div className=" w-60 min-h-min bg-navBgColor text-primaryColor my-3 mr-6 ml-2 py-5 pl-4 rounded-[50px] shadow-xl">
+        <div className={`${customStyle} hidden md:block w-60 min-h-min bg-navBgColor text-primaryColor my-3 mr-6 ml-2 py-5 pl-4 rounded-[50px] shadow-xl`}>
             <div className="flex items-center justify-center mb-5 pb-5 border-b mr-5 border-primaryColor">
                 <img src={logo} alt="" className="w-20 h-20" />
             </div>
@@ -119,7 +119,7 @@ const Siderbar = () => {
                     onClick={logoutHandler}
                 >
                     <i className="icon-logout4 text-xl ml-3"></i>
-                    <div className="xl:flex items-center w-full justify-between hidden text-sm  ">
+                    <div className="xl:flex items-center w-full justify-between  text-sm  ">
                         {sidebar.logout}
                     </div>
                 </li>
@@ -171,7 +171,7 @@ export const MenuItem = ({ item, index, id }) => {
                             }
                         >
                             <i className={`icon-${item.icon} text-xl ml-3`}></i>
-                            <div className="xl:flex items-center w-full justify-between hidden text-sm">
+                            <div className="xl:flex items-center w-full justify-between text-sm">
                                 {item.title}
                                 {subMenu ? (
                                     <i className="icon-arrow-up before:content-['\eeb2']"></i>
@@ -200,7 +200,7 @@ export const MenuItem = ({ item, index, id }) => {
                         }}
                     >
                         <i className={`icon-${item.icon} text-xl ml-3`}></i>
-                        <div className="xl:flex items-center w-full justify-between hidden text-sm  ">
+                        <div className="xl:flex items-center w-full justify-between  text-sm  ">
                             {item.title}
                         </div>
                     </NavLink>
@@ -230,7 +230,7 @@ export const Dropdown = ({ submenus, dropdown }) => {
                         }}
                     >
                         <i className={`icon-${submenu.icon} text-xl ml-3`}></i>
-                        <div className="hidden xl:flex items-center w-full justify-between text-sm">
+                        <div className=" xl:flex items-center w-full justify-between text-sm">
                             {submenu.title}
                             <div className="ml-5 z-10">{submenu.iconTwo}</div>
                         </div>

@@ -4,7 +4,6 @@ import Table from "../../../components/Table/Table";
 import { addCarPage, general ,CarPage} from "../../../constants/strings/fa";
 import Operation from "../../../components/Table/Operation";
 import { Car } from "../../../http/entities/Car";
-import Loading from "../../../common/Input/Loading";
 import { BASE_PATH } from "../../../constants";
 
 const Cars = () => {
@@ -23,7 +22,7 @@ const Cars = () => {
         setLoading(true);
         const result = await car.getAllCars(pageSize, currentPage);
         if (result !== null) {
-            setLoading(false);
+            setTimeout(() => setLoading(false), 200)
             setData(result.items);
             setCount(result.count);
         }
@@ -77,7 +76,8 @@ const Cars = () => {
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
                         {item.irNo}
                     </td>
-                    <Operation link={`${BASE_PATH}/car/edit/${item.id}`}/>
+                    <Operation link={`${BASE_PATH}/car/edit/${item.id}`} 
+                        showLink={`${BASE_PATH}/car/show/${item.id}`}/>
                 </tr>
             );
         });
@@ -85,7 +85,6 @@ const Cars = () => {
 
     return (
         <div className="container">
-            {loading && <Loading />}
             {data && (
                 <div>
                     <Table
@@ -98,6 +97,7 @@ const Cars = () => {
                         setCurrentPage={setCurrentPage}
                         title={`${CarPage._title}`}
                         subTitle={`${CarPage._subTitle}`}
+                        loading={loading}
                     />
                 </div>
             )}

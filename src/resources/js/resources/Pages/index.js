@@ -3,17 +3,21 @@ import Dashboard from "./Dashboard";
 import Users from "./User/Users";
 import LoginUser from "./User/LoginUser";
 import Signup from "./User/Signup/Signup";
+import ShowUser from "./User/ShowUser";
 import AddUser from "./User/AddUser";
 import Edituser from "./User/EditUser";
 import ChangePassword from "./User/ChangePassword";
 import ForgetPassword from "./User/ForgetPassword";
 import Cars from "./Car/Cars";
+import ShowCar from "./Car/ShowCar";
 import AddCars from "./Car/AddCars";
 import EditCars from "./Car/EditCars";
 import Drivers from "./Driver/Drivers";
+import ShowDriver from "./Driver/ShowDriver";
 import AddDrivers from "./Driver/AddDrivers";
 import EditDrivers from "./Driver/EditDrivers";
 import Tanks from "./Tank/Tanks";
+import ShowTank from "./Tank/ShowTank";
 import AddTanks from "./Tank/AddTanks";
 import EditTanks from "./Tank/EditTanks";
 
@@ -25,15 +29,19 @@ export {
   Signup,
   AddUser,
   Edituser,
+  ShowUser,
   ChangePassword,
   ForgetPassword,
   Cars,
+  ShowCar,
   AddCars,
   EditCars,
   Drivers,
+  ShowDriver,
   AddDrivers,
   EditDrivers,
   Tanks,
+  ShowTank,
   AddTanks,
   EditTanks,
 };

@@ -55,7 +55,7 @@ const AlphabetEnglishOptions = [
     { id: "G", title: "G" },
     { id: "H", title: "H" },
     { id: "I", title: "I" },
-    { id: "G", title: "G" },
+    { id: "J", title: "J" },
     { id: "K", title: "K" },
     { id: "L", title: "L" },
     { id: "M", title: "M" },

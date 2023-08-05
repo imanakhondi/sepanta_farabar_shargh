@@ -4,8 +4,8 @@ import { addUserPage, general, UserPage } from "../../../constants/strings/fa";
 import Operation from "../../../components/Table/Operation";
 import Table from "../../../components/Table/Table";
 import { useSelector } from "react-redux";
-import Loading from "../../../common/Input/Loading";
 import { BASE_PATH } from "../../../constants";
+import { Link } from "react-router-dom";
 
 const Users = () => {
     const user = new User();
@@ -17,14 +17,14 @@ const Users = () => {
     const lastIndex = currentPage * pageSize;
     const firstIndex = lastIndex - pageSize;
     const userState = useSelector((state) => state.userReducer);
-    const filterdData = data
-        .sort((a, b) => b.id - a.id)
-        // .slice(firstIndex, lastIndex);
+    const filterdData = data.sort((a, b) => b.id - a.id);
+    // .slice(firstIndex, lastIndex);
     const getUsers = async () => {
         setLoading(true);
         const result = await user.getAllUsers(pageSize, currentPage);
         if (result !== null) {
-            setLoading(false);
+            setTimeout(() => setLoading(false), 200);
+            // setLoading(false);
             setData(result.items);
             setCount(result.count);
         }
@@ -57,31 +57,31 @@ const Users = () => {
     };
 
     const renderItems = () => {
-        return (
-            filterdData.map((item, index) => {
-                return (
-                    <tr key={index} className="">
-                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.id}
-                        </td>
-                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
-                            {item.name}
-                        </td>
-                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.family}
-                        </td>
-                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.mobile}
-                        </td>
-                        <Operation link={`${BASE_PATH}/user/edit/${item.id}`}/>
-                    </tr>
-                );
-            })
-        );
+        return filterdData.map((item, index) => {
+            return (
+                <tr key={index} className="">
+                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                        {item.id}
+                    </td>
+                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
+                        {item.name}
+                    </td>
+                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                        {item.family}
+                    </td>
+                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                        {item.mobile}
+                    </td>
+                    <Operation
+                        link={`${BASE_PATH}/user/edit/${item.id}`}
+                        showLink={`${BASE_PATH}/user/show/${item.id}`}
+                    />
+                </tr>
+            );
+        });
     };
     return (
         <div className="container">
-            {loading && <Loading />}
             {data && (
                 <div>
                     <Table
@@ -94,6 +94,7 @@ const Users = () => {
                         setCurrentPage={setCurrentPage}
                         title={`${UserPage._title}`}
                         subTitle={`${UserPage._subTitle}`}
+                        loading={loading}
                     />
                 </div>
             )}

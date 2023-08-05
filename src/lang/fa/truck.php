@@ -16,7 +16,7 @@ return [
     'mobile_digits' => $digitsMessage('شماره همراه', 11),
     'mobile_gt' => $gtNumericMessage('شماره همراه', 0),
     'ir_no_required' => $requiredMessage('شماره پلاک انتظامی'),
-    'ir_no_size' => $sizeStringMessage('شماره پلاک انتظامی', 8),
+    'ir_no_size' => $sizeStringMessage('شماره پلاک انتظامی', 9),
     'transit_no_required' => $requiredMessage('شماره پلاک ترانزیت'),
-    'transit_no_size' => $sizeStringMessage('شماره پلاک ترانزیت', 8),
+    'transit_no_size' => $sizeStringMessage('شماره پلاک ترانزیت', 9),
 ];

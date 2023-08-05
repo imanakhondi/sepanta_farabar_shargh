@@ -7,7 +7,7 @@ import {
 } from "../../../constants/strings/fa";
 import Operation from "../../../components/Table/Operation";
 import { Driver } from "../../../http/entities/Driver";
-import Loading from "../../../common/Input/Loading";
+import { BASE_PATH } from "../../../constants";
 
 const Drivers = () => {
     const driver = new Driver();
@@ -24,7 +24,7 @@ const Drivers = () => {
         setLoading(true);
         const result = await driver.getAllDrivers(pageSize, currentPage);
         if (result !== null) {
-            setLoading(false);
+            setTimeout(() => setLoading(false), 200);
             setData(result.items);
             setCount(result.count);
         }
@@ -72,14 +72,16 @@ const Drivers = () => {
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
                         {item.mobile}
                     </td>
-                    <Operation link={`/panel/driver/edit/${item.id}`} />
+                    <Operation
+                        link={`${BASE_PATH}/driver/edit/${item.id}`}
+                        showLink={`${BASE_PATH}/driver/show/${item.id}`}
+                    />
                 </tr>
             );
         });
     };
     return (
         <div className="container">
-            {loading && <Loading />}
             {data && (
                 <div>
                     <Table
@@ -92,6 +94,7 @@ const Drivers = () => {
                         setCurrentPage={setCurrentPage}
                         title={`${DriverPage._title}`}
                         subTitle={`${DriverPage._subTitle}`}
+                        loading={loading}
                     />
                 </div>
             )}
