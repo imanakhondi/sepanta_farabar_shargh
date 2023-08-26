@@ -4,7 +4,7 @@
   "environment": "local",
 
   "*relativePublicPath": "./../public_html",
-  "*baseUrl": "https://refahi.raakcms.ir/api",
+  "*baseUrl": "https://sepantatransport.ir",
   "*environment": "production"
 }
 

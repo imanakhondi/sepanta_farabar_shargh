@@ -11,34 +11,31 @@ export class Tank extends Entity {
     }
 
     async getAllTanks(_pi, _pn) {
-        // console.log(_pi, _pn, username, nameFamily, email );
         return await this.handlePost(`${BASE_URL}/u/tanks`, {
             _pn,
             _pi,
         });
     }
 
-    async storeTank(name, family, nationalNo, mobile, tankNo) {
+    async storeTank(tankNo, psiDate, testValidityDate, capotageDate) {
         return await this.handlePost(`${BASE_URL}/a/tanks/store`, {
-            name,
-            family,
-            national_no: nationalNo,
-            mobile,
             tank_no: tankNo,
+            psi_date: psiDate,
+            test_validity_date: testValidityDate,
+            capotage_date: capotageDate,
         });
     }
 
-    async updateTank(id, name, family, nationalNo, mobile, tankNo) {
+    async updateTank(id, tankNo, psiDate, testValidityDate, capotageDate) {
         return await this.handlePost(`${BASE_URL}/a/tanks/update/${id}`, {
-            name,
-            family,
-            national_no: nationalNo,
-            mobile,
             tank_no: tankNo,
+            psi_date: psiDate,
+            test_validity_date: testValidityDate,
+            capotage_date: capotageDate,
         });
     }
 
-    async deleteTank(id) {
+      async deleteTank(id) {
         return await this.handlePost(`${BASE_URL}/a/tanks/delete/${id}`);
     }
 }

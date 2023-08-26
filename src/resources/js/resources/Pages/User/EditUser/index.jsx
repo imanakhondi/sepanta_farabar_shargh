@@ -21,8 +21,6 @@ const initialValues = {
     nationalNo: "",
     mobile: "",
     email: "",
-    // password: "",
-    // confirmPassword: "",
 };
 const validationSchema = Yup.object({
     // username: Yup.string(),
@@ -31,8 +29,6 @@ const validationSchema = Yup.object({
     nationalNo: Yup.string(),
     mobile: Yup.string(),
     email: Yup.string(),
-    // password: Yup.string(),
-    // confirmPassword: Yup.string(),
 });
 
 const Edituser = () => {
@@ -44,46 +40,44 @@ const Edituser = () => {
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
-    useEffect(() => {
-        dispatch(clearMessageAction());
-    }, []);
+
     const getUser = async () => {
         setLoading(true);
         const result = await user.getUser(userId);
-        console.log(result);
-        if (result !== null) {
+        if (result === null) {
+            dispatch(setMessageAction(user.errorMessage, user.errorCode));
             setLoading(false);
-            setFormValues(result.item);
+
+            return;
         }
+        setLoading(false);
+        setFormValues(result.item);
     };
 
     useEffect(() => {
+        dispatch(clearMessageAction());
         getUser();
     }, []);
+
     const onSubmit = async (values) => {
         const {
-            // username,
             name,
             family,
             nationalNo,
             mobile,
             email,
-            // password,
         } = values;
         setLoading(true);
         const result = await user.updateUser(
             userId,
-            // username,
             name,
             family,
             nationalNo,
             mobile,
             email
-            // password
         );
 
         if (result === null) {
-            //show message failure
             dispatch(setMessageAction(user.errorMessage, user.errorCode));
             setLoading(false);
             return;
@@ -91,7 +85,6 @@ const Edituser = () => {
         setLoading(false);
         toast.success(`${editUserPage.submitted}`);
         navigate(`${BASE_PATH}/users`);
-        //show message success
     };
 
     const formik = useFormik({
@@ -109,12 +102,6 @@ const Edituser = () => {
             title={`${editUserPage._title}`}
             subTitle={`${editUserPage._subTitle}`}
         >
-            {/* <FormikControl
-                control="input"
-                name="username"
-                formik={formik}
-                pageString={editUserPage}
-            /> */}
             <FormikControl
                 control="input"
                 name="name"
@@ -133,12 +120,12 @@ const Edituser = () => {
                 formik={formik}
                 pageString={editUserPage}
             />
-             <FormikControl
+            <FormikControl
                 control="input"
                 name="mobile"
                 formik={formik}
                 pageString={editUserPage}
-            /> 
+            />
             <FormikControl
                 control="input"
                 name="email"
@@ -146,20 +133,6 @@ const Edituser = () => {
                 pageString={editUserPage}
                 type="email"
             />
-            {/* <FormikControl
-                control="input"
-                name="password"
-                formik={formik}
-                pageString={editUserPage}
-                type="password"
-            />
-            <FormikControl
-                control="input"
-                name="confirmPassword"
-                formik={formik}
-                pageString={editUserPage}
-                type="password"
-            /> */}
         </FormikForm>
     );
 };

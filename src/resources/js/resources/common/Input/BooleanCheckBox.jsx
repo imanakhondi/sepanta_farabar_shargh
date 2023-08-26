@@ -1,12 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
-const BooleanCheckBox = ({ formik, name, label }) => {
+const BooleanCheckBox = ({
+    formik,
+    name,
+    strings = null,
+    showLabel = false,
+    custom = "",
+    customStyleInput = "",
+    pageString,
+}) => {
+    const [label, setLabel] = useState(
+        strings && name in strings ? strings[name] : ""
+    );
+    const [placeholder, setPlaceholder] = useState(
+        strings && `${name}Placeholder` in strings
+            ? strings[`${name}Placeholder`]
+            : ""
+    );
+    useEffect(() => {
+        if (!strings) {
+            setLabel(pageString && name in pageString ? pageString[name] : "");
+            setPlaceholder(
+                pageString && `${name}Placeholder` in pageString
+                    ? pageString[`${name}Placeholder`]
+                    : ""
+            );
+        }
+    }, []);
     return (
-        <div className="flex flex-col mt-2 w-full md:ml-5 md:w-[250px]">
-            <label className="intro-x text-slate-600 mb-1 text-sm">
-                نوع بنا
-            </label>
-            <div className="col-start-2 col-span-3">
+        <div  className={`${custom} flex flex-col mt-2 w-full lg:w-[300px] xl:w-[400px]`}>
+            {showLabel && (
+                <label className="intro-x text-slate-600 mb-1 text-sm">
+                    {label}
+                </label>
+            )}
+            <div className="col-start-2 col-span-3 flex items-center">
                 <input
                     type="checkbox"
                     id={name}
@@ -15,9 +43,8 @@ const BooleanCheckBox = ({ formik, name, label }) => {
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                     checked={formik.values[name]}
-                    // className="w-full block text-sm shadow-sm border border-slate-200 rounded-md mb-1 px-4 py-3 placeholder:text-slate-400/90 placeholder:text-xs focus:ring-4 focus:ring-primaryOne focus:ring-opacity-20 focus:border-primaryOne focus:border-opacity-40 focus-visible:outline-0 intro-x "
                 />
-                <label htmlFor={name}> {label}</label>
+                <label htmlFor={name} className="text-sm mr-2"> {label}</label>
             </div>
             {formik.errors[name] && formik.touched[name] && (
                 <div className="text-red-500 text-xs font-semibold col-start-2 col-end-3 ">

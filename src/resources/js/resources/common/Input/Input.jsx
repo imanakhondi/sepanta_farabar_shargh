@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Input = ({
     name,
@@ -6,7 +6,7 @@ const Input = ({
     formik,
     strings = null,
     showLabel = false,
-    readOnly,
+    readOnly=false,
     custom = "",
     customStyleInput = "",
     pageString,
@@ -31,7 +31,6 @@ const Input = ({
     }, []);
 
     return (
-        // <div className=" flex flex-col mt-2 w-full md:ml-5 md:w-[300px] lg:w-[250px] " >
         <div
             className={`${custom} flex flex-col mt-2 w-full lg:w-[300px] xl:w-[400px]`}
         >

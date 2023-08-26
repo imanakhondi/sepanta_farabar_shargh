@@ -40,12 +40,13 @@ export function fetchLoginAction({ username, password }) {
     return async function (dispatch) {
         dispatch(fetchUserRequest());
         const response = await user.loginUser(username, password);
+        console.log("response",response);
         if (response !== null) {
             dispatch(fetchUserSuccess(response));
             utils.setLSVariable("user", JSON.stringify(response.item));
             return;
         }
-        dispatch(fetchUserFailure(response));
+        dispatch(fetchUserFailure(user.errorMessage));
     };
 }
 

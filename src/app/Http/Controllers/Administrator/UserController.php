@@ -31,7 +31,9 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request): HttpJsonResponse
     {
-        return $this->onStore($this->service->store($request->username, $request->password, $request->name, $request->family, $request->national_no, $request->mobile, $request->email, $request->role, $request->is_active));
+        return $this->onStore($this->service->store($request->username, $request->password, $request->name, $request->family, $request->national_no, $request->mobile, $request->email, $request->is_active,
+        // $request->role,
+    ));
     }
     
     public function update(Model $model, UpdateUserRequest $request): HttpJsonResponse

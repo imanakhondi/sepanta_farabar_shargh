@@ -1,19 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 const TextAreaInput = ({
-    label,
     name,
     formik,
-    placeholder,
+    strings = null,
+    showLabel = false,
+    custom = "",
     customStyleInput,
+    pageString,
 }) => {
+    const [label, setLabel] = useState(
+        strings && name in strings ? strings[name] : ""
+    );
+    const [placeholder, setPlaceholder] = useState(
+        strings && `${name}Placeholder` in strings
+            ? strings[`${name}Placeholder`]
+            : ""
+    );
+    useEffect(() => {
+        if (!strings) {
+            setLabel(pageString && name in pageString ? pageString[name] : "");
+            setPlaceholder(
+                pageString && `${name}Placeholder` in pageString
+                    ? pageString[`${name}Placeholder`]
+                    : ""
+            );
+        }
+    }, []);
     return (
-        <div className="flex flex-col justify-center mt-2 w-full md:w-full">
-            <label className="intro-x text-primaryColor mb-1 text-sm">
-                {label}
-            </label>
+        <div
+            className={`${custom} flex flex-col justify-center mt-2 w-full md:w-full`}
+        >
+            {showLabel && (
+                <label className="intro-x text-primaryColor mb-1 text-sm">
+                    {label}
+                </label>
+            )}
             <textarea
                 name={name}
-                className={`${customStyleInput} w-full bg-mainBgColor block text-sm shadow-sm border border-borderColor rounded-[40px] mb-1 px-4 py-3 placeholder:text-white/20 placeholder:text-xs focus:ring-4 focus:ring-primaryColor focus:ring-opacity-20 focus:border-primaryColor focus:border-opacity-40 focus-visible:outline-0 intro-x`}
+                className={`${customStyleInput} w-full block text-sm bg-transparent rounded-xl border-2 border-borderColor mb-1 px-4 py-3 placeholder:text-black/50 placeholder:text-xs dark:placeholder:text-white/20 focus:border-navBgColor focus:ring-primaryColor autofill:bg-transparent dark:focus:ring-primaryColorDark focus:ring-opacity-20 dark:focus:border-primaryColorDark focus:border-opacity-40 focus-visible:outline-0 dark:bg-mainBgColorDark dark:border-borderColorDark `}
                 placeholder={placeholder}
                 {...formik.getFieldProps({ name })}
             ></textarea>

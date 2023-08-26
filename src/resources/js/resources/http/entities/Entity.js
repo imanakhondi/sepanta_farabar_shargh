@@ -91,7 +91,6 @@ export default class Entity {
       if (response.data._result !== "1") {
         this.errorMessage = response.data._error;
         this.errorCode = response.data._errorCode;
-        console.log("errorMessage:",response.data._error,"errorCode",response.data._errorCode);
         this.handleError();
         return null;
       }

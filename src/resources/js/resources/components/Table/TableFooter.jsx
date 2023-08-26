@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { general } from "../../constants/strings/fa";
 
 const TableFooter = ({ currentPage, setCurrentPage, numbers, pageNumber }) => {
@@ -56,9 +56,9 @@ const TableFooter = ({ currentPage, setCurrentPage, numbers, pageNumber }) => {
                 <li>
                     <button onClick={prevHandler}>{general.previous}</button>
                 </li>
-                {numbers.map((item, index) => {
+                {numbers.map((item) => {
                     return (
-                        <li key={index} className="iman">
+                        <li key={`btn-${item}`} className="">
                             <button
                                 onClick={() => pageCurrentHandler(item)}
                                 className="numBtns rounded-full w-8 h-8"
@@ -81,4 +81,3 @@ const TableFooter = ({ currentPage, setCurrentPage, numbers, pageNumber }) => {
 };
 
 export default TableFooter;
-

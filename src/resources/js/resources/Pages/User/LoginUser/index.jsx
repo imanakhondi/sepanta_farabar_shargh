@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useFormik } from "formik";
 import { loginUserPage } from "../../../constants/strings/fa";
 import * as Yup from "yup";
@@ -9,8 +9,11 @@ import { fetchLoginAction } from "../../../state/user/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import useQuery from "../../../hooks/useQuery";
 import { useEffect } from "react";
-import Loading from "../../../common/Input/Loading";
-import { clearMessageAction } from "../../../state/message/messageAction";
+import Loading from "../../../common/Loading";
+import {
+    clearMessageAction,
+    setMessageAction,
+} from "../../../state/message/messageAction";
 
 const LoginUser = () => {
     const query = useQuery();
@@ -40,12 +43,14 @@ const LoginUser = () => {
     });
 
     const onSubmit = async ({ username, password }) => {
+        setLoading(true);
         dispatch(fetchLoginAction({ username, password }));
-        if (userState.isAuthenticated) {
-            navigate(`/${redirect}`);
+        if (!userState.isAuthenticated) {
+            dispatch(setMessageAction(userState.error));
+            setLoading(false);
+            return;
         }
     };
-
     const formik = useFormik({
         initialValues,
         onSubmit,
@@ -57,6 +62,11 @@ const LoginUser = () => {
             <div className="flex mx-auto ">
                 <div className="flex-1 min-h-screen h-full flex flex-col items-center justify-center bg-white">
                     {userState.loading && <Loading />}
+                    {userState.error && (
+                        <span className="py-2 px-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500 ">
+                            {userState.error}
+                        </span>
+                    )}
                     <h2 className="font-bold mb-3 text-2xl">
                         {loginUserPage._title}
                     </h2>

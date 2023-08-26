@@ -10,6 +10,7 @@ import {
     clearMessageAction,
     setMessageAction,
 } from "../../../state/message/messageAction";
+import { toast } from "react-toastify";
 
 const initialValues = {
     username: "",
@@ -20,6 +21,8 @@ const initialValues = {
     email: "",
     password: "",
     confirmPassword: "",
+    isActive: false,
+    role: "",
 };
 const validationSchema = Yup.object({
     username: Yup.string(),
@@ -30,12 +33,15 @@ const validationSchema = Yup.object({
     email: Yup.string(),
     password: Yup.string(),
     confirmPassword: Yup.string(),
+    isActive: Yup.boolean(),
+    role: Yup.string(),
 });
 const AddUser = () => {
     const user = new User();
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         dispatch(clearMessageAction());
     }, []);
@@ -49,6 +55,7 @@ const AddUser = () => {
             email,
             password,
             confirmPassword,
+            isActive,
         } = values;
         setLoading(true);
         const result = await user.storeUser(
@@ -59,18 +66,18 @@ const AddUser = () => {
             mobile,
             email,
             password,
-            confirmPassword
+            confirmPassword,
+            isActive ? 1 : 0
         );
 
         if (result === null) {
-            //show message failure
             dispatch(setMessageAction(user.errorMessage, user.errorCode));
             setLoading(false);
             return;
         }
         setLoading(false);
+        toast.success(`${addUserPage.submitted}`);
         window.location.reload();
-        //show message success
     };
 
     const formik = useFormik({
@@ -137,6 +144,12 @@ const AddUser = () => {
                 formik={formik}
                 pageString={addUserPage}
                 type="password"
+            />
+            <FormikControl
+                control="boolCheckInput"
+                name="isActive"
+                formik={formik}
+                pageString={addUserPage}
             />
         </FormikForm>
     );

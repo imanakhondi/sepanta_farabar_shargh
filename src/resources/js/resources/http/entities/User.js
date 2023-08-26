@@ -38,7 +38,8 @@ export class User extends Entity {
         mobile,
         email,
         password,
-        confirmPassword
+        confirmPassword,
+        isActive
     ) {
         return await this.handlePost(`${BASE_URL}/a/users/store`, {
             username,
@@ -49,10 +50,11 @@ export class User extends Entity {
             email,
             password,
             password_confirmation: confirmPassword,
+            is_active: isActive,
         });
     }
 
-    async updateUser(id, name, family, nationalNo,mobile, email) {
+    async updateUser(id, name, family, nationalNo, mobile, email) {
         return await this.handlePost(`${BASE_URL}/a/users/update/${id}`, {
             name,
             family,

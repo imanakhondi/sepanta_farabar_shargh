@@ -6,6 +6,7 @@ use App\Constants\ChallengeStatus;
 use App\Http\Controllers\Controller;
 use App\Packages\JsonResponse;
 use App\Services\ChallengeService;
+use App\Services\TruckService;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse as HttpJsonResponse;
 
@@ -19,8 +20,9 @@ class DashboardController extends Controller
     public function index(): HttpJsonResponse
     {
         $userService = new UserService();
-        $challengeService = new ChallengeService();
+        $truckService = new TruckService();
+        // $challengeService = new ChallengeService();
 
-        return $this->onItems(['usersCount' => $userService->countAll(), 'waitingChallengesCount' => $challengeService->count(null, ChallengeStatus::WAITING_VERIFICATION)]);
+        return $this->onItems(['usersCount' => $userService->countAll(),'trucksCount' => $truckService->countAll()]);
     }
 }

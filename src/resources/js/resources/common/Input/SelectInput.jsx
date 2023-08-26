@@ -1,4 +1,3 @@
-import React from "react";
 
 const SelectInput = ({
     formik,
@@ -19,6 +18,7 @@ const SelectInput = ({
                 className={`${customStyleInput} w-full block text-sm shadow-sm bg-mainBgColor border border-borderColor rounded-full mb-1 px-4 py-3 placeholder:text-white/20 placeholder:text-xs focus:ring-4 focus:ring-primaryColor focus:ring-opacity-20 focus:border-primaryColor focus:border-opacity-40 focus-visible:outline-0 `}
             >
                 <option>انتخاب کنید</option>
+
                 {selectOptions.map((item) => (
                     <option value={item.id} key={item.id}>
                         {item.title}

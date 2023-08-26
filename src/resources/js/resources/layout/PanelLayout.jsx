@@ -9,7 +9,6 @@ const PanelLayout = () => {
     const navigate = useNavigate();
     const userState = useSelector((state) => state.userReducer);
     const location = useLocation();
-    
     useEffect(() => {
         if (!userState.isAuthenticated) {
             navigate("/login");
@@ -20,7 +19,6 @@ const PanelLayout = () => {
             navigate("/panel/dashboard");
         }
     }, []);
-
     return (
         <div className="container lg:max-w-5xl xl:max-w-7xl mx-auto bg-mainBgColor rounded-[50px] shadow-2xl my-5">
             <div className="flex ">

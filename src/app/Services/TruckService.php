@@ -46,4 +46,9 @@ class TruckService
     {
         return Model::where('name', 'LIKE', '%' . $name . '%')->where('family', 'LIKE', '%' . $family . '%')->orderBy('family', 'ASC')->orderBy('name', 'ASC')->orderBy('id', 'ASC')->count();
     }
+
+    public function countAll(): int
+    {
+        return Model::count();
+    }
 }

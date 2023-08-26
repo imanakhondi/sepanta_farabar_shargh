@@ -1,12 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { sidebar } from "../../../constants/strings/fa";
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "../../../images/logo-sepanta.png";
 import { User } from "../../../http/entities/User";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogOut } from "../../../state/user/userAction";
 
-const Siderbar = ({customStyle=""}) => {
+const Siderbar = ({ customStyle = "" }) => {
     const userState = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
     const user = new User();
@@ -14,7 +14,7 @@ const Siderbar = ({customStyle=""}) => {
     const menuItems = [
         { title: `${sidebar.dashboard}`, icon: "category4", to: "dashboard" },
         {
-            title: `${sidebar.driversManagement}`,
+            title: `${sidebar.FleetManagement}`,
             icon: "people4",
             to: "drivers",
             submenu: [
@@ -30,12 +30,6 @@ const Siderbar = ({customStyle=""}) => {
                     icon: "profile-add4",
                     style: "",
                 },
-            ],
-        },
-        {
-            title: `${sidebar.carsManagement}`,
-            icon: "truck3",
-            submenu: [
                 {
                     title: `${sidebar.cars}`,
                     to: "cars",
@@ -55,15 +49,72 @@ const Siderbar = ({customStyle=""}) => {
             icon: "colorfilter4",
             submenu: [
                 {
-                    title: `${sidebar.tanks}`,
-                    to: "tanks",
+                    title: `${sidebar.companys}`,
+                    to: "companies",
                     icon: "colorfilter4",
                     style: "",
                 },
                 {
-                    title: `${sidebar.addTank}`,
-                    to: "tank/add",
+                    title: `${sidebar.addCompany}`,
+                    to: "company/add",
                     icon: "add-square",
+                    style: "",
+                },
+            ],
+        },
+        {
+            title: `${sidebar.barOwnersManagement}`,
+            icon: "wallet4",
+            style: "",
+            submenu: [
+                {
+                    title: `${sidebar.barOwners}`,
+                    to: "barOwners",
+                    icon: "wallet-24",
+                    style: "",
+                },
+                {
+                    title: `${sidebar.addBarOwner}`,
+                    to: "barOwner/add",
+                    icon: "wallet-add-14",
+                    style: "",
+                },
+            ],
+        },
+        {
+            title: `${sidebar.introductionsManagement}`,
+            icon: "note-14",
+            style: "",
+            submenu: [
+                {
+                    title: `${sidebar.introductions}`,
+                    to: "introductions",
+                    icon: "note-25",
+                    style: "",
+                },
+                {
+                    title: `${sidebar.addIntroduction}`,
+                    to: "introduction/add",
+                    icon: "note-add4",
+                    style: "",
+                }
+            ],
+        },
+        {
+            title: `${sidebar.citiesManagement}`,
+            icon: "note-14",
+            style: "",
+            submenu: [
+                {
+                    title: `${sidebar.cities}`,
+                    to: "cities",
+                    icon: "note-25",
+                    style: "",
+                },
+                {
+                    title: `${sidebar.addCity}`,
+                    to: "city/add",
+                    icon: "note-add4",
                     style: "",
                 },
             ],
@@ -104,7 +155,9 @@ const Siderbar = ({customStyle=""}) => {
     };
 
     return (
-        <div className={`${customStyle} hidden md:block w-60 min-h-min bg-navBgColor text-primaryColor my-3 mr-6 ml-2 py-5 pl-4 rounded-[50px] shadow-xl`}>
+        <div
+            className={`${customStyle} hidden md:block w-60 min-h-min bg-navBgColor text-primaryColor my-3 mr-6 ml-2 py-5 pl-4 rounded-[50px] shadow-xl`}
+        >
             <div className="flex items-center justify-center mb-5 pb-5 border-b mr-5 border-primaryColor">
                 <img src={logo} alt="" className="w-20 h-20" />
             </div>
@@ -157,7 +210,6 @@ export const MenuItem = ({ item, index, id }) => {
             {item.submenu ? (
                 <>
                     <li
-                        // aria-expanded={subMenu ? "true" : "false"}
                         role="link"
                         className="clickSlide"
                         id={id}
