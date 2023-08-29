@@ -32,7 +32,6 @@ const initialValues = {
     introductionNo: `${Date.now()}`,
     introductionDate: "",
     barOwner: "",
-    carrier: "",
     startPoint: "",
     endPoint: "",
     ownerUnitUSD: "",
@@ -42,7 +41,6 @@ const validationSchema = Yup.object({
     introductionNo: Yup.string(),
     introductionDate: Yup.string(),
     barOwner: Yup.string(),
-    carrier: Yup.string(),
     startPoint: Yup.string(),
     endPoint: Yup.string(),
     ownerUnitUSD: Yup.string(),
@@ -63,7 +61,6 @@ const AddIntroduction = () => {
             introductionNo,
             introductionDate,
             barOwner,
-            carrier,
             startPoint,
             endPoint,
             ownerUnitUSD,
@@ -74,7 +71,6 @@ const AddIntroduction = () => {
             introductionNo,
             introductionDate,
             barOwner,
-            carrier,
             startPoint,
             endPoint,
             ownerUnitUSD,
@@ -131,12 +127,12 @@ const AddIntroduction = () => {
                 selectOptions={barOwnerOptions}
                 label="name"
             />
-            <FormikControl
+            {/* <FormikControl
                 control="input"
                 name="carrier"
                 formik={formik}
                 pageString={addIntroductionPage}
-            />
+            /> */}
             <FormikControl
                 control="searchableDropdown"
                 name="startPoint"

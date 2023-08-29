@@ -1,7 +1,7 @@
 @font-face {
   font-family: "ficon";
-  src: url("/public/assets/fonts/icon/ficon.woff?") format("woff"),
-    url("/public/assets/fonts/icon/ficon.woff?#ficon") format("svg");
+  src: url("/public/fonts/ficon.woff?") format("woff"),
+    url("/public/fonts/ficon.woff?#ficon") format("svg");
   font-weight: normal;
   font-style: normal;
 }

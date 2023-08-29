@@ -1,8 +1,15 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Tooltip from "../../common/Tooltip";
 import { general } from "../../constants/strings/fa";
-const Operation = ({ link, showLink, repairLink, addLink, addCarLink,continueLink }) => {
+const Operation = ({
+    link,
+    showLink,
+    repairLink,
+    addLink,
+    addCarLink,
+    continueLink,
+    onCancel,
+}) => {
     return (
         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
             {showLink && (
@@ -47,7 +54,14 @@ const Operation = ({ link, showLink, repairLink, addLink, addCarLink,continueLin
                     </Link>
                 </Tooltip>
             )}
-            {/* <i className="icon-trash4 before:content-['\eaa0'] text-2xl cursor-pointer font-bold text-red-500"></i> */}
+            {onCancel && (
+                <Tooltip message={general.cancel}>
+                    <i
+                        className="icon-close-square before:content-['\e82d'] text-2xl cursor-pointer font-bold text-red-500"
+                        onClick={onCancel}
+                    ></i>
+                </Tooltip>
+            )}
         </td>
     );
 };

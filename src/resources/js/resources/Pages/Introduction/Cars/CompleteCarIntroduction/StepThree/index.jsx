@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { clearMessageAction } from "../../../../../state/message/messageAction";
@@ -11,9 +11,12 @@ import { useNavigate, useParams } from "react-router-dom";
 const initialValues = {
     unloadingDate: "",
     unloadingTonnage: "",
+    difference: "",
+    allowableDeficit: "",
     deficitOrSurplus: "",
     unloadingReceipt: "",
 };
+let loadingTonnage = 1000;
 
 const validationSchema = Yup.object({
     unloadingDate: Yup.string(),
@@ -58,6 +61,35 @@ const StepThree = ({
         validationSchema,
         validateOnMount: true,
     });
+
+    useEffect(() => {
+        const difference = loadingTonnage - formik.values.unloadingTonnage;
+        formik.setFieldValue("difference", difference.toString() || "");
+    }, [formik.values.unloadingTonnage]);
+
+    useEffect(() => {
+        // const deficitOrSurplusOne =
+        //     formik.values.allowableDeficit - formik.values.difference;
+        // formik.setFieldValue(
+        //     "deficitOrSurplus",
+        //     `${deficitOrSurplusOne}>= ${0} ? ${
+        //         deficitOrSurplusOne.toString() + " مجاز "
+        //     }:${deficitOrSurplusOne.toString() + " غیر مجاز "}` || ""
+        // );
+        const deficitOrSurplusOne =
+            formik.values.allowableDeficit - formik.values.difference;
+        formik.setFieldValue(
+            "deficitOrSurplus",
+            deficitOrSurplusOne >= 0
+                ? `${deficitOrSurplusOne.toString()} ${
+                      addIntroductionPage.allowed
+                  }`
+                : `${Math.abs(deficitOrSurplusOne.toString())} ${
+                      addIntroductionPage.notAllowed
+                  }` || ""
+        );
+    }, [formik.values.allowableDeficit]);
+
     return (
         <FormikForm
             onSubmit={formik.handleSubmit}
@@ -83,9 +115,23 @@ const StepThree = ({
             />
             <FormikControl
                 control="input"
+                name="difference"
+                formik={formik}
+                pageString={addIntroductionPage}
+                readOnly
+            />
+            <FormikControl
+                control="input"
+                name="allowableDeficit"
+                formik={formik}
+                pageString={addIntroductionPage}
+            />
+            <FormikControl
+                control="input"
                 name="deficitOrSurplus"
                 formik={formik}
                 pageString={addIntroductionPage}
+                readOnly
             />
             <FormikControl
                 control="input"

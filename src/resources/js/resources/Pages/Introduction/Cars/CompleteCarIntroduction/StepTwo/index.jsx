@@ -17,6 +17,8 @@ const initialValues = {
     carrierTotalUSD: "",
     carrierUnitIRR: "",
     carrierTotalIRR: "",
+    ownerTotalUSD: "",
+    ownerTotalIRR: "",
     carrierLoadingCommission: "",
     forwardingLoadingCommission: "",
 };
@@ -49,7 +51,7 @@ const StepTwo = ({
 
     useEffect(() => {
         dispatch(clearMessageAction());
-        const result={
+        const result = {
             registryDate: "1402/05/01",
             remittanceName: "امیان",
             loadingDate: "1402/05/12",
@@ -60,7 +62,7 @@ const StepTwo = ({
             carrierTotalIRR: "145",
             carrierLoadingCommission: "100",
             forwardingLoadingCommission: "548",
-        }
+        };
         // setFormValues(result);
     }, []);
 
@@ -75,7 +77,7 @@ const StepTwo = ({
         const data = { ...formData, ...values };
         setFormData(data);
         setActiveStepIndex(activeStepIndex + 1);
-      };
+    };
 
     const formik = useFormik({
         initialValues: formValues || initialValues,
@@ -84,6 +86,33 @@ const StepTwo = ({
         validateOnMount: true,
         enableReinitialize: true,
     });
+
+    let carrierUnitIRR = 50;
+    let carrierUnitUSD = 40;
+
+    useEffect(() => {
+        const carrierTotalUSD =
+            formik.values.loadingTonnage * formik.values.carrierUnitUSD;
+        const carrierTotalIRR =
+            formik.values.loadingTonnage * formik.values.carrierUnitIRR;
+        const ownerTotalIRR = formik.values.loadingTonnage * carrierUnitIRR;
+        const ownerTotalUSD = formik.values.loadingTonnage * carrierUnitUSD;
+        formik.setFieldValue(
+            "carrierTotalUSD",
+            carrierTotalUSD.toString() || ""
+        );
+        formik.setFieldValue(
+            "carrierTotalIRR",
+            carrierTotalIRR.toString() || ""
+        );
+        formik.setFieldValue("ownerTotalIRR", ownerTotalIRR.toString() || "");
+        formik.setFieldValue("ownerTotalUSD", ownerTotalUSD.toString() || "");
+    }, [
+        formik.values.loadingTonnage,
+        formik.values.carrierUnitUSD,
+        formik.values.carrierUnitIRR,
+    ]);
+
     return (
         <FormikForm
             onSubmit={formik.handleSubmit}
@@ -133,6 +162,7 @@ const StepTwo = ({
                 name="carrierTotalUSD"
                 formik={formik}
                 pageString={addIntroductionPage}
+                readOnly
             />
             <FormikControl
                 control="input"
@@ -145,6 +175,21 @@ const StepTwo = ({
                 name="carrierTotalIRR"
                 formik={formik}
                 pageString={addIntroductionPage}
+                readOnly
+            />
+            <FormikControl
+                control="input"
+                name="ownerTotalUSD"
+                formik={formik}
+                pageString={addIntroductionPage}
+                readOnly
+            />
+            <FormikControl
+                control="input"
+                name="ownerTotalIRR"
+                formik={formik}
+                pageString={addIntroductionPage}
+                readOnly
             />
             <FormikControl
                 control="input"

@@ -26,7 +26,7 @@ const dummyData = [
         name: "یارمحمد گلی",
         irNo: "21ع426-12",
         tankNo: "123",
-        nationalNo: "0741111111",
+        nationalNoDriver: "0741111111",
         endPoint: "دوغارون",
     },
     {
@@ -34,7 +34,7 @@ const dummyData = [
         name: "یارمحمد گلی",
         irNo: "21ع426-12",
         tankNo: "123",
-        nationalNo: "0741111111",
+        nationalNoDriver: "0741111111",
         endPoint: "دوغارون",
     },
     {
@@ -42,7 +42,7 @@ const dummyData = [
         name: "یارمحمد گلی",
         irNo: "21ع426-12",
         tankNo: "123",
-        nationalNo: "0741111111",
+        nationalNoDriver: "0741111111",
         endPoint: "دوغارون",
     },
     {
@@ -50,7 +50,7 @@ const dummyData = [
         name: "یارمحمد گلی",
         irNo: "21ع426-12",
         tankNo: "123",
-        nationalNo: "0741111111",
+        nationalNoDriver: "0741111111",
         endPoint: "دوغارون",
     },
 ];
@@ -67,10 +67,10 @@ const carInfoOptions = [
     { id: 4, name: "32ع426-15" },
 ];
 const tankInfoOptions = [
-    { id: 1, name: "123" },
-    { id: 2, name: "956" },
-    { id: 3, name: "241" },
-    { id: 4, name: "756" },
+    { id: 1, name: "123 - سپنتا" },
+    { id: 2, name: "956 - میشف" },
+    { id: 3, name: "241 - آراد" },
+    { id: 4, name: "756 - ساحل" },
 ];
 
 const initialValues = {
@@ -95,6 +95,21 @@ const CarsIntroduction = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
     const filterdData = data.sort((a, b) => b.id - a.id);
+    const [isShow, setIsShow] = useState({
+        nameDriver: true,
+        nameCar: false,
+        irNo: true,
+        transitNo: false,
+        tankNo: true,
+        nationalNoDriver: true,
+        nationalNoCar: false,
+        mobileDriver: false,
+        mobileCar: false,
+        licenseNo: false,
+        startPoint: false,
+        endPoint: false,
+        actions: false,
+    });
 
     useEffect(() => {
         dispatch(clearMessageAction());
@@ -193,51 +208,149 @@ const CarsIntroduction = () => {
     const renderHeader = () => {
         return (
             <tr>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
-                    {addCarIntroductionPage.driverName}
-                </th>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
-                    {addCarIntroductionPage.irNo}
-                </th>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
-                    {addCarIntroductionPage.tankNo}
-                </th>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
-                    {addCarIntroductionPage.nationalNo}
-                </th>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
-                    {addCarIntroductionPage.endPoint}
-                </th>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
-                    {general.actions}
-                </th>
+                {isShow.nameDriver && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.driverName}
+                    </th>
+                )}
+                {isShow.nameCar && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.carName}
+                    </th>
+                )}
+                {isShow.irNo && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.irNo}
+                    </th>
+                )}
+                {isShow.transitNo && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.transitNo}
+                    </th>
+                )}
+                {isShow.tankNo && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.tankNo}
+                    </th>
+                )}
+                {isShow.nationalNoDriver && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.nationalNoDriver}
+                    </th>
+                )}
+                {isShow.nationalNoCar && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.nationalNoCar}
+                    </th>
+                )}
+                {isShow.mobileDriver && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.mobileDriver}
+                    </th>
+                )}
+                {isShow.mobileCar && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.mobileCar}
+                    </th>
+                )}
+                {isShow.licenseNo && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.licenseNo}
+                    </th>
+                )}
+                {isShow.startPoint && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.startPoint}
+                    </th>
+                )}
+                {isShow.endPoint && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {addCarIntroductionPage.endPoint}
+                    </th>
+                )}
+                {isShow.actions && (
+                    <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                        {general.actions}
+                    </th>
+                )}
             </tr>
         );
     };
 
     const renderItems = () => {
+        const cancelHandler = (id) => {
+            console.log(id);
+        };
         return filterdData.map((item, index) => {
             return (
                 <tr key={item.id} id={item.id} className="">
-                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
-                        {item.name}
-                    </td>
-                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                        {item.irNo}
-                    </td>
-                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                        {item.tankNo}
-                    </td>
-                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                        {item.nationalNo}
-                    </td>
-                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                        {item.endPoint}
-                    </td>
-                    <Operation
-                        link={`${BASE_PATH}/introduction/car/edit/${item.id}`}
-                        continueLink={`${BASE_PATH}/introduction/car/complete/${item.id}`}
-                    />
+                    {isShow.nameDriver && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
+                            {item.name}
+                        </td>
+                    )}
+                    {isShow.nameCar && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
+                            {item.carName}
+                        </td>
+                    )}
+                    {isShow.irNo && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                            {item.irNo}
+                        </td>
+                    )}
+                    {isShow.transitNo && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                            {item.transitNo}
+                        </td>
+                    )}
+                    {isShow.tankNo && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                            {item.tankNo}
+                        </td>
+                    )}
+                    {isShow.nationalNoDriver && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                            {item.nationalNoDriver}
+                        </td>
+                    )}
+                    {isShow.nationalNoCar && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                            {item.nationalNoCar}
+                        </td>
+                    )}
+                    {isShow.mobileDriver && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                            {item.mobileDriver}
+                        </td>
+                    )}
+                    {isShow.mobileCar && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                            {item.mobileCar}
+                        </td>
+                    )}
+                    {isShow.licenseNo && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                            {item.licenseNo}
+                        </td>
+                    )}
+                    {isShow.startPoint && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                            {item.startPoint}
+                        </td>
+                    )}
+                    {isShow.endPoint && (
+                        <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                            {item.endPoint}
+                        </td>
+                    )}
+                    {isShow.actions && (
+                        <Operation
+                            link={`${BASE_PATH}/introduction/car/edit/${item.id}`}
+                            continueLink={`${BASE_PATH}/introduction/car/complete/${item.id}`}
+                            onCancel={() => cancelHandler(item.id)}
+                        />
+                    )}
                 </tr>
             );
         });
@@ -254,6 +367,86 @@ const CarsIntroduction = () => {
                 </Modal>
             ) : (
                 <div className="container flex flex-col">
+                    <div className="flex flex-wrap my-5">
+                        <IsInput
+                            name="nameDriver"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.driverName}
+                        />
+                        <IsInput
+                            name="nameCar"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.carName}
+                        />
+                        <IsInput
+                            name="irNo"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.irNo}
+                        />
+                        <IsInput
+                            name="transitNo"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.transitNo}
+                        />
+                        <IsInput
+                            name="tankNo"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.tankNo}
+                        />
+                        <IsInput
+                            name="nationalNoDriver"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.nationalNoDriver}
+                        />
+                        <IsInput
+                            name="nationalNoCar"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.nationalNoCar}
+                        />
+                        <IsInput
+                            name="mobileDriver"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.mobileDriver}
+                        />
+                        <IsInput
+                            name="mobileCar"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.mobileCar}
+                        />
+                        <IsInput
+                            name="licenseNo"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.licenseNo}
+                        />
+                        <IsInput
+                            name="startPoint"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.startPoint}
+                        />
+                        <IsInput
+                            name="endPoint"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={addCarIntroductionPage.endPoint}
+                        />
+                        <IsInput
+                            name="actions"
+                            isShow={isShow}
+                            setIsShow={setIsShow}
+                            label={general.actions}
+                        />
+                    </div>
                     {messageState.message !== null && (
                         <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
                             {messageState.message}
@@ -286,3 +479,32 @@ const CarsIntroduction = () => {
 };
 
 export default CarsIntroduction;
+
+export const IsInput = ({ name, label, isShow, setIsShow }) => {
+    const handleChange = (e) => {
+        setIsShow({
+            ...isShow,
+            [e.target.name]:
+                e.target.type === "checkbox"
+                    ? e.target.checked
+                    : e.target.value,
+        });
+    };
+    return (
+        <div className={`flex flex-col mt-2 w-full lg:w-[200px] xl:w-[300px]`}>
+            <div className="col-start-2 col-span-3 flex items-center ">
+                <input
+                    type="checkbox"
+                    id={name}
+                    name={name}
+                    onChange={(e) => handleChange(e)}
+                    checked={isShow[name]}
+                    className="cursor-pointer"
+                />
+                <label htmlFor={name} className="text-sm mr-2 cursor-pointer">
+                    {label}
+                </label>
+            </div>
+        </div>
+    );
+};

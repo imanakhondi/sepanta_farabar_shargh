@@ -11,7 +11,7 @@ import {
 } from "../../../../state/message/messageAction";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { TankCompany } from "../../../../http/entities/Copmany";
+import { Company } from "../../../../http/entities/Copmany";
 
 const initialValues = {
     name: "",
@@ -31,7 +31,7 @@ const validationSchema = Yup.object({
 });
 
 const AddTank = () => {
-    const tankCompany = new TankCompany();
+    const Company = new Company();
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
@@ -52,7 +52,7 @@ const AddTank = () => {
             capotageDate,
         } = values;
         setLoading(true);
-        const result = await tankCompany.storeTankCompany(
+        const result = await Company.storeCompany(
             name,
             family,
             nationalNo,
@@ -66,8 +66,8 @@ const AddTank = () => {
         if (result === null) {
             dispatch(
                 setMessageAction(
-                    tankCompany.errorMessage,
-                    tankCompany.errorCode
+                    Company.errorMessage,
+                    Company.errorCode
                 )
             );
             setLoading(false);
