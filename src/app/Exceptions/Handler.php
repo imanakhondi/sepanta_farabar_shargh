@@ -41,7 +41,6 @@ class Handler extends ExceptionHandler
             if ($request->expectsJson()) {
                 return response()->json(['_result' => '0', '_error' => __('user.not_authorized'), '_errorCode' => ErrorCode::USER_NOT_AUTHORIZED], 200);
             }
-
             return redirect(Theme::LOGIN_URL);
         }
 
