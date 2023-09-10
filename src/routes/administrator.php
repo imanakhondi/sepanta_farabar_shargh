@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Administrator\BarOwnerController;
+use App\Http\Controllers\Administrator\CityController;
+use App\Http\Controllers\Administrator\CompanyController;
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\DriverController;
 use App\Http\Controllers\Administrator\ErrorController;
@@ -31,4 +34,13 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('drivers/store', [DriverController::class, 'store']);
     Route::post('drivers/update/{model}', [DriverController::class, 'update']);
+
+    Route::post('companies/store', [CompanyController::class, 'store']);
+    Route::post('companies/update/{model}', [CompanyController::class, 'update']);
+
+    Route::post('cities/store', [CityController::class, 'store']);
+    Route::post('cities/update/{model}', [CityController::class, 'update']);
+
+    Route::post('bar_owners/store', [BarOwnerController::class, 'store']);
+    Route::post('bar_owners/update/{model}', [BarOwnerController::class, 'update']);
 });
