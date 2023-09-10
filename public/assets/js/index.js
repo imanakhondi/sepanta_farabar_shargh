@@ -13304,7 +13304,8 @@ var StepThree = function StepThree(_ref) {
     //     }:${deficitOrSurplusOne.toString() + " غیر مجاز "}` || ""
     // );
     var deficitOrSurplusOne = formik.values.allowableDeficit - formik.values.difference;
-    formik.setFieldValue("deficitOrSurplus", deficitOrSurplusOne >= 0 ? "".concat(deficitOrSurplusOne.toString(), " ").concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_7__.addIntroductionPage.allowed) : "".concat(Math.abs(deficitOrSurplusOne.toString()), " ").concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_7__.addIntroductionPage.notAllowed) || "");
+    console.log(deficitOrSurplusOne);
+    formik.setFieldValue("deficitOrSurplus", deficitOrSurplusOne >= 0 && formik.values.difference > 0 ? " ".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_7__.addIntroductionPage.allowed) : deficitOrSurplusOne < 0 ? "iman" : " ".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_7__.addIntroductionPage.notAllowed) || 0);
   }, [formik.values.allowableDeficit]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_common_FormikForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
     onSubmit: formik.handleSubmit,

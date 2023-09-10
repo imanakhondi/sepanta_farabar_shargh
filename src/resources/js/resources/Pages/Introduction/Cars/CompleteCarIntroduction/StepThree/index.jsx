@@ -78,15 +78,14 @@ const StepThree = ({
         // );
         const deficitOrSurplusOne =
             formik.values.allowableDeficit - formik.values.difference;
+        console.log(deficitOrSurplusOne);
         formik.setFieldValue(
             "deficitOrSurplus",
-            deficitOrSurplusOne >= 0
-                ? `${deficitOrSurplusOne.toString()} ${
-                      addIntroductionPage.allowed
-                  }`
-                : `${Math.abs(deficitOrSurplusOne.toString())} ${
-                      addIntroductionPage.notAllowed
-                  }` || ""
+            deficitOrSurplusOne >= 0 && formik.values.difference > 0
+                ? ` ${addIntroductionPage.allowed}`
+                : deficitOrSurplusOne < 0
+                ? "iman"
+                : ` ${addIntroductionPage.notAllowed}` || ""
         );
     }, [formik.values.allowableDeficit]);
 
