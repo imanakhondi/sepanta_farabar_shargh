@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\User\BarOwnerController;
+use App\Http\Controllers\User\CityController;
+use App\Http\Controllers\User\CompanyController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\DriverController;
 use App\Http\Controllers\User\TankController;
@@ -33,4 +36,13 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
 
     Route::post('drivers', [DriverController::class, 'index']);
     Route::post('drivers/show/{model}', [DriverController::class, 'show']);
+
+    Route::post('companies', [CompanyController::class, 'index']);
+    Route::post('companies/show/{model}', [CompanyController::class, 'show']);
+
+    Route::post('cities', [CityController::class, 'index']);
+    Route::post('cities/show/{model}', [CityController::class, 'show']);
+
+    Route::post('bar_owners', [BarOwnerController::class, 'index']);
+    Route::post('bar_owners/show/{model}', [BarOwnerController::class, 'show']);
 });
