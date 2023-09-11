@@ -7590,7 +7590,7 @@ var BarOwner = /*#__PURE__*/function (_Entity) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/barOwners/show/").concat(id));
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/bar_owners/show/").concat(id));
             case 2:
               return _context.abrupt("return", _context.sent);
             case 3:
@@ -7612,7 +7612,7 @@ var BarOwner = /*#__PURE__*/function (_Entity) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/barOwners"), {
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/bar_owners"), {
                 _pn: _pn,
                 _pi: _pi
               });
@@ -7637,7 +7637,7 @@ var BarOwner = /*#__PURE__*/function (_Entity) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/barOwners/store"), {
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/bar_owners/store"), {
                 company_name: companyName,
                 name: name,
                 family: family,
@@ -7664,7 +7664,7 @@ var BarOwner = /*#__PURE__*/function (_Entity) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/barOwners/update/").concat(id), {
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/bar_owners/update/").concat(id), {
                 company_name: companyName,
                 name: name,
                 family: family,
@@ -7691,7 +7691,7 @@ var BarOwner = /*#__PURE__*/function (_Entity) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/barOwners/delete/").concat(id));
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/bar_owners/delete/").concat(id));
             case 2:
               return _context5.abrupt("return", _context5.sent);
             case 3:

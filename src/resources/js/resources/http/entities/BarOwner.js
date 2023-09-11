@@ -7,19 +7,19 @@ export class BarOwner extends Entity {
     }
 
     async getBarOwner(id) {
-        return await this.handlePost(`${BASE_URL}/u/barOwners/show/${id}`);
+        return await this.handlePost(`${BASE_URL}/u/bar_owners/show/${id}`);
     }
 
     async getAllBarOwners(_pi, _pn) {
-        return await this.handlePost(`${BASE_URL}/u/barOwners`, {
+        return await this.handlePost(`${BASE_URL}/u/bar_owners`, {
             _pn,
             _pi,
         });
     }
 
     async storeBarOwner(companyName, name, family, mobile) {
-        return await this.handlePost(`${BASE_URL}/a/barOwners/store`, {
-            company_name:companyName,
+        return await this.handlePost(`${BASE_URL}/a/bar_owners/store`, {
+            company_name: companyName,
             name,
             family,
             mobile,
@@ -27,8 +27,8 @@ export class BarOwner extends Entity {
     }
 
     async updateBarOwner(id, companyName, name, family, mobile) {
-        return await this.handlePost(`${BASE_URL}/a/barOwners/update/${id}`, {
-            company_name:companyName,
+        return await this.handlePost(`${BASE_URL}/a/bar_owners/update/${id}`, {
+            company_name: companyName,
             name,
             family,
             mobile,
@@ -36,6 +36,6 @@ export class BarOwner extends Entity {
     }
 
     async deleteBarOwner(id) {
-        return await this.handlePost(`${BASE_URL}/a/barOwners/delete/${id}`);
+        return await this.handlePost(`${BASE_URL}/a/bar_owners/delete/${id}`);
     }
 }
