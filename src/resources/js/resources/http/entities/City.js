@@ -19,13 +19,13 @@ export class City extends Entity {
 
     async storeCity(cityName) {
         return await this.handlePost(`${BASE_URL}/a/cities/store`, {
-            city_name:cityName,
+            name:cityName,
         });
     }
 
     async updateCity(id, cityName) {
         return await this.handlePost(`${BASE_URL}/a/cities/update/${id}`, {
-            city_name:cityName,
+            name:cityName,
         });
     }
 

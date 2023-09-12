@@ -61,7 +61,7 @@ const Cities = () => {
             return (
                 <tr key={item.id} id={item.id} className="">
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
-                        {item.cityName}
+                        {item.name}
                     </td>
                     <Operation link={`${BASE_PATH}/city/edit/${item.id}`} />
                 </tr>

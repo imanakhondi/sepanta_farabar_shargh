@@ -39,7 +39,8 @@ const EditBarOwner = () => {
 
     const getBarOwner = async () => {
         setLoading(true);
-        const result = await BarOwner.getBarOwner(barOwnerId);
+        const result = await barOwner.getBarOwner(barOwnerId);
+        console.log(result);
         if (result === null) {
             dispatch(
                 setMessageAction(barOwner.errorMessage, barOwner.errorCode)
