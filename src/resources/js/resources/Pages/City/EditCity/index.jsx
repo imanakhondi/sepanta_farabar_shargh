@@ -15,11 +15,11 @@ import { BASE_PATH } from "../../../constants";
 import { City } from "../../../http/entities/City";
 
 const initialValues = {
-    cityName: "",
+    name: "",
 };
 
 const validationSchema = Yup.object({
-    cityName: Yup.string()
+    name: Yup.string()
         .min(2, `${validation.minMessage}`)
         .max(50, `${validation.maxMessage}`)
         .required(`${validation.stringMessage}`),
@@ -53,9 +53,9 @@ const EditCity = () => {
         getCity();
     }, []);
 
-    const onSubmit = async ({ cityName }) => {
+    const onSubmit = async ({ name }) => {
         setLoading(true);
-        const result = await city.updateCity(cityId, cityName);
+        const result = await city.updateCity(cityId, name);
 
         if (result === null) {
             dispatch(setMessageAction(city.errorMessage, city.errorCode));
@@ -84,7 +84,7 @@ const EditCity = () => {
         >
             <FormikControl
                 control="input"
-                name="cityName"
+                name="name"
                 formik={formik}
                 pageString={editCityPage}
             />

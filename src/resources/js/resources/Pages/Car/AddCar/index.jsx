@@ -74,7 +74,7 @@ const AlphabetEnglishOptions = [
     { id: "Z", title: "Z" },
 ];
 
-let initialValues = {
+const initialValues = {
     name: "",
     family: "",
     nationalNo: "",
@@ -91,7 +91,7 @@ let initialValues = {
     CTLPN4: "",
 };
 const validationSchema = Yup.object({
-    companyName: Yup.string()
+    name: Yup.string()
         .min(2, `${validation.minMessage}`)
         .max(50, `${validation.maxMessage}`)
         .required(`${validation.stringMessage}`),
@@ -101,7 +101,7 @@ const AddCar = () => {
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
-    
+
     useEffect(() => {
         dispatch(clearMessageAction());
     }, []);
@@ -121,7 +121,6 @@ const AddCar = () => {
             transitNo
         );
         if (result === null) {
-            //show message failure
             dispatch(setMessageAction(car.errorMessage, car.errorCode));
             setLoading(false);
 

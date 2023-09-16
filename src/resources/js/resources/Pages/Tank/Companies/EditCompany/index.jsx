@@ -15,11 +15,11 @@ import { toast } from "react-toastify";
 import { BASE_PATH } from "../../../../constants";
 
 const initialValues = {
-    companyName: "",
+    name: "",
     mobile: "",
 };
 const validationSchema = Yup.object({
-    companyName: Yup.string()
+    name: Yup.string()
         .min(2, `${validation.minMessage}`)
         .max(50, `${validation.maxMessage}`)
         .required(`${validation.stringMessage}`),
@@ -56,23 +56,17 @@ const EditCompany = () => {
     }, []);
 
     const onSubmit = async (values) => {
-        const { companyName, mobile } = values;
-        const result = await company.updateCompany(
-            companyId,
-            companyName,
-            mobile
-        );
+        const { name, mobile } = values;
+        const result = await company.updateCompany(companyId, name, mobile);
 
         if (result === null) {
-            //show message failure
             dispatch(setMessageAction(company.errorMessage, company.errorCode));
             setLoading(false);
             return;
         }
         setLoading(false);
         toast.success(`${editCompanyPage.submitted}`);
-        navigate(`${BASE_PATH}/tanks`);
-        //show message success
+        navigate(`${BASE_PATH}/companies`);
     };
 
     const formik = useFormik({
@@ -93,7 +87,7 @@ const EditCompany = () => {
         >
             <FormikControl
                 control="input"
-                name="companyName"
+                name="name"
                 formik={formik}
                 pageString={editCompanyPage}
             />

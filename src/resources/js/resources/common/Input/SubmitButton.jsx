@@ -1,4 +1,3 @@
-import React from "react";
 import { general } from "../../constants/strings/fa";
 
 const SubmitButton = ({

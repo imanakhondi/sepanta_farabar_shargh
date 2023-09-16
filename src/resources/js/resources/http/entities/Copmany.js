@@ -19,14 +19,14 @@ export class Company extends Entity {
 
     async storeCompany(companyName, mobile) {
         return await this.handlePost(`${BASE_URL}/a/companies/store`, {
-            company_name: companyName,
+            name: companyName,
             mobile,
         });
     }
 
     async updateCompany(id, companyName, mobile) {
         return await this.handlePost(`${BASE_URL}/a/companies/update/${id}`, {
-            company_name: companyName,
+            name: companyName,
             mobile,
         });
     }

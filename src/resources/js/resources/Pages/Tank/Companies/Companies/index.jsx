@@ -9,14 +9,11 @@ import Operation from "../../../../components/Table/Operation";
 import { Company } from "../../../../http/entities/Copmany";
 import { BASE_PATH } from "../../../../constants";
 
-const data=[
-    {id:1,companyName:"سپنتا فرابر"}
-]
 
 const Companies = () => {
     const company = new Company();
     const [loading, setLoading] = useState(false);
-    // const [data, setData] = useState([]);
+    const [data, setData] = useState([]);
     const [count, setCount] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
@@ -31,7 +28,7 @@ const Companies = () => {
         }
     };
     useEffect(() => {
-        // getCompanies();
+        getCompanies();
     }, [currentPage]);
 
     const renderHeader = () => {
@@ -52,7 +49,7 @@ const Companies = () => {
             return (
                 <tr key={item.id} className="">
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
-                        {item.companyName}
+                        {item.name}
                     </td>
                     <Operation
                         link={`${BASE_PATH}/company/edit/${item.id}`}
