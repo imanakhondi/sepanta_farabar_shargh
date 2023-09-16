@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources\Tank;
 
-use App\Facades\Helper;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TankResource extends JsonResource

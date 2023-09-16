@@ -9,6 +9,7 @@ use App\Http\Controllers\Administrator\CompanyController;
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\DriverController;
 use App\Http\Controllers\Administrator\ErrorController;
+use App\Http\Controllers\Administrator\IntroductionController;
 use App\Http\Controllers\Administrator\TankController;
 use App\Http\Controllers\Administrator\TruckController;
 use App\Http\Controllers\Administrator\UserController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\User\CityController as UserCityController;
 use App\Http\Controllers\User\CompanyController as UserCompanyController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\DriverController as UserDriverController;
+use App\Http\Controllers\User\IntroductionController as UserIntroductionController;
 use App\Http\Controllers\User\TankController as UserTankController;
 use App\Http\Controllers\User\TruckController as UserTruckController;
 use App\Http\Controllers\User\UserController as UserUserController;
@@ -25,6 +27,7 @@ use App\Http\Resources\City\CityResource;
 use App\Http\Resources\Company\CompanyResource;
 use App\Http\Resources\Driver\DriverResource;
 use App\Http\Resources\Error\ErrorResource;
+use App\Http\Resources\Introduction\IntroductionResource;
 use App\Http\Resources\Tank\TankResource;
 use App\Http\Resources\Truck\TruckResource;
 use App\Http\Resources\User\UserResource;
@@ -35,6 +38,7 @@ use App\Services\CityService;
 use App\Services\CompanyService;
 use App\Services\DriverService;
 use App\Services\ErrorService;
+use App\Services\IntroductionService;
 use App\Services\TankService;
 use App\Services\TruckService;
 use App\Services\UserService;
@@ -126,6 +130,14 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(UserBarOwnerController::class, function ($app) {
             return new UserBarOwnerController(new JsonResponse(BarOwnerResource::class), $app->make(BarOwnerService::class));
+        });
+
+        $this->app->bind(IntroductionController::class, function ($app) {
+            return new IntroductionController(new JsonResponse(IntroductionResource::class), $app->make(IntroductionService::class));
+        });
+
+        $this->app->bind(UserIntroductionController::class, function ($app) {
+            return new UserIntroductionController(new JsonResponse(IntroductionResource::class), $app->make(IntroductionService::class));
         });
     }
 }
