@@ -19,7 +19,7 @@ export class BarOwner extends Entity {
 
     async storeBarOwner(companyName, name, family, mobile) {
         return await this.handlePost(`${BASE_URL}/a/bar_owners/store`, {
-            company_name:companyName,
+            company_name: companyName,
             name,
             family,
             mobile,
@@ -28,7 +28,7 @@ export class BarOwner extends Entity {
 
     async updateBarOwner(id, companyName, name, family, mobile) {
         return await this.handlePost(`${BASE_URL}/a/bar_owners/update/${id}`, {
-            company_name:companyName,
+            company_name: companyName,
             name,
             family,
             mobile,

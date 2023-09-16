@@ -5137,11 +5137,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/strings/fa */ "./resources/js/resources/constants/strings/fa.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
+/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants/strings/fa */ "./resources/js/resources/constants/strings/fa.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -5149,14 +5146,14 @@ var SubmitButton = function SubmitButton(_ref) {
   var _ref$disabled = _ref.disabled,
     disabled = _ref$disabled === void 0 ? "" : _ref$disabled,
     _ref$submit = _ref.submit,
-    submit = _ref$submit === void 0 ? "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_1__.general.submit) : _ref$submit,
+    submit = _ref$submit === void 0 ? "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.general.submit) : _ref$submit,
     _ref$customStyleBtn = _ref.customStyleBtn,
     customStyleBtn = _ref$customStyleBtn === void 0 ? "" : _ref$customStyleBtn,
     _ref$showEditBTN = _ref.showEditBTN,
     showEditBTN = _ref$showEditBTN === void 0 ? false : _ref$showEditBTN,
     onClick = _ref.onClick;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: showEditBTN ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: showEditBTN ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
       type: "submit"
       // disabled={!formik.isValid}
       ,
@@ -5164,7 +5161,7 @@ var SubmitButton = function SubmitButton(_ref) {
       className: "".concat(customStyleBtn, " w-full bg-btnPrimaryColor rounded-xl py-3 mx-auto px-5 mt-3 text-white"),
       onClick: onClick,
       children: "\u0648\u06CC\u0631\u0627\u06CC\u0634"
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
       type: "submit"
       // disabled={!formik.isValid}
       ,
@@ -7590,7 +7587,7 @@ var BarOwner = /*#__PURE__*/function (_Entity) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/barOwners/show/").concat(id));
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/bar_owners/show/").concat(id));
             case 2:
               return _context.abrupt("return", _context.sent);
             case 3:
@@ -7612,7 +7609,7 @@ var BarOwner = /*#__PURE__*/function (_Entity) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/barOwners"), {
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/bar_owners"), {
                 _pn: _pn,
                 _pi: _pi
               });
@@ -7637,7 +7634,7 @@ var BarOwner = /*#__PURE__*/function (_Entity) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/barOwners/store"), {
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/bar_owners/store"), {
                 company_name: companyName,
                 name: name,
                 family: family,
@@ -7664,7 +7661,7 @@ var BarOwner = /*#__PURE__*/function (_Entity) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/barOwners/update/").concat(id), {
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/bar_owners/update/").concat(id), {
                 company_name: companyName,
                 name: name,
                 family: family,
@@ -7691,7 +7688,7 @@ var BarOwner = /*#__PURE__*/function (_Entity) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/barOwners/delete/").concat(id));
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/bar_owners/delete/").concat(id));
             case 2:
               return _context5.abrupt("return", _context5.sent);
             case 3:
@@ -8141,7 +8138,7 @@ var City = /*#__PURE__*/function (_Entity) {
             case 0:
               _context3.next = 2;
               return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/cities/store"), {
-                city_name: cityName
+                name: cityName
               });
             case 2:
               return _context3.abrupt("return", _context3.sent);
@@ -8165,7 +8162,7 @@ var City = /*#__PURE__*/function (_Entity) {
             case 0:
               _context4.next = 2;
               return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/cities/update/").concat(id), {
-                city_name: cityName
+                name: cityName
               });
             case 2:
               return _context4.abrupt("return", _context4.sent);
@@ -8302,7 +8299,7 @@ var Company = /*#__PURE__*/function (_Entity) {
             case 0:
               _context3.next = 2;
               return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/companies/store"), {
-                company_name: companyName,
+                name: companyName,
                 mobile: mobile
               });
             case 2:
@@ -8327,7 +8324,7 @@ var Company = /*#__PURE__*/function (_Entity) {
             case 0:
               _context4.next = 2;
               return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/companies/update/").concat(id), {
-                company_name: companyName,
+                name: companyName,
                 mobile: mobile
               });
             case 2:
@@ -10238,20 +10235,21 @@ var EditBarOwner = function EditBarOwner() {
           case 0:
             setLoading(true);
             _context.next = 3;
-            return _http_entities_BarOwner__WEBPACK_IMPORTED_MODULE_6__.BarOwner.getBarOwner(barOwnerId);
+            return barOwner.getBarOwner(barOwnerId);
           case 3:
             result = _context.sent;
+            console.log(result);
             if (!(result === null)) {
-              _context.next = 8;
+              _context.next = 9;
               break;
             }
             dispatch((0,_state_message_messageAction__WEBPACK_IMPORTED_MODULE_7__.setMessageAction)(barOwner.errorMessage, barOwner.errorCode));
             setLoading(false);
             return _context.abrupt("return");
-          case 8:
+          case 9:
             setLoading(false);
             setFormValues(result.item);
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
@@ -10714,7 +10712,7 @@ var initialValues = {
   CTLPN4: ""
 };
 var validationSchema = yup__WEBPACK_IMPORTED_MODULE_3__.object({
-  companyName: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(2, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.minMessage)).max(50, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.maxMessage)).required("".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.stringMessage))
+  name: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(2, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.minMessage)).max(50, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.maxMessage)).required("".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.stringMessage))
 });
 var AddCar = function AddCar() {
   var car = new _http_entities_Car__WEBPACK_IMPORTED_MODULE_6__.Car();
@@ -10748,7 +10746,6 @@ var AddCar = function AddCar() {
               _context.next = 12;
               break;
             }
-            //show message failure
             dispatch((0,_state_message_messageAction__WEBPACK_IMPORTED_MODULE_8__.setMessageAction)(car.errorMessage, car.errorCode));
             setLoading(false);
             return _context.abrupt("return");
@@ -11651,7 +11648,7 @@ var Cities = function Cities() {
         className: "",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("td", {
           className: "dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl",
-          children: item.cityName
+          children: item.name
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_Table_Operation__WEBPACK_IMPORTED_MODULE_3__["default"], {
           link: "".concat(_constants__WEBPACK_IMPORTED_MODULE_4__.BASE_PATH, "/city/edit/").concat(item.id)
         })]
@@ -11732,10 +11729,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var initialValues = {
-  cityName: ""
+  name: ""
 };
 var validationSchema = yup__WEBPACK_IMPORTED_MODULE_3__.object({
-  cityName: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(2, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.validation.minMessage)).max(50, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.validation.maxMessage)).required("".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.validation.stringMessage))
+  name: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(2, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.validation.minMessage)).max(50, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.validation.maxMessage)).required("".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.validation.stringMessage))
 });
 var EditCity = function EditCity() {
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_12__.useParams)();
@@ -11791,14 +11788,14 @@ var EditCity = function EditCity() {
   }, []);
   var onSubmit = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(_ref2) {
-      var cityName, result;
+      var name, result;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
-            cityName = _ref2.cityName;
+            name = _ref2.name;
             setLoading(true);
             _context2.next = 4;
-            return city.updateCity(cityId, cityName);
+            return city.updateCity(cityId, name);
           case 4:
             result = _context2.sent;
             if (!(result === null)) {
@@ -11837,7 +11834,7 @@ var EditCity = function EditCity() {
     subTitle: "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editCityPage._subTitle),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
       control: "input",
-      name: "cityName",
+      name: "name",
       formik: formik,
       pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editCityPage
     })
@@ -14804,25 +14801,24 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var data = [{
-  id: 1,
-  companyName: "سپنتا فرابر"
-}];
 var Companies = function Companies() {
   var company = new _http_entities_Copmany__WEBPACK_IMPORTED_MODULE_4__.Company();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     loading = _useState2[0],
     setLoading = _useState2[1];
-  // const [data, setData] = useState([]);
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState4 = _slicedToArray(_useState3, 2),
-    count = _useState4[0],
-    setCount = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    data = _useState4[0],
+    setData = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState6 = _slicedToArray(_useState5, 2),
-    currentPage = _useState6[0],
-    setCurrentPage = _useState6[1];
+    count = _useState6[0],
+    setCount = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState8 = _slicedToArray(_useState7, 2),
+    currentPage = _useState8[0],
+    setCurrentPage = _useState8[1];
   var pageSize = 10;
   var filterdData = data.sort(function (a, b) {
     return b.id - a.id;
@@ -14856,7 +14852,7 @@ var Companies = function Companies() {
     };
   }();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // getCompanies();
+    getCompanies();
   }, [currentPage]);
   var renderHeader = function renderHeader() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
@@ -14876,7 +14872,7 @@ var Companies = function Companies() {
         className: "",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
           className: "dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl",
-          children: item.companyName
+          children: item.name
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Table_Operation__WEBPACK_IMPORTED_MODULE_3__["default"], {
           link: "".concat(_constants__WEBPACK_IMPORTED_MODULE_5__.BASE_PATH, "/company/edit/").concat(item.id),
           addLink: "".concat(_constants__WEBPACK_IMPORTED_MODULE_5__.BASE_PATH, "/company/tank/").concat(item.id)
@@ -14956,11 +14952,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var initialValues = {
-  companyName: "",
+  name: "",
   mobile: ""
 };
 var validationSchema = yup__WEBPACK_IMPORTED_MODULE_3__.object({
-  companyName: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(2, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.minMessage)).max(50, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.maxMessage)).required("".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.stringMessage))
+  name: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(2, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.minMessage)).max(50, "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.maxMessage)).required("".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.validation.stringMessage))
 });
 var EditCompany = function EditCompany() {
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_12__.useParams)();
@@ -15018,28 +15014,26 @@ var EditCompany = function EditCompany() {
   }, []);
   var onSubmit = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(values) {
-      var companyName, mobile, result;
+      var name, mobile, result;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
-            companyName = values.companyName, mobile = values.mobile;
+            name = values.name, mobile = values.mobile;
             _context2.next = 3;
-            return company.updateCompany(companyId, companyName, mobile);
+            return company.updateCompany(companyId, name, mobile);
           case 3:
             result = _context2.sent;
             if (!(result === null)) {
               _context2.next = 8;
               break;
             }
-            //show message failure
             dispatch((0,_state_message_messageAction__WEBPACK_IMPORTED_MODULE_7__.setMessageAction)(company.errorMessage, company.errorCode));
             setLoading(false);
             return _context2.abrupt("return");
           case 8:
             setLoading(false);
             react_toastify__WEBPACK_IMPORTED_MODULE_9__.toast.success("".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.editCompanyPage.submitted));
-            navigate("".concat(_constants__WEBPACK_IMPORTED_MODULE_10__.BASE_PATH, "/tanks"));
-            //show message success
+            navigate("".concat(_constants__WEBPACK_IMPORTED_MODULE_10__.BASE_PATH, "/companies"));
           case 11:
           case "end":
             return _context2.stop();
@@ -15065,7 +15059,7 @@ var EditCompany = function EditCompany() {
     subTitle: "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.editCompanyPage._subTitle),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_4__["default"], {
       control: "input",
-      name: "companyName",
+      name: "name",
       formik: formik,
       pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.editCompanyPage
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_4__["default"], {

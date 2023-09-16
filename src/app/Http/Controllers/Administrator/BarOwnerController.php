@@ -24,6 +24,6 @@ class BarOwnerController extends Controller
 
     public function update(Model $model, UpdateBarOwnerRequest $request): HttpJsonResponse
     {
-        return $this->onUpdate($this->service->update($model, $request->company_name, $request->name, $request->family, $request->national_no, $request->mobile));
+        return $this->onUpdate($this->service->update($model, $request->company_name, $request->name, $request->family, $request->mobile));
     }
 }
