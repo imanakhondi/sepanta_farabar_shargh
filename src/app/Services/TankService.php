@@ -11,37 +11,35 @@ class TankService
         return Model::where('id', $id)->first();
     }
 
-    public function getPaginate(string|null $name, string|null $family, int $page, int $pageItems): mixed
+    public function getPaginate(int $page, int $pageItems): mixed
     {
-        return Model::where('name', 'LIKE', '%' . $name . '%')->where('family', 'LIKE', '%' . $family . '%')->orderBy('family', 'ASC')->orderBy('name', 'ASC')->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
+        return Model::orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
-    public function store(string $name, string $family, string $nationalNo, string $mobile, string $tankNo): mixed
+    public function store(int $tankNo, string $psiDate, string $testValidityDate, string $capotageDate): mixed
     {
         $data = [
-            'name' => $name,
-            'family' => $family,
-            'national_no' => $nationalNo,
-            'mobile' => $mobile,
             'tank_no' => $tankNo,
+            'psi_date' => $psiDate,
+            'test_validity_date' => $testValidityDate,
+            'capotage_date' => $capotageDate,
         ];
         return Model::create($data) ?? null;
     }
 
-    public function update(Model $model, string $name, string $family, string $nationalNo, string $mobile, string $tankNo): bool
+    public function update(Model $model, int $tankNo, string $psiDate, string $testValidityDate, string $capotageDate): bool
     {
         $data = [
-            'name' => $name,
-            'family' => $family,
-            'national_no' => $nationalNo,
-            'mobile' => $mobile,
             'tank_no' => $tankNo,
+            'psi_date' => $psiDate,
+            'test_validity_date' => $testValidityDate,
+            'capotage_date' => $capotageDate,
         ];
         return $model->update($data);
     }
 
-    public function count(string|null $name, string|null $family): int
+    public function count(): int
     {
-        return Model::where('name', 'LIKE', '%' . $name . '%')->where('family', 'LIKE', '%' . $family . '%')->count();
+        return Model::count();
     }
 }

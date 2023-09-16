@@ -11,11 +11,10 @@ class TankResource extends JsonResource
     {
         return [
             'id' => intval($this->id),
-            'name' => Helper::localeNumbers($this->name),
-            'family' => Helper::localeNumbers($this->family),
-            'nationalNo' => $this->national_no,
-            'mobile' => $this->mobile,
-            'tankNo' => $this->tank_no,
+            'tankNo' => intval($this->tank_no),
+            'psiDate' => $this->psi_date ?? '',
+            'testValidityDate' => $this->test_validity_date ?? '',
+            'capotageDate' => $this->capotage_date ?? '',
         ];
     }
 }

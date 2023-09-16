@@ -12,10 +12,9 @@ class Tank extends Model
 
     protected $table = 'tbl_tanks';
     protected $fillable = [
-        'name',
-        'family',
-        'national_no',
-        'mobile',
         'tank_no',
+        'psi_date',
+        'test_validity_date',
+        'capotage_date',
     ];
 }

@@ -20,33 +20,22 @@ class UpdateTankRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:2|max:50',
-            'family' => 'required|min:2|max:50',
-            'national_no' => 'required|digits:10|gt:0',
-            'mobile' => 'required|digits:11|gt:0',
-            'tank_no' => 'required|min_digits:1|max_digits:10|gt:0',
+            'tank_no' => 'required|numeric|gt:0',
+            'psi_date' => 'required',
+            'test_validity_date' => 'required',
+            'capotage_date' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => __('tank.name_required'),
-            'name.min' => __('tank.name_min'),
-            'name.max' => __('tank.name_max'),
-            'family.required' => __('tank.family_required'),
-            'family.min' => __('tank.family_min'),
-            'family.max' => __('tank.family_max'),
-            'national_no.required' => __('tank.national_no_required'),
-            'national_no.digits' => __('tank.national_no_digits'),
-            'national_no.gt' => __('tank.national_no_gt'),
-            'mobile.required' => __('tank.mobile_required'),
-            'mobile.digits' => __('tank.mobile_digits'),
-            'mobile.gt' => __('tank.mobile_gt'),
             'tank_no.required' => __('tank.tank_no_required'),
-            'tank_no.min_digits' => __('tank.tank_no_min_digits'),
-            'tank_no.max_digits' => __('tank.tank_no_max_digits'),
+            'tank_no.required' => __('tank.tank_no_required'),
             'tank_no.gt' => __('tank.tank_no_gt'),
+            'psi_date.required' => __('tank.psi_date_required'),
+            'test_validity_date.required' => __('tank.test_validity_date_required'),
+            'capotage_date.required' => __('tank.capotage_date_required'),
         ];
     }
 }
