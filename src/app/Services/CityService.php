@@ -16,6 +16,11 @@ class CityService
         return Model::where('name', 'LIKE', '%' . $name . '%')->orderBy('name', 'ASC')->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
+    public function getAll(): mixed
+    {
+        return Model::orderBy('name', 'ASC')->orderBy('id', 'ASC')->get();
+    }
+
     public function store(string $name): mixed
     {
         $data = [

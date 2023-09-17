@@ -16,6 +16,11 @@ class BarOwnerService
         return Model::where('company_name', 'LIKE', '%' . $companyName . '%')->orderBy('company_name', 'ASC')->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
+    public function getAll(): mixed
+    {
+        return Model::orderBy('company_name', 'ASC')->orderBy('id', 'ASC')->get();
+    }
+
     public function store(string $companyName, string $name, string $family, string $mobile): mixed
     {
         $data = [

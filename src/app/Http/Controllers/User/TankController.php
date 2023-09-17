@@ -18,7 +18,7 @@ class TankController extends Controller
 
     public function index(IndexTanksRequest $request): HttpJsonResponse
     {
-        return $this->onItems($this->service->getPaginate($request->name, $request->family, $request->_pn, $request->_pi), $this->service->count($request->name, $request->family));
+        return $this->onItems($this->service->getPaginate($request->_pn, $request->_pi), $this->service->count());
     }
 
     public function show(Model $model): HttpJsonResponse

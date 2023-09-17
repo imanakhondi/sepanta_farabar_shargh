@@ -6,6 +6,7 @@ use App\Http\Controllers\Administrator\CompanyController;
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\DriverController;
 use App\Http\Controllers\Administrator\ErrorController;
+use App\Http\Controllers\Administrator\IntroductionController;
 use App\Http\Controllers\Administrator\TankController;
 use App\Http\Controllers\Administrator\TruckController;
 use App\Http\Controllers\Administrator\UserController;
@@ -43,4 +44,6 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('bar_owners/store', [BarOwnerController::class, 'store']);
     Route::post('bar_owners/update/{model}', [BarOwnerController::class, 'update']);
+
+    Route::post('introductions/store/{barOwner}/{startPoint}/{endPoint}', [IntroductionController::class, 'store']);
 });
