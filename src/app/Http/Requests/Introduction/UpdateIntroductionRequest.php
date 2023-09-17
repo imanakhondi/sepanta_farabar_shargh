@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Tank;
+namespace App\Http\Requests\Introduction;
 
 use App\Constants\ErrorCode;
 use Illuminate\Contracts\Validation\Validator;
@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 
-class UpdateTankRequest extends FormRequest
+class UpdateIntroductionRequest extends FormRequest
 {
     protected function failedValidation(Validator $validator)
     {

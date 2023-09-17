@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('tbl_tanks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('family');
-            $table->string('national_no');
-            $table->string('mobile');
-            $table->string('tank_no');
+            $table->unsignedBigInteger('tank_no');
+            $table->string('psi_date');
+            $table->string('test_validity_date');
+            $table->string('capotage_date');
             $table->timestamps();
             $table->softDeletes();
         });

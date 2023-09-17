@@ -19,13 +19,11 @@ class TankController extends Controller
 
     public function store(StoreTankRequest $request): HttpJsonResponse
     {
-        return $this->onStore($this->service->store($request->name, $request->family, $request->national_no, $request->mobile, $request->tank_no));
+        return $this->onStore($this->service->store($request->tank_no, $request->psi_date, $request->test_validity_date, $request->capotage_date));
     }
 
     public function update(Model $model, UpdateTankRequest $request): HttpJsonResponse
     {
-        return $this->onUpdate($this->service->update($model, $request->name, $request->family, $request->national_no, $request->mobile, $request->tank_no));
+        return $this->onUpdate($this->service->update($model, $request->tank_no, $request->psi_date, $request->test_validity_date, $request->capotage_date));
     }
 }
-
-
