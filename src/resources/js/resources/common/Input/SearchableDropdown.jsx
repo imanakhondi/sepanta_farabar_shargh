@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const SearchableDropdown = ({
     selectOptions,
-    label="name",
+    label = "name",
     // value,
     // onChange,
     formik,
@@ -34,13 +34,14 @@ const SearchableDropdown = ({
         return () => document.removeEventListener("click", toggle);
     }, []);
     const handleChange = (val) => {
-        setValue(val);
-        formik.setFieldValue(`${name}`, val);
+        setValue(val.companyName || val.name);
+        formik.setFieldValue(`${name}`, val.id);
     };
 
     const selectOption = (option) => {
         setQuery(() => "");
-        handleChange(option[label]);
+        // handleChange(option[label]);   wichtig
+        handleChange(option);
         setIsOpen((isOpen) => !isOpen);
     };
 
@@ -74,10 +75,11 @@ const SearchableDropdown = ({
                         ref={inputRef}
                         type="text"
                         {...formik.getFieldProps(name)}
-                        value={formik.values[name] || getDisplayValue()}
+                        value={
+                            value || formik.values[name] || getDisplayValue()
+                        }
                         name={name}
                         onChange={(e) => {
-                            console.log(e);
                             setQuery(e.target.value);
                             handleChange(null);
                         }}
@@ -99,22 +101,24 @@ const SearchableDropdown = ({
                     isOpen ? "block" : "hidden"
                 }`}
             >
-                {filter(selectOptions).map((option) => {
-                    return (
-                        <div
-                            onClick={() => selectOption(option)}
-                            className={`option text-black/50 box-border cursor-pointer block py-2 px-3 hover:bg-[#f2f9fc] hover:text-black/80 ${
-                                option[label] === value
-                                    ? "bg-[#f2f9fc] text-black/80"
-                                    : ""
-                            }`}
-                            key={option.id}
-                            id={`${name}-${option.id}`}
-                        >
-                            {option[label]}
-                        </div>
-                    );
-                })}
+                {selectOptions.length &&
+                    filter(selectOptions).map((option) => {
+                        console.log(option);
+                        return (
+                            <div
+                                onClick={() => selectOption(option)}
+                                className={`option text-black/50 box-border cursor-pointer block py-2 px-3 hover:bg-[#f2f9fc] hover:text-black/80 ${
+                                    option[label] === value
+                                        ? "bg-[#f2f9fc] text-black/80"
+                                        : ""
+                                }`}
+                                key={option.id}
+                                id={`${name}-${option.id}`}
+                            >
+                                {option[label]}
+                            </div>
+                        );
+                    })}
             </div>
         </div>
     );

@@ -148,16 +148,16 @@ const Tanks = () => {
         return (
             <tr>
                 <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
-                    {addTankPage.name}
-                </th>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
-                    {addTankPage.family}
-                </th>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
-                    {addTankPage.mobile}
-                </th>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
                     {addTankPage.tankNo}
+                </th>
+                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                    {addTankPage.capotageDate}
+                </th>
+                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                    {addTankPage.psiDate}
+                </th>
+                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
+                    {addTankPage.testValidityDate}
                 </th>
                 <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
                     {general.actions}
@@ -167,20 +167,20 @@ const Tanks = () => {
     };
 
     const renderItems = () => {
-        return filterdData.map((item, index) => {
+        return filterdData.map((item) => {
             return (
                 <tr key={item.id} id={item.id} className="">
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
-                        {item.name}
-                    </td>
-                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                        {item.family}
-                    </td>
-                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                        {item.mobile}
-                    </td>
-                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
                         {item.tankNo}
+                    </td>
+                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                        {item.capotageDate}
+                    </td>
+                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                        {item.psiDate}
+                    </td>
+                    <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
+                        {item.testValidityDate}
                     </td>
                     <Operation
                         link={`${BASE_PATH}/company/tank/edit/${item.id}`}

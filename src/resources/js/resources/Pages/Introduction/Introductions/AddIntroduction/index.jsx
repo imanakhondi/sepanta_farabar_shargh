@@ -3,32 +3,19 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import FormikForm from "../../../../common/FormikForm";
 import { useDispatch, useSelector } from "react-redux";
-import { clearMessageAction, setMessageAction } from "../../../../state/message/messageAction";
+import {
+    clearMessageAction,
+    setMessageAction,
+} from "../../../../state/message/messageAction";
 import { addIntroductionPage } from "../../../../constants/strings/fa";
 import FormikControl from "../../../../common/FormikControl";
 import { Introduction } from "../../../../http/entities/Introduction";
 import { toast } from "react-toastify";
 
-const barOwnerOptions = [
-    { id: 1, name: "سپنتا فرابر" },
-    { id: 2, name: "آرشام ترابر" },
-    { id: 3, name: "دلیران ترابر" },
-    { id: 4, name: "ویشکا ترابر" },
-];
-const startPointOptions = [
-    { id: 1, name: "تایباد" },
-    { id: 2, name: "مشهد" },
-    { id: 3, name: "فریمان" },
-    { id: 4, name: "تهران" },
-];
-const endPointOptions = [
-    { id: 1, name: "تایباد" },
-    { id: 2, name: "مشهد" },
-    { id: 3, name: "فریمان" },
-    { id: 4, name: "تهران" },
-];
-
 const initialValues = {
+    barOwnerOptions: [],
+    startPointOptions: [],
+    endPointOptions: [],
     introductionNo: `${Date.now()}`,
     introductionDate: "",
     barOwner: "",
@@ -36,6 +23,9 @@ const initialValues = {
     endPoint: "",
     ownerUnitUSD: "",
     ownerUnitIRR: "",
+    barOwnerId: null,
+    startPointId: null,
+    endPointId: null,
 };
 const validationSchema = Yup.object({
     introductionNo: Yup.string(),
@@ -47,16 +37,38 @@ const validationSchema = Yup.object({
     ownerUnitIRR: Yup.string(),
 });
 const AddIntroduction = () => {
-    const introduction=new Introduction()
+    const introduction = new Introduction();
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         dispatch(clearMessageAction());
+        const getAllProps = async () => {
+            setLoading(true);
+            const result = await introduction.getAllIntroductionProps();
+            console.log(result);
+            if (result === null) {
+                dispatch(
+                    setMessageAction(
+                        introduction.errorMessage,
+                        introduction.errorCode
+                    )
+                );
+                setLoading(false);
+
+                return;
+            }
+            setTimeout(() => setLoading(false), 200);
+            formik.setFieldValue("barOwnerOptions", result.barOwners);
+            formik.setFieldValue("startPointOptions", result.cities);
+            formik.setFieldValue("endPointOptions", result.cities);
+        };
+        getAllProps();
     }, []);
 
-    const onSubmit =async (values) => {
+
+    const onSubmit = async (values) => {
         const {
             introductionNo,
             introductionDate,
@@ -64,10 +76,13 @@ const AddIntroduction = () => {
             startPoint,
             endPoint,
             ownerUnitUSD,
-            ownerUnitIRR
+            ownerUnitIRR,
         } = values;
         setLoading(true);
         const result = await introduction.storeIntroduction(
+            barOwner,
+            startPoint,
+            endPoint,
             introductionNo,
             introductionDate,
             barOwner,
@@ -95,6 +110,7 @@ const AddIntroduction = () => {
         validateOnMount: true,
     });
 
+   
     return (
         <FormikForm
             onSubmit={formik.handleSubmit}
@@ -124,8 +140,8 @@ const AddIntroduction = () => {
                 name="barOwner"
                 formik={formik}
                 pageString={addIntroductionPage}
-                selectOptions={barOwnerOptions}
-                label="name"
+                selectOptions={formik.values.barOwnerOptions}
+                label="companyName"
             />
             {/* <FormikControl
                 control="input"
@@ -138,14 +154,14 @@ const AddIntroduction = () => {
                 name="startPoint"
                 formik={formik}
                 pageString={addIntroductionPage}
-                selectOptions={startPointOptions}
+                selectOptions={formik.values.startPointOptions}
             />
             <FormikControl
                 control="searchableDropdown"
                 name="endPoint"
                 formik={formik}
                 pageString={addIntroductionPage}
-                selectOptions={endPointOptions}
+                selectOptions={formik.values.endPointOptions}
             />
             <FormikControl
                 control="input"

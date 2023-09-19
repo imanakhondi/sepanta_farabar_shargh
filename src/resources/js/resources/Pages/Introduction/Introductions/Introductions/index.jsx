@@ -14,19 +14,19 @@ import {
     setMessageAction,
 } from "../../../../state/message/messageAction";
 
-const data = [
-    { id: 1, introductionNo: 101, introductionDate: "1400/02/25" },
-    { id: 2, introductionNo: 102, introductionDate: "1400/02/26" },
-    { id: 3, introductionNo: 103, introductionDate: "1400/02/27" },
-    { id: 4, introductionNo: 104, introductionDate: "1400/02/28" },
-];
+// const data = [
+//     { id: 1, introductionNo: 101, introductionDate: "1400/02/25" },
+//     { id: 2, introductionNo: 102, introductionDate: "1400/02/26" },
+//     { id: 3, introductionNo: 103, introductionDate: "1400/02/27" },
+//     { id: 4, introductionNo: 104, introductionDate: "1400/02/28" },
+// ];
 
 const Introductions = () => {
     const introduction = new Introduction();
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
-    // const [data, setData] = useState([]);
+    const [data, setData] = useState([]);
     const [count, setCount] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
@@ -42,6 +42,7 @@ const Introductions = () => {
             pageSize,
             currentPage
         );
+        console.log(result);
         if (result === null) {
             dispatch(
                 setMessageAction(
@@ -54,11 +55,11 @@ const Introductions = () => {
             return;
         }
         setTimeout(() => setLoading(false), 200);
-        setData(result.items);
+        setData(result.items); 
         setCount(result.count);
     };
     useEffect(() => {
-        // getIntroductions();
+        getIntroductions();
     }, [currentPage]);
 
     const renderHeader = () => {
