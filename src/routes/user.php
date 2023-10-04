@@ -29,7 +29,7 @@ Route::middleware(['auth:sanctum', 'auth.user'])->group(function () {
 Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
     Route::post('users/auth', [UserController::class, 'showAuth']);
 
-    Route::post('tanks', [TankController::class, 'index']);
+    Route::post('tanks/{company}', [TankController::class, 'index']);
     Route::post('tanks/show/{model}', [TankController::class, 'show']);
 
     Route::post('trucks', [TruckController::class, 'index']);

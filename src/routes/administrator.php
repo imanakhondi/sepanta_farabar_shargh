@@ -27,7 +27,7 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
     Route::post('users/update/{model}', [UserController::class, 'update']);
     Route::post('users/change_password/{model}', [UserController::class, 'changePassword']);
 
-    Route::post('tanks/store', [TankController::class, 'store']);
+    Route::post('tanks/store/{company}', [TankController::class, 'store']);
     Route::post('tanks/update/{model}', [TankController::class, 'update']);
 
     Route::post('trucks/store', [TruckController::class, 'store']);

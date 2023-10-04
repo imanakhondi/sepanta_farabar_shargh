@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Tank\IndexTanksRequest;
+use App\Models\Company;
 use App\Models\Tank as Model;
 use App\Packages\JsonResponse;
 use App\Services\TankService;
@@ -16,9 +17,9 @@ class TankController extends Controller
         parent::__construct($response);
     }
 
-    public function index(IndexTanksRequest $request): HttpJsonResponse
+    public function index(IndexTanksRequest $request, Company $company): HttpJsonResponse
     {
-        return $this->onItems($this->service->getPaginate($request->_pn, $request->_pi), $this->service->count());
+        return $this->onItems($this->service->getPaginate($company->id, $request->_pn, $request->_pi), $this->service->count($company->id));
     }
 
     public function show(Model $model): HttpJsonResponse
