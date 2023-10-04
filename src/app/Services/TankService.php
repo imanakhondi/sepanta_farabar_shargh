@@ -11,14 +11,15 @@ class TankService
         return Model::where('id', $id)->first();
     }
 
-    public function getPaginate(int $page, int $pageItems): mixed
+    public function getPaginate(int $companyId, int $page, int $pageItems): mixed
     {
-        return Model::orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
+        return Model::where('company_id', $companyId)->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
-    public function store(int $tankNo, string $psiDate, string $testValidityDate, string $capotageDate): mixed
+    public function store(int $companyId, int $tankNo, string $psiDate, string $testValidityDate, string $capotageDate): mixed
     {
         $data = [
+            'company_id' => $companyId,
             'tank_no' => $tankNo,
             'psi_date' => $psiDate,
             'test_validity_date' => $testValidityDate,
@@ -38,8 +39,8 @@ class TankService
         return $model->update($data);
     }
 
-    public function count(): int
+    public function count(int $companyId): int
     {
-        return Model::count();
+        return Model::where('company_id', $companyId)->count();
     }
 }
