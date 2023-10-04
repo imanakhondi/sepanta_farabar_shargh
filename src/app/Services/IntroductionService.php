@@ -9,8 +9,8 @@ class IntroductionService
     public function get(int $id): mixed
     {
         return Model::join('tbl_bar_owners', 'tbl_introductions.bar_owner_id', 'tbl_bar_owners.id')
-            ->join('tbl_cities tbl_start_cities', 'tbl_introductions.start_point_id', 'tbl_start_cities.id')
-            ->join('tbl_cities tbl_end_cities', 'tbl_introductions.end_point_id', 'tbl_end_cities.id')
+            ->join('tbl_cities AS tbl_start_cities', 'tbl_introductions.start_point_id', 'tbl_start_cities.id')
+            ->join('tbl_cities AS tbl_end_cities', 'tbl_introductions.end_point_id', 'tbl_end_cities.id')
             ->where('tbl_introductions.id', $id)
             ->select('tbl_introductions.*', 'tbl_bar_owners.company_name AS bar_owner_company_name', 'tbl_start_cities.name AS start_point_name', 'tbl_end_cities.name AS end_point_name')
             ->first();
@@ -19,8 +19,8 @@ class IntroductionService
     public function getPaginate(int $page, int $pageItems): mixed
     {
         return Model::join('tbl_bar_owners', 'tbl_introductions.bar_owner_id', 'tbl_bar_owners.id')
-            ->join('tbl_cities tbl_start_cities', 'tbl_introductions.start_point_id', 'tbl_start_cities.id')
-            ->join('tbl_cities tbl_end_cities', 'tbl_introductions.end_point_id', 'tbl_end_cities.id')
+            ->join('tbl_cities AS tbl_start_cities', 'tbl_introductions.start_point_id', 'tbl_start_cities.id')
+            ->join('tbl_cities AS tbl_end_cities', 'tbl_introductions.end_point_id', 'tbl_end_cities.id')
             ->select('tbl_introductions.*', 'tbl_bar_owners.company_name AS bar_owner_company_name', 'tbl_start_cities.name AS start_point_name', 'tbl_end_cities.name AS end_point_name')
             ->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
@@ -56,8 +56,8 @@ class IntroductionService
     public function count(): int
     {
         return Model::join('tbl_bar_owners', 'tbl_introductions.bar_owner_id', 'tbl_bar_owners.id')
-            ->join('tbl_cities tbl_start_cities', 'tbl_introductions.start_point_id', 'tbl_start_cities.id')
-            ->join('tbl_cities tbl_end_cities', 'tbl_introductions.end_point_id', 'tbl_end_cities.id')
+            ->join('tbl_cities AS tbl_start_cities', 'tbl_introductions.start_point_id', 'tbl_start_cities.id')
+            ->join('tbl_cities AS tbl_end_cities', 'tbl_introductions.end_point_id', 'tbl_end_cities.id')
             ->count();
     }
 }

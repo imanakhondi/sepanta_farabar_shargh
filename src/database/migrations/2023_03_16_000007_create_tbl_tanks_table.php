@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('psi_date');
             $table->string('test_validity_date');
             $table->string('capotage_date');
+            $table->unsignedBigInteger('company_id');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -9,7 +9,6 @@ import Operation from "../../../../components/Table/Operation";
 import { Company } from "../../../../http/entities/Copmany";
 import { BASE_PATH } from "../../../../constants";
 
-
 const Companies = () => {
     const company = new Company();
     const [loading, setLoading] = useState(false);
