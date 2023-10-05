@@ -10,15 +10,15 @@ export class Tank extends Entity {
         return await this.handlePost(`${BASE_URL}/u/tanks/show/${id}`);
     }
 
-    async getAllTanks(_pi, _pn) {
-        return await this.handlePost(`${BASE_URL}/u/tanks`, {
+    async getAllTanks(id,_pi, _pn) {
+        return await this.handlePost(`${BASE_URL}/u/tanks/${id}`, {
             _pn,
             _pi,
         });
     }
 
-    async storeTank(tankNo, psiDate, testValidityDate, capotageDate) {
-        return await this.handlePost(`${BASE_URL}/a/tanks/store`, {
+    async storeTank(companyId,tankNo, psiDate, testValidityDate, capotageDate) {
+        return await this.handlePost(`${BASE_URL}/a/tanks/store/${companyId}`, {
             tank_no: tankNo,
             psi_date: psiDate,
             test_validity_date: testValidityDate,

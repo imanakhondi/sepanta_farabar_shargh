@@ -738,6 +738,8 @@ export const showIntroductionPage = {
     namePlaceholder: "نام ",
     family: "نام خانوادگی ",
     familyPlaceholder: "نام خانوادگی ",
+    companyName: "نام شرکت",
+    companyNamePlaceholder: "نام شرکت",
     nationalNo: "کد ملی ",
     nationalNoPlaceholder: "کد ملی ",
     mobile: "موبایل ",

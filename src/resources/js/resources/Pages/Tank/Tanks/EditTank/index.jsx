@@ -71,7 +71,7 @@ const EditTank = () => {
         }
         setLoading(false);
         toast.success(`${editTankPage.submitted}`);
-        navigate(`${BASE_PATH}/company/tank/${tankId}`);
+        navigate(`${BASE_PATH}/companies`);
     };
 
     const formik = useFormik({

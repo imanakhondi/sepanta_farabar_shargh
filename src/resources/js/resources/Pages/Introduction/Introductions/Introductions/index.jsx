@@ -14,12 +14,6 @@ import {
     setMessageAction,
 } from "../../../../state/message/messageAction";
 
-// const data = [
-//     { id: 1, introductionNo: 101, introductionDate: "1400/02/25" },
-//     { id: 2, introductionNo: 102, introductionDate: "1400/02/26" },
-//     { id: 3, introductionNo: 103, introductionDate: "1400/02/27" },
-//     { id: 4, introductionNo: 104, introductionDate: "1400/02/28" },
-// ];
 
 const Introductions = () => {
     const introduction = new Introduction();
@@ -55,7 +49,7 @@ const Introductions = () => {
             return;
         }
         setTimeout(() => setLoading(false), 200);
-        setData(result.items); 
+        setData(result.items);
         setCount(result.count);
     };
     useEffect(() => {
@@ -69,7 +63,7 @@ const Introductions = () => {
                     {showIntroductionPage.introductionNo}
                 </th>
                 <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
-                    {showIntroductionPage.introductionDate}
+                    {showIntroductionPage.companyName}
                 </th>
                 <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl">
                     {general.actions}
@@ -79,14 +73,15 @@ const Introductions = () => {
     };
 
     const renderItems = () => {
-        return filterdData.map((item, index) => {
+        return filterdData.map((item) => {
+            console.log(item);
             return (
                 <tr key={item.id} id={item.id} className="">
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
                         {item.introductionNo}
                     </td>
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                        {item.introductionDate}
+                        {item.barOwnerCompanyName}
                     </td>
                     <Operation
                         link={`${BASE_PATH}/introduction/edit/${item.id}`}

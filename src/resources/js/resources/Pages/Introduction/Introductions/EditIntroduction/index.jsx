@@ -14,34 +14,47 @@ import { Introduction } from "../../../../http/entities/Introduction";
 import { toast } from "react-toastify";
 import { BASE_PATH } from "../../../../constants";
 
-const barOwnerOptions = [
-    { id: 1, name: "سپنتا فرابر" },
-    { id: 2, name: "آرشام ترابر" },
-    { id: 3, name: "دلیران ترابر" },
-    { id: 4, name: "ویشکا ترابر" },
-];
-const startPointOptions = [
-    { id: 1, name: "تایباد" },
-    { id: 2, name: "مشهد" },
-    { id: 3, name: "فریمان" },
-    { id: 4, name: "تهران" },
-];
-const endPointOptions = [
-    { id: 1, name: "تایباد" },
-    { id: 2, name: "مشهد" },
-    { id: 3, name: "فریمان" },
-    { id: 4, name: "تهران" },
-];
+// const barOwnerOptions = [
+//     { id: 1, name: "سپنتا فرابر" },
+//     { id: 2, name: "آرشام ترابر" },
+//     { id: 3, name: "دلیران ترابر" },
+//     { id: 4, name: "ویشکا ترابر" },
+// ];
+// const startPointOptions = [
+//     { id: 1, name: "تایباد" },
+//     { id: 2, name: "مشهد" },
+//     { id: 3, name: "فریمان" },
+//     { id: 4, name: "تهران" },
+// ];
+// const endPointOptions = [
+//     { id: 1, name: "تایباد" },
+//     { id: 2, name: "مشهد" },
+//     { id: 3, name: "فریمان" },
+//     { id: 4, name: "تهران" },
+// ];
 
 const initialValues = {
+    // introductionNo: `${Date.now()}`,
+    // introductionDate: "",
+    // barOwner: "",
+    // carrier: "",
+    // startPoint: "",
+    // endPoint: "",
+    // ownerUnitUSD: "",
+    // ownerUnitIRR: "",
+    barOwnerOptions: [],
+    startPointOptions: [],
+    endPointOptions: [],
     introductionNo: `${Date.now()}`,
     introductionDate: "",
     barOwner: "",
-    carrier: "",
     startPoint: "",
     endPoint: "",
     ownerUnitUSD: "",
     ownerUnitIRR: "",
+    barOwnerId: null,
+    startPointId: null,
+    endPointId: null,
 };
 const validationSchema = Yup.object({
     introductionNo: Yup.string(),
@@ -83,18 +96,43 @@ const EditIntroduction = () => {
 
     useEffect(() => {
         dispatch(clearMessageAction());
-        // getIntroduction();
-        const result = {
-            introductionNo: `123569`,
-            introductionDate: "1402/05/01",
-            barOwner: "سپنتا فرابر",
-            carrier: "سپنتا",
-            startPoint: "مشهد",
-            endPoint: "تایباد",
-            ownerUnitUSD: "15",
-            ownerUnitIRR: "200",
+        const getAllProps = async () => {
+            setLoading(true);
+            const result = await introduction.getAllIntroductionProps();
+            console.log(result);
+            if (result === null) {
+                dispatch(
+                    setMessageAction(
+                        introduction.errorMessage,
+                        introduction.errorCode
+                    )
+                );
+                setLoading(false);
+
+                return;
+            }
+            setTimeout(() => setLoading(false), 200);
+            formik.setFieldValue("barOwnerOptions", result.barOwners);
+            formik.setFieldValue("startPointOptions", result.cities);
+            formik.setFieldValue("endPointOptions", result.cities);
         };
-        setFormValues(result);
+        getAllProps();
+    }, []);
+
+    useEffect(() => {
+        dispatch(clearMessageAction());
+        getIntroduction();
+        // const result = {
+        //     introductionNo: `123569`,
+        //     introductionDate: "1402/05/01",
+        //     barOwner: "سپنتا فرابر",
+        //     carrier: "سپنتا",
+        //     startPoint: "مشهد",
+        //     endPoint: "تایباد",
+        //     ownerUnitUSD: "15",
+        //     ownerUnitIRR: "200",
+        // };
+        // setFormValues(result);
     }, []);
 
     const onSubmit = async (values) => {
@@ -102,7 +140,7 @@ const EditIntroduction = () => {
             introductionNo,
             introductionDate,
             barOwner,
-            carrier,
+            // carrier,
             startPoint,
             endPoint,
             ownerUnitUSD,
@@ -110,11 +148,21 @@ const EditIntroduction = () => {
         } = values;
         setLoading(true);
         const result = await introduction.updateIntroduction(
-            introductionId,
+            // introductionId,
+            // introductionNo,
+            // introductionDate,
+            // barOwner,
+            // carrier,
+            // startPoint,
+            // endPoint,
+            // ownerUnitUSD,
+            // ownerUnitIRR
+            barOwner,
+            startPoint,
+            endPoint,
             introductionNo,
             introductionDate,
             barOwner,
-            carrier,
             startPoint,
             endPoint,
             ownerUnitUSD,
@@ -174,28 +222,27 @@ const EditIntroduction = () => {
                 name="barOwner"
                 formik={formik}
                 pageString={editIntroductionPage}
-                selectOptions={barOwnerOptions}
-                label="name"
+                selectOptions={formik.values.barOwnerOptions}
+                label="companyName"
             />
-            <FormikControl
+            {/* <FormikControl
                 control="input"
                 name="carrier"
                 formik={formik}
                 pageString={editIntroductionPage}
-            />
+            /> */}
             <FormikControl
                 control="searchableDropdown"
                 name="startPoint"
                 formik={formik}
                 pageString={editIntroductionPage}
-                selectOptions={startPointOptions}
-            />
+                selectOptions={formik.values.startPointOptions}            />
             <FormikControl
                 control="searchableDropdown"
                 name="endPoint"
                 formik={formik}
                 pageString={editIntroductionPage}
-                selectOptions={endPointOptions}
+                selectOptions={formik.values.endPointOptions}
             />
             <FormikControl
                 control="input"

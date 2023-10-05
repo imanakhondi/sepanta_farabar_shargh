@@ -20,6 +20,7 @@ import FormikForm from "../../../../common/FormikForm";
 import FormikControl from "../../../../common/FormikControl";
 import Modal from "../../../../common/Modal";
 import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 
 const initialValues = {
     tankNo: "",
@@ -45,6 +46,8 @@ const Tanks = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
     const filterdData = data.sort((a, b) => b.id - a.id);
+    const params=useParams()
+    const companyId=params.id
 
     useEffect(() => {
         dispatch(clearMessageAction());
@@ -54,6 +57,7 @@ const Tanks = () => {
         const { tankNo, psiDate, testValidityDate, capotageDate } = values;
         setLoading(true);
         const result = await tank.storeTank(
+            companyId,
             tankNo,
             psiDate,
             testValidityDate,
@@ -78,7 +82,7 @@ const Tanks = () => {
 
     const getAllTanks = async () => {
         setLoading(true);
-        const result = await tank.getAllTanks(pageSize, currentPage);
+        const result = await tank.getAllTanks(companyId,pageSize, currentPage);
         if (result === null) {
             dispatch(setMessageAction(tank.errorMessage, tank.errorCode));
             setLoading(false);
