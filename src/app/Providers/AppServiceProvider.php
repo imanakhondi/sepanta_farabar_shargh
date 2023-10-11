@@ -30,7 +30,7 @@ use App\Http\Resources\Company\CompanyResource;
 use App\Http\Resources\Driver\DriverResource;
 use App\Http\Resources\Error\ErrorResource;
 use App\Http\Resources\Introduction\IntroductionResource;
-use App\Http\Resources\Tank\RepairResource;
+use App\Http\Resources\Repair\RepairResource;
 use App\Http\Resources\Tank\TankResource;
 use App\Http\Resources\Truck\TruckResource;
 use App\Http\Resources\User\UserResource;

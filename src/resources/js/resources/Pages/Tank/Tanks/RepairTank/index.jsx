@@ -34,7 +34,7 @@ const RepairsTank = () => {
     const tankId = params.id;
     const navigate = useNavigate();
     const tank = new Tank();
-    const repair=new Repair()
+    const repair = new Repair();
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
     const [count, setCount] = useState(null);
@@ -51,9 +51,13 @@ const RepairsTank = () => {
 
     const getRepairsTank = async () => {
         setLoading(true);
-        const result = await repair.getAllRepairsTank(tankId,pageSize, currentPage);
+        const result = await repair.getAllRepairsTank(
+            tankId,
+            pageSize,
+            currentPage
+        );
         if (result === null) {
-            dispatch(setMessageAction(tank.errorMessage, tank.errorCode));
+            dispatch(setMessageAction(repair.errorMessage, repair.errorCode));
             setLoading(false);
 
             return;
@@ -62,6 +66,7 @@ const RepairsTank = () => {
         setData(result.items);
         setCount(result.count);
     };
+    console.log(data);
     useEffect(() => {
         getRepairsTank();
     }, [currentPage]);
@@ -91,7 +96,7 @@ const RepairsTank = () => {
         validationSchema,
         validateOnMount: true,
     });
-
+    console.log(messageState);
     const renderForm = () => {
         return (
             <FormikForm
@@ -150,13 +155,13 @@ const RepairsTank = () => {
             return (
                 <tr key={index} className="">
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
-                        {item.name}
+                        {item.repairDate}
                     </td>
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                        {item.family}
+                        {item.cost}
                     </td>
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                        {item.mobile}
+                        {item.description}
                     </td>
                     <Operation
                         link={`${BASE_PATH}/tank/edit/${item.id}`}
@@ -177,8 +182,13 @@ const RepairsTank = () => {
                     {renderForm()}
                 </Modal>
             ) : (
-                <div className="container">
-                    {data && (
+                <div className="container flex flex-col">
+                    {messageState.message !== null && (
+                        <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
+                            {messageState.message}
+                        </span>
+                    )}
+                    {data && messageState.message === null && (
                         <div>
                             <Table
                                 pageSize={pageSize}

@@ -47,7 +47,6 @@ const AddIntroduction = () => {
         const getAllProps = async () => {
             setLoading(true);
             const result = await introduction.getAllIntroductionProps();
-            console.log(result);
             if (result === null) {
                 dispatch(
                     setMessageAction(

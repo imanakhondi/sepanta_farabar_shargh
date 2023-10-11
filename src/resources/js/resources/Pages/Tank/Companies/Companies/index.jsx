@@ -8,6 +8,8 @@ import {
 import Operation from "../../../../components/Table/Operation";
 import { Company } from "../../../../http/entities/Copmany";
 import { BASE_PATH } from "../../../../constants";
+import { useDispatch, useSelector } from "react-redux";
+import { setMessageAction } from "../../../../state/message/messageAction";
 
 const Companies = () => {
     const company = new Company();
@@ -17,14 +19,21 @@ const Companies = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
     const filterdData = data.sort((a, b) => b.id - a.id);
+    const messageState = useSelector((state) => state.messageReducer);
+    const dispatch = useDispatch();
+
     const getCompanies = async () => {
         setLoading(true);
         const result = await company.getAllCompanies(pageSize, currentPage);
-        if (result !== null) {
-            setTimeout(() => setLoading(false), 200);
-            setData(result.items);
-            setCount(result.count);
+        if (result === null) {
+            dispatch(setMessageAction(company.errorMessage, company.errorCode));
+            setLoading(false);
+
+            return;
         }
+        setTimeout(() => setLoading(false), 200);
+        setData(result.items);
+        setCount(result.count);
     };
     useEffect(() => {
         getCompanies();
@@ -59,8 +68,13 @@ const Companies = () => {
         });
     };
     return (
-        <div className="container">
-            {data && (
+        <div className="container flex flex-col">
+            {messageState.message !== null && (
+                <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
+                    {messageState.message}
+                </span>
+            )}
+            {data && messageState.message === null && (
                 <div>
                     <Table
                         pageSize={pageSize}

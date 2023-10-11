@@ -46,8 +46,8 @@ const Tanks = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
     const filterdData = data.sort((a, b) => b.id - a.id);
-    const params=useParams()
-    const companyId=params.id
+    const params = useParams();
+    const companyId = params.id;
 
     useEffect(() => {
         dispatch(clearMessageAction());
@@ -82,7 +82,7 @@ const Tanks = () => {
 
     const getAllTanks = async () => {
         setLoading(true);
-        const result = await tank.getAllTanks(companyId,pageSize, currentPage);
+        const result = await tank.getAllTanks(companyId, pageSize, currentPage);
         if (result === null) {
             dispatch(setMessageAction(tank.errorMessage, tank.errorCode));
             setLoading(false);
@@ -206,8 +206,13 @@ const Tanks = () => {
                     {renderForm()}
                 </Modal>
             ) : (
-                <div className="container">
-                    {data && (
+                <div className="container flex flex-col">
+                    {messageState.message !== null && (
+                        <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
+                            {messageState.message}
+                        </span>
+                    )}
+                    {data && messageState.message === null && (
                         <div>
                             <Table
                                 pageSize={pageSize}
