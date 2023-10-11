@@ -26,7 +26,7 @@ Route::middleware(['auth:sanctum', 'auth.user'])->group(function () {
     Route::post('users/change_password', [UserController::class, 'changePassword']);
 });
 
-// 'user' | 'administrator' type users
+// 'user' | 'administrators' type users
 Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
     Route::post('users/auth', [UserController::class, 'showAuth']);
 
