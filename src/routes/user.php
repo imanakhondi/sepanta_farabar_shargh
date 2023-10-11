@@ -26,7 +26,7 @@ Route::middleware(['auth:sanctum', 'auth.user'])->group(function () {
     Route::post('users/change_password', [UserController::class, 'changePassword']);
 });
 
-// 'user' | 'administrator' type users
+// 'user' | 'administrators' type users
 Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
     Route::post('users/auth', [UserController::class, 'showAuth']);
 
@@ -51,6 +51,6 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
     Route::post('introductions', [IntroductionController::class, 'index']);
     Route::post('introductions/props', [IntroductionController::class, 'getIntroductionProps']);
 
-    Route::post('repairs', [RepairController::class, 'index']);
+    Route::post('repairs/{tank}', [RepairController::class, 'index']);
     Route::post('repairs/show/{model}', [RepairController::class, 'show']);
 });

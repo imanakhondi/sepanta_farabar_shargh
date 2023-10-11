@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Tank;
+namespace App\Http\Resources\Repair;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
