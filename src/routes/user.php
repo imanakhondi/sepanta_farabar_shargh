@@ -6,6 +6,7 @@ use App\Http\Controllers\User\CompanyController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\DriverController;
 use App\Http\Controllers\User\IntroductionController;
+use App\Http\Controllers\User\RepairController;
 use App\Http\Controllers\User\TankController;
 use App\Http\Controllers\User\TruckController;
 use App\Http\Controllers\User\UserController;
@@ -49,4 +50,7 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
 
     Route::post('introductions', [IntroductionController::class, 'index']);
     Route::post('introductions/props', [IntroductionController::class, 'getIntroductionProps']);
+
+    Route::post('repairs', [RepairController::class, 'index']);
+    Route::post('repairs/show/{model}', [RepairController::class, 'show']);
 });
