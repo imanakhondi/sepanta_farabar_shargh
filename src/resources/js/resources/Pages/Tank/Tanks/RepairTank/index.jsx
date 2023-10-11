@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Tank } from "../../../../http/entities/Tank";
+import { Repair } from "../../../../http/entities/Repair";
 import { repairTankPage, general } from "../../../../constants/strings/fa";
 import Operation from "../../../../components/Table/Operation";
 import { BASE_PATH } from "../../../../constants";
@@ -33,6 +34,7 @@ const RepairsTank = () => {
     const tankId = params.id;
     const navigate = useNavigate();
     const tank = new Tank();
+    const repair=new Repair()
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
     const [count, setCount] = useState(null);
@@ -49,7 +51,7 @@ const RepairsTank = () => {
 
     const getRepairsTank = async () => {
         setLoading(true);
-        const result = await tank.getRepairsTank(pageSize, currentPage);
+        const result = await repair.getAllRepairsTank(tankId,pageSize, currentPage);
         if (result === null) {
             dispatch(setMessageAction(tank.errorMessage, tank.errorCode));
             setLoading(false);
@@ -61,13 +63,13 @@ const RepairsTank = () => {
         setCount(result.count);
     };
     useEffect(() => {
-        // getRepairsTank();
+        getRepairsTank();
     }, [currentPage]);
 
     const onSubmit = async (values) => {
         const { repairDate, repairCost, repairDesc } = values;
         setLoading(true);
-        const result = await tank.storeTank(
+        const result = await repair.storeRepairTank(
             tankId,
             repairDate,
             repairCost,

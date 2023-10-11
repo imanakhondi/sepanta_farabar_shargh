@@ -10,8 +10,8 @@ export class Tank extends Entity {
         return await this.handlePost(`${BASE_URL}/u/tanks/show/${id}`);
     }
 
-    async getAllTanks(id,_pi, _pn) {
-        return await this.handlePost(`${BASE_URL}/u/tanks/${id}`, {
+    async getAllTanks(tankId,_pi, _pn) {
+        return await this.handlePost(`${BASE_URL}/u/tanks/${tankId}`, {
             _pn,
             _pi,
         });
