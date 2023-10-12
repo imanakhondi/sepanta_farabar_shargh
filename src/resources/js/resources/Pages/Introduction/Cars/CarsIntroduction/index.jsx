@@ -118,7 +118,7 @@ const CarsIntroduction = () => {
     const onSubmit = async (values) => {
         const { driverInfo, carInfo, tankInfo } = values;
         setLoading(true);
-        const result = await carIntroduction.storeCarIntroduction(
+        const result = await carIntroduction.storeCarIntroductionFirstStep(
             driverInfo,
             carInfo,
             tankInfo
@@ -146,7 +146,7 @@ const CarsIntroduction = () => {
     });
     const getCarsIntroduction = async () => {
         setLoading(true);
-        const result = await carIntroduction.getCarsIntroduction(
+        const result = await carIntroduction.getCarIntroduction(
             pageSize,
             currentPage
         );
