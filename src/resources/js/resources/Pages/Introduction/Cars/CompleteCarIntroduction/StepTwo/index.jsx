@@ -2,11 +2,17 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
-import { clearMessageAction } from "../../../../../state/message/messageAction";
+import {
+    clearMessageAction,
+    setMessageAction,
+} from "../../../../../state/message/messageAction";
 import FormikForm from "../../../../../common/FormikForm";
 import { addIntroductionPage } from "../../../../../constants/strings/fa";
 import FormikControl from "../../../../../common/FormikControl";
 import { useNavigate, useParams } from "react-router-dom";
+import { Introduction } from "../../../../../http/entities/Introduction";
+import { CarIntroduction } from "../../../../../http/entities/CarIntroduction";
+import { toast } from "react-toastify";
 
 const initialValues = {
     registryDate: "",
@@ -41,6 +47,7 @@ const StepTwo = ({
     activeStepIndex,
     setActiveStepIndex,
 }) => {
+    const carIntroduction = new CarIntroduction();
     const params = useParams();
     const introductionId = params.id;
     const navigate = useNavigate();
@@ -73,8 +80,51 @@ const StepTwo = ({
         setActiveStepIndex(activeStepIndex + 1);
     };
 
-    const onSubmit = (values) => {
+    const onSubmit = async (values) => {
         const data = { ...formData, ...values };
+        const {
+            registryDate,
+            remittanceName,
+            loadingDate,
+            loadingTonnage,
+            carrierUnitUSD,
+            carrierTotalUSD,
+            carrierUnitIRR,
+            carrierTotalIRR,
+            ownerTotalUSD,
+            ownerTotalIRR,
+            carrierLoadingCommission,
+            forwardingLoadingCommission,
+        } = data;
+        setLoading(true);
+        const result = await carIntroduction.storeCarIntroductionSecondStep(
+            registryDate,
+            remittanceName,
+            loadingDate,
+            loadingTonnage,
+            carrierUnitUSD,
+            carrierTotalUSD,
+            carrierUnitIRR,
+            carrierTotalIRR,
+            ownerTotalUSD,
+            ownerTotalIRR,
+            carrierLoadingCommission,
+            forwardingLoadingCommission
+        );
+
+        if (result === null) {
+            dispatch(
+                setMessageAction(
+                    carIntroduction.errorMessage,
+                    carIntroduction.errorCode
+                )
+            );
+            setLoading(false);
+            return;
+        }
+        setLoading(false);
+        toast.success(`${addIntroductionPage.submitted}`);
+        window.location.reload();
         setFormData(data);
         setActiveStepIndex(activeStepIndex + 1);
     };

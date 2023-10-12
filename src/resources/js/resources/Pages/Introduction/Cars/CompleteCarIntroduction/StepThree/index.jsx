@@ -2,11 +2,16 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
-import { clearMessageAction } from "../../../../../state/message/messageAction";
+import {
+    clearMessageAction,
+    setMessageAction,
+} from "../../../../../state/message/messageAction";
 import FormikForm from "../../../../../common/FormikForm";
 import FormikControl from "../../../../../common/FormikControl";
 import { addIntroductionPage } from "../../../../../constants/strings/fa";
 import { useNavigate, useParams } from "react-router-dom";
+import { CarIntroduction } from "../../../../../http/entities/CarIntroduction";
+import { toast } from "react-toastify";
 
 const initialValues = {
     unloadingDate: "",
@@ -31,6 +36,7 @@ const StepThree = ({
     activeStepIndex,
     setActiveStepIndex,
 }) => {
+    const carIntroduction = new CarIntroduction();
     const params = useParams();
     const introductionId = params.id;
     const navigate = useNavigate();
@@ -42,8 +48,40 @@ const StepThree = ({
     useEffect(() => {
         dispatch(clearMessageAction());
     }, []);
-    const onSubmit = (values) => {
+    const onSubmit = async (values) => {
         const data = { ...formData, ...values };
+        const {
+            unloadingDate,
+            unloadingTonnage,
+            difference,
+            allowableDeficit,
+            deficitOrSurplus,
+            unloadingReceipt,
+        } = data;
+        setLoading(true);
+        const result = await carIntroduction.storeCarIntroductionSecondStage(
+            unloadingDate,
+            unloadingTonnage,
+            difference,
+            allowableDeficit,
+            deficitOrSurplus,
+            unloadingReceipt
+        );
+
+        if (result === null) {
+            dispatch(
+                setMessageAction(
+                    carIntroduction.errorMessage,
+                    carIntroduction.errorCode
+                )
+            );
+            setLoading(false);
+            return;
+        }
+        setLoading(false);
+        toast.success(`${addIntroductionPage.submitted}`);
+        window.location.reload();
+
         setFormData(data);
         setActiveStepIndex(activeStepIndex + 1);
     };

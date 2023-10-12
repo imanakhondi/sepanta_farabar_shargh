@@ -108,7 +108,7 @@ const CarsIntroduction = () => {
         licenseNo: false,
         startPoint: false,
         endPoint: false,
-        actions: false,
+        actions: true,
     });
 
     useEffect(() => {
