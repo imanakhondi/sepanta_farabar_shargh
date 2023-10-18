@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\Tank as Model;
+use App\Models\CarIntroduction as Model;
 
-class TankService
+class CarIntroductionService
 {
     public function get(int $id): mixed
     {
@@ -16,19 +16,12 @@ class TankService
         return Model::where('company_id', $companyId)->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
-    public function getAll(): mixed
-    {
-        return Model::orderBy('id', 'ASC')->get();
-    }
-
-    public function store(int $companyId, int $tankNo, string $psiDate, string $testValidityDate, string $capotageDate): mixed
+    public function store(int $driverId, int $truckId, int $tankId): mixed
     {
         $data = [
-            'company_id' => $companyId,
-            'tank_no' => $tankNo,
-            'psi_date' => $psiDate,
-            'test_validity_date' => $testValidityDate,
-            'capotage_date' => $capotageDate,
+            'driver_id' => $driverId,
+            'truck_id' => $truckId,
+            'tank_id' => $tankId,
         ];
         return Model::create($data) ?? null;
     }

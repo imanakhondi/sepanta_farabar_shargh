@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Administrator\BarOwnerController;
+use App\Http\Controllers\Administrator\CarIntroductionController;
 use App\Http\Controllers\Administrator\CityController;
 use App\Http\Controllers\Administrator\CompanyController;
 use App\Http\Controllers\Administrator\DashboardController;
@@ -50,4 +51,7 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('repairs/store/{tank}', [RepairController::class, 'store']);
     Route::post('repairs/update/{model}', [RepairController::class, 'update']);
+
+    Route::post('car_introductions/add_props', [CarIntroductionController::class, 'getAddCarIntroductionProps']);
+    Route::post('car_introductions/store/{driver}/{truck}/{tank}', [CarIntroductionController::class, 'store']);
 });
