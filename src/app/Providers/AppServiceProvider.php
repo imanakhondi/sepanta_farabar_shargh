@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Constants\Theme;
 use App\Http\Controllers\Administrator\BarOwnerController;
+use App\Http\Controllers\Administrator\CarIntroductionController;
 use App\Http\Controllers\Administrator\CityController;
 use App\Http\Controllers\Administrator\CompanyController;
 use App\Http\Controllers\Administrator\DashboardController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Administrator\TankController;
 use App\Http\Controllers\Administrator\TruckController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\User\BarOwnerController as UserBarOwnerController;
+use App\Http\Controllers\User\CarIntroductionController as UserCarIntroductionController;
 use App\Http\Controllers\User\CityController as UserCityController;
 use App\Http\Controllers\User\CompanyController as UserCompanyController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
@@ -25,6 +27,7 @@ use App\Http\Controllers\User\TankController as UserTankController;
 use App\Http\Controllers\User\TruckController as UserTruckController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Resources\BarOwner\BarOwnerResource;
+use App\Http\Resources\CarIntroduction\CarIntroductionResource;
 use App\Http\Resources\City\CityResource;
 use App\Http\Resources\Company\CompanyResource;
 use App\Http\Resources\Driver\DriverResource;
@@ -37,6 +40,7 @@ use App\Http\Resources\User\UserResource;
 use App\Packages\Helper;
 use App\Packages\JsonResponse;
 use App\Services\BarOwnerService;
+use App\Services\CarIntroductionService;
 use App\Services\CityService;
 use App\Services\CompanyService;
 use App\Services\DriverService;
@@ -150,6 +154,14 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(UserRepairController::class, function ($app) {
             return new UserRepairController(new JsonResponse(RepairResource::class), $app->make(RepairService::class));
+        });
+
+        $this->app->bind(CarIntroductionController::class, function ($app) {
+            return new CarIntroductionController(new JsonResponse(CarIntroductionResource::class), $app->make(CarIntroductionService::class));
+        });
+
+        $this->app->bind(UserCarIntroductionController::class, function ($app) {
+            return new UserCarIntroductionController(new JsonResponse(CarIntroductionResource::class), $app->make(CarIntroductionService::class));
         });
     }
 }
