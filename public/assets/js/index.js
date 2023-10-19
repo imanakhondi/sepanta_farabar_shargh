@@ -7922,12 +7922,15 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
   _createClass(CarIntroduction, [{
     key: "getCarIntroduction",
     value: function () {
-      var _getCarIntroduction = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id) {
+      var _getCarIntroduction = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id, _pi, _pn) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/carintroduction/show/").concat(id));
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/car_introductions/show/").concat(id), {
+                _pn: _pn,
+                _pi: _pi
+              });
             case 2:
               return _context.abrupt("return", _context.sent);
             case 3:
@@ -7936,7 +7939,7 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee, this);
       }));
-      function getCarIntroduction(_x) {
+      function getCarIntroduction(_x, _x2, _x3) {
         return _getCarIntroduction.apply(this, arguments);
       }
       return getCarIntroduction;
@@ -7949,7 +7952,7 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/carintroduction"), {
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/car_introductions"), {
                 _pn: _pn,
                 _pi: _pi
               });
@@ -7961,20 +7964,20 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee2, this);
       }));
-      function getCarsIntroduction(_x2, _x3) {
+      function getCarsIntroduction(_x4, _x5) {
         return _getCarsIntroduction.apply(this, arguments);
       }
       return getCarsIntroduction;
     }()
   }, {
-    key: "storeCarIntroductionFirstStep",
+    key: "getAddCarsIntroductionProps",
     value: function () {
-      var _storeCarIntroductionFirstStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(driverInfo, carInfo, tankInfo) {
+      var _getAddCarsIntroductionProps = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/carintroduction/store/").concat(driverInfo, "/").concat(carInfo, "/").concat(tankInfo));
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/add_props"));
             case 2:
               return _context3.abrupt("return", _context3.sent);
             case 3:
@@ -7983,24 +7986,20 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee3, this);
       }));
-      function storeCarIntroductionFirstStep(_x4, _x5, _x6) {
-        return _storeCarIntroductionFirstStep.apply(this, arguments);
+      function getAddCarsIntroductionProps() {
+        return _getAddCarsIntroductionProps.apply(this, arguments);
       }
-      return storeCarIntroductionFirstStep;
+      return getAddCarsIntroductionProps;
     }()
   }, {
-    key: "updateCarIntroductionFirstStep",
+    key: "storeCarIntroductionFirstStep",
     value: function () {
-      var _updateCarIntroductionFirstStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(id, driverInfo, carInfo, tankInfo) {
+      var _storeCarIntroductionFirstStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(driverInfo, carInfo, tankInfo) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/carintroduction/update/").concat(id), {
-                driver_info: driverInfo,
-                car_info: carInfo,
-                tank_info: tankInfo
-              });
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/store/").concat(driverInfo, "/").concat(carInfo, "/").concat(tankInfo));
             case 2:
               return _context4.abrupt("return", _context4.sent);
             case 3:
@@ -8009,32 +8008,23 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee4, this);
       }));
-      function updateCarIntroductionFirstStep(_x7, _x8, _x9, _x10) {
-        return _updateCarIntroductionFirstStep.apply(this, arguments);
+      function storeCarIntroductionFirstStep(_x6, _x7, _x8) {
+        return _storeCarIntroductionFirstStep.apply(this, arguments);
       }
-      return updateCarIntroductionFirstStep;
+      return storeCarIntroductionFirstStep;
     }()
   }, {
-    key: "storeCarIntroductionSecondStep",
+    key: "updateCarIntroductionFirstStep",
     value: function () {
-      var _storeCarIntroductionSecondStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(registryDate, remittanceName, loadingDate, loadingTonnage, carrierUnitUSD, carrierTotalUSD, carrierUnitIRR, carrierTotalIRR, ownerTotalUSD, ownerTotalIRR, carrierLoadingCommission, forwardingLoadingCommission) {
+      var _updateCarIntroductionFirstStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(id, driverInfo, carInfo, tankInfo) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/carintroduction/store"), {
-                registry_date: registryDate,
-                remittance_name: remittanceName,
-                loading_date: loadingDate,
-                loading_tonnage: loadingTonnage,
-                carrier_unit_usd: carrierUnitUSD,
-                carrier_total_usd: carrierTotalUSD,
-                carrier_unit_irr: carrierUnitIRR,
-                carrier_total_irr: carrierTotalIRR,
-                owner_total_usd: ownerTotalUSD,
-                owner_total_irr: ownerTotalIRR,
-                carrier_loading_commission: carrierLoadingCommission,
-                forwarding_loading_commission: forwardingLoadingCommission
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/update/").concat(id), {
+                driver_info: driverInfo,
+                car_info: carInfo,
+                tank_info: tankInfo
               });
             case 2:
               return _context5.abrupt("return", _context5.sent);
@@ -8044,20 +8034,20 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee5, this);
       }));
-      function storeCarIntroductionSecondStep(_x11, _x12, _x13, _x14, _x15, _x16, _x17, _x18, _x19, _x20, _x21, _x22) {
-        return _storeCarIntroductionSecondStep.apply(this, arguments);
+      function updateCarIntroductionFirstStep(_x9, _x10, _x11, _x12) {
+        return _updateCarIntroductionFirstStep.apply(this, arguments);
       }
-      return storeCarIntroductionSecondStep;
+      return updateCarIntroductionFirstStep;
     }()
   }, {
-    key: "updateCarIntroductionSecondStep",
+    key: "storeCarIntroductionSecondStep",
     value: function () {
-      var _updateCarIntroductionSecondStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(id, registryDate, remittanceName, loadingDate, loadingTonnage, carrierUnitUSD, carrierTotalUSD, carrierUnitIRR, carrierTotalIRR, ownerTotalUSD, ownerTotalIRR, carrierLoadingCommission, forwardingLoadingCommission) {
+      var _storeCarIntroductionSecondStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(registryDate, remittanceName, loadingDate, loadingTonnage, carrierUnitUSD, carrierTotalUSD, carrierUnitIRR, carrierTotalIRR, ownerTotalUSD, ownerTotalIRR, carrierLoadingCommission, forwardingLoadingCommission) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
               _context6.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/carintroduction/update/").concat(id), {
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/store"), {
                 registry_date: registryDate,
                 remittance_name: remittanceName,
                 loading_date: loadingDate,
@@ -8079,26 +8069,32 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee6, this);
       }));
-      function updateCarIntroductionSecondStep(_x23, _x24, _x25, _x26, _x27, _x28, _x29, _x30, _x31, _x32, _x33, _x34, _x35) {
-        return _updateCarIntroductionSecondStep.apply(this, arguments);
+      function storeCarIntroductionSecondStep(_x13, _x14, _x15, _x16, _x17, _x18, _x19, _x20, _x21, _x22, _x23, _x24) {
+        return _storeCarIntroductionSecondStep.apply(this, arguments);
       }
-      return updateCarIntroductionSecondStep;
+      return storeCarIntroductionSecondStep;
     }()
   }, {
-    key: "storeCarIntroductionThirdStep",
+    key: "updateCarIntroductionSecondStep",
     value: function () {
-      var _storeCarIntroductionThirdStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(unloadingDate, unloadingTonnage, difference, allowableDeficit, deficitOrSurplus, unloadingReceipt) {
+      var _updateCarIntroductionSecondStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(id, registryDate, remittanceName, loadingDate, loadingTonnage, carrierUnitUSD, carrierTotalUSD, carrierUnitIRR, carrierTotalIRR, ownerTotalUSD, ownerTotalIRR, carrierLoadingCommission, forwardingLoadingCommission) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
               _context7.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/carintroduction/store"), {
-                unloading_date: unloadingDate,
-                unloading_tonnage: unloadingTonnage,
-                difference: difference,
-                allowable_deficit: allowableDeficit,
-                deficit_or_surplus: deficitOrSurplus,
-                unloading_receipt: unloadingReceipt
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/update/").concat(id), {
+                registry_date: registryDate,
+                remittance_name: remittanceName,
+                loading_date: loadingDate,
+                loading_tonnage: loadingTonnage,
+                carrier_unit_usd: carrierUnitUSD,
+                carrier_total_usd: carrierTotalUSD,
+                carrier_unit_irr: carrierUnitIRR,
+                carrier_total_irr: carrierTotalIRR,
+                owner_total_usd: ownerTotalUSD,
+                owner_total_irr: ownerTotalIRR,
+                carrier_loading_commission: carrierLoadingCommission,
+                forwarding_loading_commission: forwardingLoadingCommission
               });
             case 2:
               return _context7.abrupt("return", _context7.sent);
@@ -8108,20 +8104,20 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee7, this);
       }));
-      function storeCarIntroductionThirdStep(_x36, _x37, _x38, _x39, _x40, _x41) {
-        return _storeCarIntroductionThirdStep.apply(this, arguments);
+      function updateCarIntroductionSecondStep(_x25, _x26, _x27, _x28, _x29, _x30, _x31, _x32, _x33, _x34, _x35, _x36, _x37) {
+        return _updateCarIntroductionSecondStep.apply(this, arguments);
       }
-      return storeCarIntroductionThirdStep;
+      return updateCarIntroductionSecondStep;
     }()
   }, {
-    key: "updateCarIntroductionThirdStep",
+    key: "storeCarIntroductionThirdStep",
     value: function () {
-      var _updateCarIntroductionThirdStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(id, unloadingDate, unloadingTonnage, difference, allowableDeficit, deficitOrSurplus, unloadingReceipt) {
+      var _storeCarIntroductionThirdStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(unloadingDate, unloadingTonnage, difference, allowableDeficit, deficitOrSurplus, unloadingReceipt) {
         return _regeneratorRuntime().wrap(function _callee8$(_context8) {
           while (1) switch (_context8.prev = _context8.next) {
             case 0:
               _context8.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/carintroduction/update/").concat(id), {
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/store"), {
                 unloading_date: unloadingDate,
                 unloading_tonnage: unloadingTonnage,
                 difference: difference,
@@ -8137,20 +8133,27 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee8, this);
       }));
-      function updateCarIntroductionThirdStep(_x42, _x43, _x44, _x45, _x46, _x47, _x48) {
-        return _updateCarIntroductionThirdStep.apply(this, arguments);
+      function storeCarIntroductionThirdStep(_x38, _x39, _x40, _x41, _x42, _x43) {
+        return _storeCarIntroductionThirdStep.apply(this, arguments);
       }
-      return updateCarIntroductionThirdStep;
+      return storeCarIntroductionThirdStep;
     }()
   }, {
-    key: "deleteCarIntroduction",
+    key: "updateCarIntroductionThirdStep",
     value: function () {
-      var _deleteCarIntroduction = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(id) {
+      var _updateCarIntroductionThirdStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(id, unloadingDate, unloadingTonnage, difference, allowableDeficit, deficitOrSurplus, unloadingReceipt) {
         return _regeneratorRuntime().wrap(function _callee9$(_context9) {
           while (1) switch (_context9.prev = _context9.next) {
             case 0:
               _context9.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/carintroduction/delete/").concat(id));
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/update/").concat(id), {
+                unloading_date: unloadingDate,
+                unloading_tonnage: unloadingTonnage,
+                difference: difference,
+                allowable_deficit: allowableDeficit,
+                deficit_or_surplus: deficitOrSurplus,
+                unloading_receipt: unloadingReceipt
+              });
             case 2:
               return _context9.abrupt("return", _context9.sent);
             case 3:
@@ -8159,7 +8162,29 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee9, this);
       }));
-      function deleteCarIntroduction(_x49) {
+      function updateCarIntroductionThirdStep(_x44, _x45, _x46, _x47, _x48, _x49, _x50) {
+        return _updateCarIntroductionThirdStep.apply(this, arguments);
+      }
+      return updateCarIntroductionThirdStep;
+    }()
+  }, {
+    key: "deleteCarIntroduction",
+    value: function () {
+      var _deleteCarIntroduction = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(id) {
+        return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+          while (1) switch (_context10.prev = _context10.next) {
+            case 0:
+              _context10.next = 2;
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/delete/").concat(id));
+            case 2:
+              return _context10.abrupt("return", _context10.sent);
+            case 3:
+            case "end":
+              return _context10.stop();
+          }
+        }, _callee10, this);
+      }));
+      function deleteCarIntroduction(_x51) {
         return _deleteCarIntroduction.apply(this, arguments);
       }
       return deleteCarIntroduction;
@@ -14864,21 +14889,20 @@ var Introductions = function Introductions() {
             return introduction.getAllIntroductions(pageSize, currentPage);
           case 3:
             result = _context.sent;
-            console.log(result);
             if (!(result === null)) {
-              _context.next = 9;
+              _context.next = 8;
               break;
             }
             dispatch((0,_state_message_messageAction__WEBPACK_IMPORTED_MODULE_7__.setMessageAction)(introduction.errorMessage, introduction.errorCode));
             setLoading(false);
             return _context.abrupt("return");
-          case 9:
+          case 8:
             setTimeout(function () {
               return setLoading(false);
             }, 200);
             setData(result.items);
             setCount(result.count);
-          case 12:
+          case 11:
           case "end":
             return _context.stop();
         }

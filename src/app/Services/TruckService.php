@@ -16,6 +16,11 @@ class TruckService
         return Model::where('name', 'LIKE', '%' . $name . '%')->where('family', 'LIKE', '%' . $family . '%')->orderBy('family', 'ASC')->orderBy('name', 'ASC')->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
+    public function getAll(): mixed
+    {
+        return Model::orderBy('family', 'ASC')->orderBy('name', 'ASC')->orderBy('id', 'ASC')->get();
+    }
+
     public function store(string $name, string $family, string $nationalNo, string $mobile, string $irNo, string $transitNo): mixed
     {
         $data = [

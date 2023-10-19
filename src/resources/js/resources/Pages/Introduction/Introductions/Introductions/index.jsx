@@ -36,7 +36,7 @@ const Introductions = () => {
             pageSize,
             currentPage
         );
-        console.log(result);
+        
         if (result === null) {
             dispatch(
                 setMessageAction(

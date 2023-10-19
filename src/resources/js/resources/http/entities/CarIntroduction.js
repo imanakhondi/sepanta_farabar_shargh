@@ -6,28 +6,37 @@ export class CarIntroduction extends Entity {
         super();
     }
 
-    async getCarIntroduction(id) {
+    async getCarIntroduction(id, _pi, _pn) {
         return await this.handlePost(
-            `${BASE_URL}/u/carintroduction/show/${id}`
+            `${BASE_URL}/u/car_introductions/show/${id}`,{
+                _pn,
+                _pi,
+            }
         );
     }
 
     async getCarsIntroduction(_pi, _pn) {
-        return await this.handlePost(`${BASE_URL}/u/carintroduction`, {
+        return await this.handlePost(`${BASE_URL}/u/car_introductions`, {
             _pn,
             _pi,
         });
     }
 
+    async getAddCarsIntroductionProps() {
+        return await this.handlePost(
+            `${BASE_URL}/a/car_introductions/add_props`
+        );
+    }
+
     async storeCarIntroductionFirstStep(driverInfo, carInfo, tankInfo) {
         return await this.handlePost(
-            `${BASE_URL}/a/carintroduction/store/${driverInfo}/${carInfo}/${tankInfo}`
+            `${BASE_URL}/a/car_introductions/store/${driverInfo}/${carInfo}/${tankInfo}`
         );
     }
 
     async updateCarIntroductionFirstStep(id, driverInfo, carInfo, tankInfo) {
         return await this.handlePost(
-            `${BASE_URL}/a/carintroduction/update/${id}`,
+            `${BASE_URL}/a/car_introductions/update/${id}`,
             {
                 driver_info: driverInfo,
                 car_info: carInfo,
@@ -50,7 +59,7 @@ export class CarIntroduction extends Entity {
         carrierLoadingCommission,
         forwardingLoadingCommission
     ) {
-        return await this.handlePost(`${BASE_URL}/a/carintroduction/store`, {
+        return await this.handlePost(`${BASE_URL}/a/car_introductions/store`, {
             registry_date: registryDate,
             remittance_name: remittanceName,
             loading_date: loadingDate,
@@ -82,7 +91,7 @@ export class CarIntroduction extends Entity {
         forwardingLoadingCommission
     ) {
         return await this.handlePost(
-            `${BASE_URL}/a/carintroduction/update/${id}`,
+            `${BASE_URL}/a/car_introductions/update/${id}`,
             {
                 registry_date: registryDate,
                 remittance_name: remittanceName,
@@ -108,7 +117,7 @@ export class CarIntroduction extends Entity {
         deficitOrSurplus,
         unloadingReceipt
     ) {
-        return await this.handlePost(`${BASE_URL}/a/carintroduction/store`, {
+        return await this.handlePost(`${BASE_URL}/a/car_introductions/store`, {
             unloading_date: unloadingDate,
             unloading_tonnage: unloadingTonnage,
             difference: difference,
@@ -128,7 +137,7 @@ export class CarIntroduction extends Entity {
         unloadingReceipt
     ) {
         return await this.handlePost(
-            `${BASE_URL}/a/carintroduction/update/${id}`,
+            `${BASE_URL}/a/car_introductions/update/${id}`,
             {
                 unloading_date: unloadingDate,
                 unloading_tonnage: unloadingTonnage,
@@ -142,7 +151,7 @@ export class CarIntroduction extends Entity {
 
     async deleteCarIntroduction(id) {
         return await this.handlePost(
-            `${BASE_URL}/a/carintroduction/delete/${id}`
+            `${BASE_URL}/a/car_introductions/delete/${id}`
         );
     }
 }

@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_bar_owners', function (Blueprint $table) {
+        Schema::create('tbl_car_introductions', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name');
-            $table->string('name');
-            $table->string('family');
-            $table->string('mobile');
+            $table->unsignedBigInteger('driver_id');
+            $table->unsignedBigInteger('truck_id');
+            $table->unsignedBigInteger('tank_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,7 +30,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tbl_bar_owners', function (Blueprint $table) {
+        Schema::table('tbl_car_introductions', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
     }
