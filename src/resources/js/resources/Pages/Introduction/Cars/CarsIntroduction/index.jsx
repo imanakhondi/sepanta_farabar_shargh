@@ -20,60 +20,63 @@ import FormikControl from "../../../../common/FormikControl";
 import { CarIntroduction } from "../../../../http/entities/CarIntroduction";
 import { toast } from "react-toastify";
 
-const dummyData = [
-    {
-        id: 1,
-        name: "یارمحمد گلی",
-        irNo: "21ع426-12",
-        tankNo: "123",
-        nationalNoDriver: "0741111111",
-        endPoint: "دوغارون",
-    },
-    {
-        id: 2,
-        name: "یارمحمد گلی",
-        irNo: "21ع426-12",
-        tankNo: "123",
-        nationalNoDriver: "0741111111",
-        endPoint: "دوغارون",
-    },
-    {
-        id: 3,
-        name: "یارمحمد گلی",
-        irNo: "21ع426-12",
-        tankNo: "123",
-        nationalNoDriver: "0741111111",
-        endPoint: "دوغارون",
-    },
-    {
-        id: 4,
-        name: "یارمحمد گلی",
-        irNo: "21ع426-12",
-        tankNo: "123",
-        nationalNoDriver: "0741111111",
-        endPoint: "دوغارون",
-    },
-];
-const driverInfoOptions = [
-    { id: 1, name: "آوا شریعت-0740004931-09356451716" },
-    { id: 2, name: "کسرا آخوندی-0744932536-09153297600" },
-    { id: 3, name: "دریا آخوندی-0742536985-09151264136" },
-    { id: 4, name: "ایلیا شریعت-0741523691-09151111213" },
-];
-const carInfoOptions = [
-    { id: 1, name: "21ع426-12 / 21u222-36" },
-    { id: 2, name: "73ع865-13" },
-    { id: 3, name: "99ع526-15" },
-    { id: 4, name: "32ع426-15" },
-];
-const tankInfoOptions = [
-    { id: 1, name: "123 - سپنتا" },
-    { id: 2, name: "956 - میشف" },
-    { id: 3, name: "241 - آراد" },
-    { id: 4, name: "756 - ساحل" },
-];
+// const dummyData = [
+//     {
+//         id: 1,
+//         name: "یارمحمد گلی",
+//         irNo: "21ع426-12",
+//         tankNo: "123",
+//         nationalNoDriver: "0741111111",
+//         endPoint: "دوغارون",
+//     },
+//     {
+//         id: 2,
+//         name: "یارمحمد گلی",
+//         irNo: "21ع426-12",
+//         tankNo: "123",
+//         nationalNoDriver: "0741111111",
+//         endPoint: "دوغارون",
+//     },
+//     {
+//         id: 3,
+//         name: "یارمحمد گلی",
+//         irNo: "21ع426-12",
+//         tankNo: "123",
+//         nationalNoDriver: "0741111111",
+//         endPoint: "دوغارون",
+//     },
+//     {
+//         id: 4,
+//         name: "یارمحمد گلی",
+//         irNo: "21ع426-12",
+//         tankNo: "123",
+//         nationalNoDriver: "0741111111",
+//         endPoint: "دوغارون",
+//     },
+// ];
+// const driverInfoOptions = [
+//     { id: 1, name: "آوا شریعت-0740004931-09356451716" },
+//     { id: 2, name: "کسرا آخوندی-0744932536-09153297600" },
+//     { id: 3, name: "دریا آخوندی-0742536985-09151264136" },
+//     { id: 4, name: "ایلیا شریعت-0741523691-09151111213" },
+// ];
+// const carInfoOptions = [
+//     { id: 1, name: "21ع426-12 / 21u222-36" },
+//     { id: 2, name: "73ع865-13" },
+//     { id: 3, name: "99ع526-15" },
+//     { id: 4, name: "32ع426-15" },
+// ];
+// const tankInfoOptions = [
+//     { id: 1, name: "123 - سپنتا" },
+//     { id: 2, name: "956 - میشف" },
+//     { id: 3, name: "241 - آراد" },
+//     { id: 4, name: "756 - ساحل" },
+// ];
 
 const initialValues = {
+    driverInfoOptions:[],
+    carInfoOptions:[],
+    tankInfoOptions:[],
     driverInfo: "",
     carInfo: "",
     tankInfo: "",
@@ -167,8 +170,32 @@ const CarsIntroduction = () => {
     };
 
     useEffect(() => {
+        dispatch(clearMessageAction());
+        const getAllProps = async () => {
+            setLoading(true);
+            const result = await carIntroduction.getAddCarsIntroductionProps();
+            if (result === null) {
+                dispatch(
+                    setMessageAction(
+                        carIntroduction.errorMessage,
+                        carIntroduction.errorCode
+                    )
+                );
+                setLoading(false);
+
+                return;
+            }
+            setTimeout(() => setLoading(false), 200);
+            formik.setFieldValue("driverInfoOptions", result.drivers);
+            formik.setFieldValue("carInfoOptions", result.trucks);
+            formik.setFieldValue("tankInfoOptions", result.tanks);
+        };
+        getAllProps();
+    }, []);
+
+    useEffect(() => {
         // getCarsIntroduction();
-        setData(dummyData);
+        // setData(dummyData);
     }, [currentPage]);
 
     const renderForm = () => {

@@ -13058,77 +13058,65 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+// const dummyData = [
+//     {
+//         id: 1,
+//         name: "یارمحمد گلی",
+//         irNo: "21ع426-12",
+//         tankNo: "123",
+//         nationalNoDriver: "0741111111",
+//         endPoint: "دوغارون",
+//     },
+//     {
+//         id: 2,
+//         name: "یارمحمد گلی",
+//         irNo: "21ع426-12",
+//         tankNo: "123",
+//         nationalNoDriver: "0741111111",
+//         endPoint: "دوغارون",
+//     },
+//     {
+//         id: 3,
+//         name: "یارمحمد گلی",
+//         irNo: "21ع426-12",
+//         tankNo: "123",
+//         nationalNoDriver: "0741111111",
+//         endPoint: "دوغارون",
+//     },
+//     {
+//         id: 4,
+//         name: "یارمحمد گلی",
+//         irNo: "21ع426-12",
+//         tankNo: "123",
+//         nationalNoDriver: "0741111111",
+//         endPoint: "دوغارون",
+//     },
+// ];
+// const driverInfoOptions = [
+//     { id: 1, name: "آوا شریعت-0740004931-09356451716" },
+//     { id: 2, name: "کسرا آخوندی-0744932536-09153297600" },
+//     { id: 3, name: "دریا آخوندی-0742536985-09151264136" },
+//     { id: 4, name: "ایلیا شریعت-0741523691-09151111213" },
+// ];
+// const carInfoOptions = [
+//     { id: 1, name: "21ع426-12 / 21u222-36" },
+//     { id: 2, name: "73ع865-13" },
+//     { id: 3, name: "99ع526-15" },
+//     { id: 4, name: "32ع426-15" },
+// ];
+// const tankInfoOptions = [
+//     { id: 1, name: "123 - سپنتا" },
+//     { id: 2, name: "956 - میشف" },
+//     { id: 3, name: "241 - آراد" },
+//     { id: 4, name: "756 - ساحل" },
+// ];
 
 
-var dummyData = [{
-  id: 1,
-  name: "یارمحمد گلی",
-  irNo: "21ع426-12",
-  tankNo: "123",
-  nationalNoDriver: "0741111111",
-  endPoint: "دوغارون"
-}, {
-  id: 2,
-  name: "یارمحمد گلی",
-  irNo: "21ع426-12",
-  tankNo: "123",
-  nationalNoDriver: "0741111111",
-  endPoint: "دوغارون"
-}, {
-  id: 3,
-  name: "یارمحمد گلی",
-  irNo: "21ع426-12",
-  tankNo: "123",
-  nationalNoDriver: "0741111111",
-  endPoint: "دوغارون"
-}, {
-  id: 4,
-  name: "یارمحمد گلی",
-  irNo: "21ع426-12",
-  tankNo: "123",
-  nationalNoDriver: "0741111111",
-  endPoint: "دوغارون"
-}];
-var driverInfoOptions = [{
-  id: 1,
-  name: "آوا شریعت-0740004931-09356451716"
-}, {
-  id: 2,
-  name: "کسرا آخوندی-0744932536-09153297600"
-}, {
-  id: 3,
-  name: "دریا آخوندی-0742536985-09151264136"
-}, {
-  id: 4,
-  name: "ایلیا شریعت-0741523691-09151111213"
-}];
-var carInfoOptions = [{
-  id: 1,
-  name: "21ع426-12 / 21u222-36"
-}, {
-  id: 2,
-  name: "73ع865-13"
-}, {
-  id: 3,
-  name: "99ع526-15"
-}, {
-  id: 4,
-  name: "32ع426-15"
-}];
-var tankInfoOptions = [{
-  id: 1,
-  name: "123 - سپنتا"
-}, {
-  id: 2,
-  name: "956 - میشف"
-}, {
-  id: 3,
-  name: "241 - آراد"
-}, {
-  id: 4,
-  name: "756 - ساحل"
-}];
+
 var initialValues = {
+  driverInfoOptions: [],
+  carInfoOptions: [],
+  tankInfoOptions: [],
   driverInfo: "",
   carInfo: "",
   tankInfo: ""
@@ -13263,8 +13251,47 @@ var CarsIntroduction = function CarsIntroduction() {
     };
   }();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_state_message_messageAction__WEBPACK_IMPORTED_MODULE_10__.clearMessageAction)());
+    var getAllProps = /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var result;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              setLoading(true);
+              _context3.next = 3;
+              return carIntroduction.getAddCarsIntroductionProps();
+            case 3:
+              result = _context3.sent;
+              if (!(result === null)) {
+                _context3.next = 8;
+                break;
+              }
+              dispatch((0,_state_message_messageAction__WEBPACK_IMPORTED_MODULE_10__.setMessageAction)(carIntroduction.errorMessage, carIntroduction.errorCode));
+              setLoading(false);
+              return _context3.abrupt("return");
+            case 8:
+              setTimeout(function () {
+                return setLoading(false);
+              }, 200);
+              formik.setFieldValue("driverInfoOptions", result.drivers);
+              formik.setFieldValue("carInfoOptions", result.trucks);
+              formik.setFieldValue("tankInfoOptions", result.tanks);
+            case 12:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3);
+      }));
+      return function getAllProps() {
+        return _ref3.apply(this, arguments);
+      };
+    }();
+    getAllProps();
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     // getCarsIntroduction();
-    setData(dummyData);
+    // setData(dummyData);
   }, [currentPage]);
   var renderForm = function renderForm() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_common_FormikForm__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -13493,11 +13520,11 @@ var CarsIntroduction = function CarsIntroduction() {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CarsIntroduction);
-var IsInput = function IsInput(_ref3) {
-  var name = _ref3.name,
-    label = _ref3.label,
-    isShow = _ref3.isShow,
-    setIsShow = _ref3.setIsShow;
+var IsInput = function IsInput(_ref4) {
+  var name = _ref4.name,
+    label = _ref4.label,
+    isShow = _ref4.isShow,
+    setIsShow = _ref4.setIsShow;
   var handleChange = function handleChange(e) {
     setIsShow(_objectSpread(_objectSpread({}, isShow), {}, _defineProperty({}, e.target.name, e.target.type === "checkbox" ? e.target.checked : e.target.value)));
   };
