@@ -66,7 +66,6 @@ const AddIntroduction = () => {
         getAllProps();
     }, []);
 
-
     const onSubmit = async (values) => {
         const {
             introductionNo,
@@ -109,7 +108,6 @@ const AddIntroduction = () => {
         validateOnMount: true,
     });
 
-   
     return (
         <FormikForm
             onSubmit={formik.handleSubmit}

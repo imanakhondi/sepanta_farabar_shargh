@@ -26,13 +26,12 @@ class CarIntroductionService
         return Model::create($data) ?? null;
     }
 
-    public function update(Model $model, int $tankNo, string $psiDate, string $testValidityDate, string $capotageDate): bool
+    public function update(Model $model, int $driverId, int $truckId, int $tankId): bool
     {
         $data = [
-            'tank_no' => $tankNo,
-            'psi_date' => $psiDate,
-            'test_validity_date' => $testValidityDate,
-            'capotage_date' => $capotageDate,
+            'driver_id' => $driverId,
+            'truck_id' => $truckId,
+            'tank_id' => $tankId,
         ];
         return $model->update($data);
     }

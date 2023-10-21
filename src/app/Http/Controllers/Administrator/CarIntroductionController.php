@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Tank\UpdateTankRequest;
 use App\Http\Resources\Driver\DriverResource;
 use App\Http\Resources\Tank\TankResource;
 use App\Http\Resources\Truck\TruckResource;
 use App\Models\Driver;
-use App\Models\Tank as Model;
+use App\Models\CarIntroduction as Model;
 use App\Models\Tank;
 use App\Models\Truck;
 use App\Packages\JsonResponse;
@@ -41,8 +40,8 @@ class CarIntroductionController extends Controller
         return $this->onStore($this->service->store($driver->id, $truck->id, $tank->id));
     }
 
-    public function update(Model $model, UpdateTankRequest $request): HttpJsonResponse
+    public function update(Model $model, Driver $driver, Truck $truck, Tank $tank): HttpJsonResponse
     {
-        return $this->onUpdate($this->service->update($model, $request->tank_no, $request->psi_date, $request->test_validity_date, $request->capotage_date));
+        return $this->onUpdate($this->service->update($model, $driver->id, $truck->id, $tank->id));
     }
 }

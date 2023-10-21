@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\BarOwnerController;
+use App\Http\Controllers\User\CarIntroductionController;
 use App\Http\Controllers\User\CityController;
 use App\Http\Controllers\User\CompanyController;
 use App\Http\Controllers\User\DashboardController;
@@ -53,4 +54,7 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
 
     Route::post('repairs/{tank}', [RepairController::class, 'index']);
     Route::post('repairs/show/{model}', [RepairController::class, 'show']);
+
+    Route::post('car_introducion/{company}', [CarIntroductionController::class, 'index']);
+    Route::post('car_introducion/show/{model}', [CarIntroductionController::class, 'show']);
 });
