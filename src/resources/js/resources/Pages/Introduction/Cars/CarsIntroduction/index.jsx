@@ -74,9 +74,9 @@ import { toast } from "react-toastify";
 // ];
 
 const initialValues = {
-    driverInfoOptions:[],
-    carInfoOptions:[],
-    tankInfoOptions:[],
+    driverInfoOptions: [],
+    carInfoOptions: [],
+    tankInfoOptions: [],
     driverInfo: "",
     carInfo: "",
     tankInfo: "",
