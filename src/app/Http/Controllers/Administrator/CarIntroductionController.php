@@ -8,6 +8,7 @@ use App\Http\Resources\Tank\TankResource;
 use App\Http\Resources\Truck\TruckResource;
 use App\Models\Driver;
 use App\Models\CarIntroduction as Model;
+use App\Models\Introduction;
 use App\Models\Tank;
 use App\Models\Truck;
 use App\Packages\JsonResponse;
@@ -35,9 +36,9 @@ class CarIntroductionController extends Controller
         return $this->onItems(['drivers' => $drivers, 'trucks' => $trucks, 'tanks' => $tanks]);
     }
 
-    public function store(Driver $driver, Truck $truck, Tank $tank): HttpJsonResponse
+    public function store(Introduction $introduction, Driver $driver, Truck $truck, Tank $tank): HttpJsonResponse
     {
-        return $this->onStore($this->service->store($driver->id, $truck->id, $tank->id));
+        return $this->onStore($this->service->store($introduction->id, $driver->id, $truck->id, $tank->id));
     }
 
     public function update(Model $model, Driver $driver, Truck $truck, Tank $tank): HttpJsonResponse

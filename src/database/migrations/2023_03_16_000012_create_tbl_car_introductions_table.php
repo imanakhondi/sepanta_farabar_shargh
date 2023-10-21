@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('tbl_car_introductions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('introduction_id');
             $table->unsignedBigInteger('driver_id');
             $table->unsignedBigInteger('truck_id');
             $table->unsignedBigInteger('tank_id');

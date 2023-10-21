@@ -11,14 +11,15 @@ class CarIntroductionService
         return Model::where('id', $id)->first();
     }
 
-    public function getPaginate(int $companyId, int $page, int $pageItems): mixed
+    public function getPaginate(int $introductionId, int $page, int $pageItems): mixed
     {
-        return Model::where('company_id', $companyId)->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
+        return Model::where('introduction_id', $introductionId)->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
-    public function store(int $driverId, int $truckId, int $tankId): mixed
+    public function store(int $introductionId, int $driverId, int $truckId, int $tankId): mixed
     {
         $data = [
+            'introduction_id' => $driverId,
             'driver_id' => $driverId,
             'truck_id' => $truckId,
             'tank_id' => $tankId,
@@ -36,8 +37,8 @@ class CarIntroductionService
         return $model->update($data);
     }
 
-    public function count(int $companyId): int
+    public function count(int $introductionId): int
     {
-        return Model::where('company_id', $companyId)->count();
+        return Model::where('introduction_id', $introductionId)->count();
     }
 }

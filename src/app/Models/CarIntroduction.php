@@ -12,6 +12,7 @@ class CarIntroduction extends Model
 
     protected $table = 'tbl_car_introductions';
     protected $fillable = [
+        'introduction_id',
         'driver_id',
         'truck_id',
         'tank_id',
