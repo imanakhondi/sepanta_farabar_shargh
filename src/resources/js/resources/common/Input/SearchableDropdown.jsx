@@ -19,6 +19,7 @@ const SearchableDropdown = ({
             ? strings[`${name}Placeholder`]
             : ""
     );
+    
     useEffect(() => {
         if (!strings) {
             setPlaceholder(
@@ -61,8 +62,10 @@ const SearchableDropdown = ({
             selectOptions.length &&
             selectOptions.filter(
                 (option) =>
+                    typeof option[label] === "string" ?
                     option[label].toLowerCase().indexOf(query.toLowerCase()) >
-                    -1
+                        -1 : option[label] >
+                        -1
             )
         );
     };
@@ -101,7 +104,7 @@ const SearchableDropdown = ({
                     isOpen ? "block" : "hidden"
                 }`}
             >
-                {selectOptions.length !==0 &&
+                {selectOptions.length !== 0 &&
                     filter(selectOptions).map((option) => {
                         return (
                             <div

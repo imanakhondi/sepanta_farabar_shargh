@@ -212,21 +212,22 @@ const CarsIntroduction = () => {
                     name="driverInfo"
                     formik={formik}
                     pageString={addCarIntroductionPage}
-                    selectOptions={driverInfoOptions}
+                    selectOptions={formik.values.driverInfoOptions}
                 />
                 <FormikControl
                     control="searchableDropdown"
                     name="carInfo"
                     formik={formik}
                     pageString={addCarIntroductionPage}
-                    selectOptions={carInfoOptions}
+                    selectOptions={formik.values.carInfoOptions}
                 />
                 <FormikControl
                     control="searchableDropdown"
                     name="tankInfo"
                     formik={formik}
                     pageString={addCarIntroductionPage}
-                    selectOptions={tankInfoOptions}
+                    selectOptions={formik.values.tankInfoOptions}
+                    label="tankNo"
                 />
             </FormikForm>
         );
