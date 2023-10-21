@@ -10,6 +10,7 @@ class CarIntroductionResource extends JsonResource
     {
         return [
             'id' => intval($this->id),
+            'introductionId' => intval($this->introduction_id),
             'driverId' => intval($this->driver_id),
             'truckId' => intval($this->truck_id),
             'tankId' => intval($this->tank_id),

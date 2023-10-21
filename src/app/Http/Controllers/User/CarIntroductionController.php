@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CarIntroduction\IndexCarIntroductionsRequest;
 use App\Models\CarIntroduction as Model;
-use App\Models\Company;
+use App\Models\Introduction;
 use App\Packages\JsonResponse;
 use App\Services\CarIntroductionService;
 use Illuminate\Http\JsonResponse as HttpJsonResponse;
@@ -17,9 +17,9 @@ class CarIntroductionController extends Controller
         parent::__construct($response);
     }
 
-    public function index(IndexCarIntroductionsRequest $request, Company $company): HttpJsonResponse
+    public function index(IndexCarIntroductionsRequest $request, Introduction $introduction): HttpJsonResponse
     {
-        return $this->onItems($this->service->getPaginate($company->id, $request->_pn, $request->_pi), $this->service->count($company->id));
+        return $this->onItems($this->service->getPaginate($introduction->id, $request->_pn, $request->_pi), $this->service->count($introduction->id));
     }
 
     public function show(Model $model): HttpJsonResponse
