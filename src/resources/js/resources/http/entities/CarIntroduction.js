@@ -8,18 +8,22 @@ export class CarIntroduction extends Entity {
 
     async getCarIntroduction(id, _pi, _pn) {
         return await this.handlePost(
-            `${BASE_URL}/u/car_introductions/show/${id}`,{
+            `${BASE_URL}/u/car_introductions/show/${id}`,
+            {
                 _pn,
                 _pi,
             }
         );
     }
 
-    async getCarsIntroduction(_pi, _pn) {
-        return await this.handlePost(`${BASE_URL}/u/car_introductions`, {
-            _pn,
-            _pi,
-        });
+    async getCarsIntroduction(companyId, _pi, _pn) {
+        return await this.handlePost(
+            `${BASE_URL}/u/car_introductions/${companyId}`,
+            {
+                _pn,
+                _pi,
+            }
+        );
     }
 
     async getAddCarsIntroductionProps() {
@@ -36,12 +40,7 @@ export class CarIntroduction extends Entity {
 
     async updateCarIntroductionFirstStep(id, driverInfo, carInfo, tankInfo) {
         return await this.handlePost(
-            `${BASE_URL}/a/car_introductions/update/${id}`,
-            {
-                driver_info: driverInfo,
-                car_info: carInfo,
-                tank_info: tankInfo,
-            }
+            `${BASE_URL}/a/car_introductions/update/${id}/${driverInfo}/${carInfo}/${tankInfo}`
         );
     }
 

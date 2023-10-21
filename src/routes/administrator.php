@@ -54,4 +54,5 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('car_introductions/add_props', [CarIntroductionController::class, 'getAddCarIntroductionProps']);
     Route::post('car_introductions/store/{driver}/{truck}/{tank}', [CarIntroductionController::class, 'store']);
+    Route::post('car_introductions/update/{model}/{driver}/{truck}/{tank}', [CarIntroductionController::class, 'update']);
 });
