@@ -19,7 +19,7 @@ class CarIntroductionService
     public function store(int $introductionId, int $driverId, int $truckId, int $tankId): mixed
     {
         $data = [
-            'introduction_id' => $driverId,
+            'introduction_id' => $introductionId,
             'driver_id' => $driverId,
             'truck_id' => $truckId,
             'tank_id' => $tankId,

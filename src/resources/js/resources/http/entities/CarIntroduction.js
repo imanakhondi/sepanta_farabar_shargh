@@ -32,9 +32,9 @@ export class CarIntroduction extends Entity {
         );
     }
 
-    async storeCarIntroductionFirstStep(driverInfo, carInfo, tankInfo) {
+    async storeCarIntroductionFirstStep(introductionId,driverInfo, carInfo, tankInfo) {
         return await this.handlePost(
-            `${BASE_URL}/a/car_introductions/store/${driverInfo}/${carInfo}/${tankInfo}`
+            `${BASE_URL}/a/car_introductions/store/${introductionId}/${driverInfo}/${carInfo}/${tankInfo}`
         );
     }
 

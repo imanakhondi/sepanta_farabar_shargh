@@ -19,7 +19,7 @@ const SearchableDropdown = ({
             ? strings[`${name}Placeholder`]
             : ""
     );
-    
+
     useEffect(() => {
         if (!strings) {
             setPlaceholder(
@@ -35,7 +35,7 @@ const SearchableDropdown = ({
         return () => document.removeEventListener("click", toggle);
     }, []);
     const handleChange = (val) => {
-        setValue(val.companyName || val.name);
+        setValue(val.companyName || val.tankNo || val.name);
         formik.setFieldValue(`${name}`, val.id);
     };
 
@@ -60,12 +60,11 @@ const SearchableDropdown = ({
     const filter = (selectOptions) => {
         return (
             selectOptions.length &&
-            selectOptions.filter(
-                (option) =>
-                    typeof option[label] === "string" ?
-                    option[label].toLowerCase().indexOf(query.toLowerCase()) >
-                        -1 : option[label] >
-                        -1
+            selectOptions.filter((option) =>
+                typeof option[label] === "string"
+                    ? option[label].toLowerCase().indexOf(query.toLowerCase()) >
+                      -1
+                    : option[label] > -1
             )
         );
     };

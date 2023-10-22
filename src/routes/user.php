@@ -55,6 +55,6 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
     Route::post('repairs/{tank}', [RepairController::class, 'index']);
     Route::post('repairs/show/{model}', [RepairController::class, 'show']);
 
-    Route::post('car_introducion/{introduction}', [CarIntroductionController::class, 'index']);
-    Route::post('car_introducion/show/{model}', [CarIntroductionController::class, 'show']);
+    Route::post('car_introductions/{introduction}', [CarIntroductionController::class, 'index']);
+    Route::post('car_introductions/show/{model}', [CarIntroductionController::class, 'show']);
 });
