@@ -11,7 +11,7 @@ export class Introduction extends Entity {
     }
 
     async getIntroduction(id) {
-        return await this.handlePost(`${BASE_URL}/u/introduction/show/${id}`);
+        return await this.handlePost(`${BASE_URL}/u/introductions/show/${id}`);
     }
 
     async getAllIntroductions(_pi, _pn) {

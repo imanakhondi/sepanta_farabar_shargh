@@ -33,4 +33,9 @@ class IntroductionController extends Controller
         $cities = CityResource::collection($cityService->getAll());
         return $this->onItems(['barOwners' => $barOwners, 'cities' => $cities]);
     }
+
+    public function show(Model $model): HttpJsonResponse
+    {
+        return $this->onItem($this->service->get($model->id));
+    }
 }
