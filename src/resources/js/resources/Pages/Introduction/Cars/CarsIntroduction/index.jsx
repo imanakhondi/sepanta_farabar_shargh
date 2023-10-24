@@ -105,7 +105,9 @@ const CarsIntroduction = () => {
 
         const getAllProps = async () => {
             setLoading(true);
-            const result = await carIntroduction.getAddCarsIntroductionProps();
+            const result = await carIntroduction.getAddCarsIntroductionProps(
+                introductionId
+            );
             if (result === null) {
                 dispatch(
                     setMessageAction(

@@ -7972,12 +7972,12 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
   }, {
     key: "getAddCarsIntroductionProps",
     value: function () {
-      var _getAddCarsIntroductionProps = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      var _getAddCarsIntroductionProps = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(introductionId) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/add_props"));
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/add_props/").concat(introductionId));
             case 2:
               return _context3.abrupt("return", _context3.sent);
             case 3:
@@ -7986,7 +7986,7 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee3, this);
       }));
-      function getAddCarsIntroductionProps() {
+      function getAddCarsIntroductionProps(_x7) {
         return _getAddCarsIntroductionProps.apply(this, arguments);
       }
       return getAddCarsIntroductionProps;
@@ -8008,7 +8008,7 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee4, this);
       }));
-      function storeCarIntroductionFirstStep(_x7, _x8, _x9, _x10) {
+      function storeCarIntroductionFirstStep(_x8, _x9, _x10, _x11) {
         return _storeCarIntroductionFirstStep.apply(this, arguments);
       }
       return storeCarIntroductionFirstStep;
@@ -8030,7 +8030,7 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee5, this);
       }));
-      function updateCarIntroductionFirstStep(_x11, _x12, _x13, _x14) {
+      function updateCarIntroductionFirstStep(_x12, _x13, _x14, _x15) {
         return _updateCarIntroductionFirstStep.apply(this, arguments);
       }
       return updateCarIntroductionFirstStep;
@@ -8065,7 +8065,7 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee6, this);
       }));
-      function storeCarIntroductionSecondStep(_x15, _x16, _x17, _x18, _x19, _x20, _x21, _x22, _x23, _x24, _x25, _x26, _x27) {
+      function storeCarIntroductionSecondStep(_x16, _x17, _x18, _x19, _x20, _x21, _x22, _x23, _x24, _x25, _x26, _x27, _x28) {
         return _storeCarIntroductionSecondStep.apply(this, arguments);
       }
       return storeCarIntroductionSecondStep;
@@ -8100,7 +8100,7 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee7, this);
       }));
-      function updateCarIntroductionSecondStep(_x28, _x29, _x30, _x31, _x32, _x33, _x34, _x35, _x36, _x37, _x38, _x39, _x40) {
+      function updateCarIntroductionSecondStep(_x29, _x30, _x31, _x32, _x33, _x34, _x35, _x36, _x37, _x38, _x39, _x40, _x41) {
         return _updateCarIntroductionSecondStep.apply(this, arguments);
       }
       return updateCarIntroductionSecondStep;
@@ -8129,7 +8129,7 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee8, this);
       }));
-      function storeCarIntroductionThirdStep(_x41, _x42, _x43, _x44, _x45, _x46) {
+      function storeCarIntroductionThirdStep(_x42, _x43, _x44, _x45, _x46, _x47) {
         return _storeCarIntroductionThirdStep.apply(this, arguments);
       }
       return storeCarIntroductionThirdStep;
@@ -8158,7 +8158,7 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee9, this);
       }));
-      function updateCarIntroductionThirdStep(_x47, _x48, _x49, _x50, _x51, _x52, _x53) {
+      function updateCarIntroductionThirdStep(_x48, _x49, _x50, _x51, _x52, _x53, _x54) {
         return _updateCarIntroductionThirdStep.apply(this, arguments);
       }
       return updateCarIntroductionThirdStep;
@@ -8180,7 +8180,7 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee10, this);
       }));
-      function deleteCarIntroduction(_x54) {
+      function deleteCarIntroduction(_x55) {
         return _deleteCarIntroduction.apply(this, arguments);
       }
       return deleteCarIntroduction;
@@ -13174,7 +13174,7 @@ var CarsIntroduction = function CarsIntroduction() {
             case 0:
               setLoading(true);
               _context2.next = 3;
-              return carIntroduction.getAddCarsIntroductionProps();
+              return carIntroduction.getAddCarsIntroductionProps(introductionId);
             case 3:
               result = _context2.sent;
               if (!(result === null)) {

@@ -52,7 +52,7 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
     Route::post('repairs/store/{tank}', [RepairController::class, 'store']);
     Route::post('repairs/update/{model}', [RepairController::class, 'update']);
 
-    Route::post('car_introductions/add_props', [CarIntroductionController::class, 'getAddCarIntroductionProps']);
+    Route::post('car_introductions/add_props/{introduction}', [CarIntroductionController::class, 'getAddCarIntroductionProps']);
     Route::post('car_introductions/store/{introduction}/{driver}/{truck}/{tank}', [CarIntroductionController::class, 'store']);
     Route::post('car_introductions/update/{model}/{driver}/{truck}/{tank}', [CarIntroductionController::class, 'update']);
     Route::post('car_introductions/update_2/{model}', [CarIntroductionController::class, 'updateStep2']);
