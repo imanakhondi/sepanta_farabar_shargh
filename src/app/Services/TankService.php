@@ -18,7 +18,7 @@ class TankService
 
     public function getAll(): mixed
     {
-        return Model::orderBy('id', 'ASC')->get();
+        return Model::join('tbl_companies', 'company_id', 'tbl_companies.id')->select('tbl_tanks.*', 'tbl_companies.name AS company_name')->orderBy('tbl_tanks.id', 'ASC')->get();
     }
 
     public function store(int $companyId, int $tankNo, string $psiDate, string $testValidityDate, string $capotageDate): mixed

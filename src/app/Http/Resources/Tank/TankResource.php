@@ -14,6 +14,8 @@ class TankResource extends JsonResource
             'psiDate' => $this->psi_date ?? '',
             'testValidityDate' => $this->test_validity_date ?? '',
             'capotageDate' => $this->capotage_date ?? '',
+            'companyId' => intval($this->company_id),
+            'companyName' => $this->company_name ?? '',
         ];
     }
 }

@@ -21,7 +21,6 @@ import { CarIntroduction } from "../../../../http/entities/CarIntroduction";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 
-
 const initialValues = {
     driverInfoOptions: [],
     carInfoOptions: [],
@@ -69,7 +68,7 @@ const CarsIntroduction = () => {
     useEffect(() => {
         dispatch(clearMessageAction());
     }, []);
-  
+
     const onSubmit = async (values) => {
         const { driverInfo, carInfo, tankInfo } = values;
         setLoading(true);
@@ -107,7 +106,7 @@ const CarsIntroduction = () => {
             pageSize,
             currentPage
         );
-       
+
         if (result === null) {
             dispatch(
                 setMessageAction(
