@@ -98,6 +98,7 @@ const StepTwo = ({
         } = data;
         setLoading(true);
         const result = await carIntroduction.storeCarIntroductionSecondStep(
+            introductionId,
             registryDate,
             remittanceName,
             loadingDate,

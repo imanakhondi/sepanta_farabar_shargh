@@ -45,6 +45,7 @@ export class CarIntroduction extends Entity {
     }
 
     async storeCarIntroductionSecondStep(
+        id,
         registryDate,
         remittanceName,
         loadingDate,
@@ -58,7 +59,7 @@ export class CarIntroduction extends Entity {
         carrierLoadingCommission,
         forwardingLoadingCommission
     ) {
-        return await this.handlePost(`${BASE_URL}/a/car_introductions/store`, {
+        return await this.handlePost(`${BASE_URL}/a/car_introductions/update_2/${id}`, {
             registry_date: registryDate,
             remittance_name: remittanceName,
             loading_date: loadingDate,

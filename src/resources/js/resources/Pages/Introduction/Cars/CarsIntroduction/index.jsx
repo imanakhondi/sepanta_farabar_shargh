@@ -99,32 +99,10 @@ const CarsIntroduction = () => {
         validationSchema,
         validateOnMount: true,
     });
-    const getCarsIntroduction = async () => {
-        setLoading(true);
-        const result = await carIntroduction.getCarsIntroduction(
-            introductionId,
-            pageSize,
-            currentPage
-        );
-
-        if (result === null) {
-            dispatch(
-                setMessageAction(
-                    carIntroduction.errorMessage,
-                    carIntroduction.errorCode
-                )
-            );
-            setLoading(false);
-
-            return;
-        }
-        setTimeout(() => setLoading(false), 200);
-        setData(result.items);
-        setCount(result.count);
-    };
 
     useEffect(() => {
         dispatch(clearMessageAction());
+
         const getAllProps = async () => {
             setLoading(true);
             const result = await carIntroduction.getAddCarsIntroductionProps();
@@ -140,14 +118,55 @@ const CarsIntroduction = () => {
                 return;
             }
             setTimeout(() => setLoading(false), 200);
-            formik.setFieldValue("driverInfoOptions", result.drivers);
-            formik.setFieldValue("carInfoOptions", result.trucks);
-            formik.setFieldValue("tankInfoOptions", result.tanks);
+
+            const drivers = result.drivers?.map((driver) => ({
+                id: driver.id,
+                name: `${driver.name} - ${driver.family} - ${driver.nationalNo} - ${driver.mobile}`,
+            }));
+
+            const trucks = result.trucks?.map((truck) => ({
+                id: truck.id,
+                name: `${truck.irNo} - ${truck.transitNo} `,
+            }));
+
+            const tanks = result.tanks?.map((tank) => ({
+                id: tank.id,
+                name: `${tank.tankNo} `,
+            }));
+
+            formik.setFieldValue("driverInfoOptions", drivers);
+            formik.setFieldValue("carInfoOptions", trucks);
+            formik.setFieldValue("tankInfoOptions", tanks);
         };
         getAllProps();
     }, []);
 
     useEffect(() => {
+        const getCarsIntroduction = async () => {
+            setLoading(true);
+            const result = await carIntroduction.getCarsIntroduction(
+                introductionId,
+                pageSize,
+                currentPage
+            );
+
+            console.log(result);
+
+            if (result === null) {
+                dispatch(
+                    setMessageAction(
+                        carIntroduction.errorMessage,
+                        carIntroduction.errorCode
+                    )
+                );
+                setLoading(false);
+
+                return;
+            }
+            setTimeout(() => setLoading(false), 200);
+            setData(result.items);
+            setCount(result.count);
+        };
         getCarsIntroduction();
     }, [currentPage]);
 
@@ -180,7 +199,6 @@ const CarsIntroduction = () => {
                     formik={formik}
                     pageString={addCarIntroductionPage}
                     selectOptions={formik.values.tankInfoOptions}
-                    label="tankNo"
                 />
             </FormikForm>
         );
@@ -267,7 +285,7 @@ const CarsIntroduction = () => {
                 <tr key={item.id} id={item.id} className="">
                     {isShow.nameDriver && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
-                            {item.name}
+                            {item.driverName} {item.driverFamily}
                         </td>
                     )}
                     {isShow.nameCar && (
@@ -277,7 +295,7 @@ const CarsIntroduction = () => {
                     )}
                     {isShow.irNo && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.irNo}
+                            {item.irlNo}
                         </td>
                     )}
                     {isShow.transitNo && (
@@ -292,7 +310,7 @@ const CarsIntroduction = () => {
                     )}
                     {isShow.nationalNoDriver && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.nationalNoDriver}
+                            {item.driverNationalNo}
                         </td>
                     )}
                     {isShow.nationalNoCar && (
