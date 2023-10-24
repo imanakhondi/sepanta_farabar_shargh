@@ -26,13 +26,18 @@ export class CarIntroduction extends Entity {
         );
     }
 
-    async getAddCarsIntroductionProps() {
+    async getAddCarsIntroductionProps(introductionId) {
         return await this.handlePost(
-            `${BASE_URL}/a/car_introductions/add_props`
+            `${BASE_URL}/a/car_introductions/add_props/${introductionId}`
         );
     }
 
-    async storeCarIntroductionFirstStep(introductionId,driverInfo, carInfo, tankInfo) {
+    async storeCarIntroductionFirstStep(
+        introductionId,
+        driverInfo,
+        carInfo,
+        tankInfo
+    ) {
         return await this.handlePost(
             `${BASE_URL}/a/car_introductions/store/${introductionId}/${driverInfo}/${carInfo}/${tankInfo}`
         );
@@ -59,20 +64,23 @@ export class CarIntroduction extends Entity {
         carrierLoadingCommission,
         forwardingLoadingCommission
     ) {
-        return await this.handlePost(`${BASE_URL}/a/car_introductions/update_2/${id}`, {
-            registry_date: registryDate,
-            remittance_name: remittanceName,
-            loading_date: loadingDate,
-            loading_tonnage: loadingTonnage,
-            carrier_unit_usd: carrierUnitUSD,
-            carrier_total_usd: carrierTotalUSD,
-            carrier_unit_irr: carrierUnitIRR,
-            carrier_total_irr: carrierTotalIRR,
-            owner_total_usd: ownerTotalUSD,
-            owner_total_irr: ownerTotalIRR,
-            carrier_loading_commission: carrierLoadingCommission,
-            forwarding_loading_commission: forwardingLoadingCommission,
-        });
+        return await this.handlePost(
+            `${BASE_URL}/a/car_introductions/update_2/${id}`,
+            {
+                registry_date: registryDate,
+                remittance_name: remittanceName,
+                loading_date: loadingDate,
+                loading_tonnage: loadingTonnage,
+                carrier_unit_usd: carrierUnitUSD,
+                carrier_total_usd: carrierTotalUSD,
+                carrier_unit_irr: carrierUnitIRR,
+                carrier_total_irr: carrierTotalIRR,
+                owner_total_usd: ownerTotalUSD,
+                owner_total_irr: ownerTotalIRR,
+                carrier_loading_commission: carrierLoadingCommission,
+                forwarding_loading_commission: forwardingLoadingCommission,
+            }
+        );
     }
 
     async updateCarIntroductionSecondStep(

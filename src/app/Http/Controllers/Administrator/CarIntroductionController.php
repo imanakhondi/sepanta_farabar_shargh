@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CarIntroduction\UpdateCarIntroductionStep2Request;
 use App\Http\Requests\CarIntroduction\UpdateCarIntroductionStep3Request;
 use App\Http\Resources\Driver\DriverResource;
+use App\Http\Resources\Introduction\IntroductionResource;
 use App\Http\Resources\Tank\TankResource;
 use App\Http\Resources\Truck\TruckResource;
 use App\Models\Driver;
@@ -27,15 +28,16 @@ class CarIntroductionController extends Controller
         parent::__construct($response);
     }
 
-    public function getAddCarIntroductionProps(): HttpJsonResponse
+    public function getAddCarIntroductionProps(Introduction $introduction): HttpJsonResponse
     {
         $driverService = new DriverService();
         $truckService = new TruckService();
         $tankService = new TankService();
+        $introduction = new IntroductionResource($introduction);
         $drivers = DriverResource::collection($driverService->getAll());
         $trucks = TruckResource::collection($truckService->getAll());
         $tanks = TankResource::collection($tankService->getAll());
-        return $this->onItems(['drivers' => $drivers, 'trucks' => $trucks, 'tanks' => $tanks]);
+        return $this->onItems(['introduction' => $introduction, 'drivers' => $drivers, 'trucks' => $trucks, 'tanks' => $tanks]);
     }
 
     public function store(Introduction $introduction, Driver $driver, Truck $truck, Tank $tank): HttpJsonResponse
