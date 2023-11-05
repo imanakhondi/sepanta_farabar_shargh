@@ -35,7 +35,7 @@ return new class extends Migration
             $table->unsignedBigInteger('unloading_tonnage')->default(null);
             $table->unsignedBigInteger('difference')->default(null);
             $table->unsignedBigInteger('allowable_deficit')->default(null);
-            $table->unsignedBigInteger('deficit_or_surplus')->default(null);
+            $table->string('deficit_or_surplus')->default(null);
             $table->string('unloading_receipt')->default(null);
             $table->timestamps();
             $table->softDeletes();

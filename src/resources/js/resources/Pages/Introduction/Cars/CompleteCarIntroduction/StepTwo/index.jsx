@@ -82,7 +82,7 @@ const StepTwo = ({
             const result = await carIntroduction.getAddCarsIntroductionProps(
                 introductionId
             );
-           
+
             if (result === null) {
                 dispatch(
                     setMessageAction(
@@ -98,7 +98,7 @@ const StepTwo = ({
 
             formik.setFieldValue(
                 "carrierRateUSD",
-                result.introduction.ownerUnitIRR
+                result.introduction.ownerTotalIRR
             );
             formik.setFieldValue(
                 "carrierRateIRR",
@@ -174,7 +174,7 @@ const StepTwo = ({
             forwardingLoadingCommission
         );
 
-console.log("result",result);
+        console.log("result", result);
 
         if (result === null) {
             dispatch(
@@ -250,6 +250,7 @@ console.log("result",result);
     });
 
     useEffect(() => {
+        console.log(formik.values.carrierRateUSD);
         const carrierTotalUSD =
             formik.values.loadingTonnage * formik.values.carrierRateUSD;
         const carrierTotalIRR =

@@ -66,6 +66,7 @@ const CarsIntroduction = () => {
     });
 
     useEffect(() => {
+        console.log("ss");
         dispatch(clearMessageAction());
     }, []);
 
@@ -280,7 +281,7 @@ const CarsIntroduction = () => {
         const cancelHandler = (id) => {
             console.log(id);
         };
-        return filterdData.map((item, index) => {
+        return filterdData.map((item) => {
             return (
                 <tr key={item.id} id={item.id} className="">
                     {isShow.nameDriver && (
