@@ -56,7 +56,7 @@ class CarIntroductionService
         return $model->update($data);
     }
 
-    public function updateStep3(Model $model, string $unloadingDate, ?int $unloadingTonnage, ?int $difference, ?int $allowableDeficit, ?int $deficitOrSurplus, ?string $unloadingReceipt): bool
+    public function updateStep3(Model $model, string $unloadingDate, ?int $unloadingTonnage, ?int $difference, ?int $allowableDeficit, ?string $deficitOrSurplus, ?string $unloadingReceipt): bool
     {
         $data = [
             'unloading_date' => $unloadingDate,
