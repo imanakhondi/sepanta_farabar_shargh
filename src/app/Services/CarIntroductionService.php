@@ -13,7 +13,29 @@ class CarIntroductionService
 
     public function getPaginate(int $introductionId, int $page, int $pageItems): mixed
     {
-        return Model::join('tbl_drivers', 'driver_id', 'tbl_drivers.id')->join('tbl_tanks', 'tank_id', 'tbl_tanks.id')->join('tbl_trucks', 'truck_id', 'tbl_trucks.id')->select('tbl_car_introductions.*', 'tbl_drivers.name AS driver_name', 'tbl_drivers.family AS driver_family', 'tbl_drivers.national_no AS driver_national_no', 'tbl_tanks.tank_no', 'tbl_trucks.ir_no', 'tbl_trucks.transit_no')->where('introduction_id', $introductionId)->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
+        return Model::join('tbl_introductions', 'introduction_id', 'tbl_introductions.id')
+            ->join('tbl_cities AS tbl_cities_first', 'start_point_id', 'tbl_cities_first.id')
+            ->join('tbl_cities AS tbl_cities_end', 'end_point_id', 'tbl_cities_end.id')
+            ->join('tbl_drivers', 'driver_id', 'tbl_drivers.id')
+            ->join('tbl_tanks', 'tank_id', 'tbl_tanks.id')
+            ->join('tbl_trucks', 'truck_id', 'tbl_trucks.id')
+            ->select(
+                'tbl_car_introductions.*',
+                'tbl_drivers.name AS driver_name',
+                'tbl_drivers.family AS driver_family',
+                'tbl_drivers.national_no AS driver_national_no',
+                'tbl_drivers.mobile AS driver_mobile',
+                'tbl_tanks.tank_no',
+                'tbl_trucks.name AS truck_name',
+                'tbl_trucks.family AS truck_family',
+                'tbl_trucks.national_no AS truck_national_no',
+                'tbl_trucks.mobile AS truck_mobile',
+                'tbl_trucks.ir_no AS truck_ir_no',
+                'tbl_trucks.transit_no AS truck_transit_no',
+                'tbl_cities_first.name AS first_point_name',
+                'tbl_cities_end.name AS end_point_name',
+            )
+            ->where('introduction_id', $introductionId)->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
     public function store(int $introductionId, int $driverId, int $truckId, int $tankId): mixed
