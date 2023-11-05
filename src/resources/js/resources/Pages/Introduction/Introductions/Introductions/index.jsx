@@ -30,29 +30,29 @@ const Introductions = () => {
         dispatch(clearMessageAction());
     }, []);
 
-    const getIntroductions = async () => {
-        setLoading(true);
-        const result = await introduction.getAllIntroductions(
-            pageSize,
-            currentPage
-        );
-        
-        if (result === null) {
-            dispatch(
-                setMessageAction(
-                    introduction.errorMessage,
-                    introduction.errorCode
-                )
-            );
-            setLoading(false);
-
-            return;
-        }
-        setTimeout(() => setLoading(false), 200);
-        setData(result.items);
-        setCount(result.count);
-    };
     useEffect(() => {
+        const getIntroductions = async () => {
+            setLoading(true);
+            const result = await introduction.getAllIntroductions(
+                pageSize,
+                currentPage
+            );
+            
+            if (result === null) {
+                dispatch(
+                    setMessageAction(
+                        introduction.errorMessage,
+                        introduction.errorCode
+                    )
+                );
+                setLoading(false);
+    
+                return;
+            }
+            setTimeout(() => setLoading(false), 200);
+            setData(result.items);
+            setCount(result.count);
+        };
         getIntroductions();
     }, [currentPage]);
 
@@ -74,7 +74,6 @@ const Introductions = () => {
 
     const renderItems = () => {
         return filterdData.map((item) => {
-            console.log(item);
             return (
                 <tr key={item.id} id={item.id} className="">
                     <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">

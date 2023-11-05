@@ -962,7 +962,7 @@ export const addCarIntroductionPage = {
 };
 
 export const editCarIntroductionPage = {
-    _title: "ویرایش معفی نامه ",
+    _title: "ویرایش معرفی نامه ",
     _subTitle: "معفی نامه را ویرایش کنید",
     description: "",
     name: "نام ",

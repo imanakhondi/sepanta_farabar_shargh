@@ -118,6 +118,7 @@ export class CarIntroduction extends Entity {
     }
 
     async storeCarIntroductionThirdStep(
+        id,
         unloadingDate,
         unloadingTonnage,
         difference,
@@ -125,7 +126,7 @@ export class CarIntroduction extends Entity {
         deficitOrSurplus,
         unloadingReceipt
     ) {
-        return await this.handlePost(`${BASE_URL}/a/car_introductions/store`, {
+        return await this.handlePost(`${BASE_URL}/a/car_introductions/update_3/${id}`, {
             unloading_date: unloadingDate,
             unloading_tonnage: unloadingTonnage,
             difference: difference,

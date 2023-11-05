@@ -1,7 +1,6 @@
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as Yup from "yup";
 import {
     clearMessageAction,
     setMessageAction,
@@ -12,37 +11,9 @@ import FormikControl from "../../../../../common/FormikControl";
 import { useNavigate, useParams } from "react-router-dom";
 import { CarIntroduction } from "../../../../../http/entities/CarIntroduction";
 import { toast } from "react-toastify";
+import { initialValues } from ".";
 
-const initialValues = {
-    registryDate: "",
-    remittanceName: "",
-    loadingDate: "",
-    loadingTonnage: "",
-    carrierUnitUSD: "",
-    carrierTotalUSD: "",
-    carrierUnitIRR: "",
-    carrierTotalIRR: "",
-    ownerTotalUSD: "",
-    ownerTotalIRR: "",
-    carrierLoadingCommission: "",
-    forwardingLoadingCommission: "",
-    carrierRateUSD: "",
-    carrierRateIRR: "",
-};
-const validationSchema = Yup.object({
-    registryDate: Yup.string(),
-    remittanceName: Yup.string(),
-    loadingDate: Yup.string(),
-    loadingTonnage: Yup.string(),
-    carrierUnitUSD: Yup.string(),
-    carrierTotalUSD: Yup.string(),
-    carrierUnitIRR: Yup.string(),
-    carrierTotalIRR: Yup.string(),
-    carrierLoadingCommission: Yup.string(),
-    forwardingLoadingCommission: Yup.string(),
-});
-
-const StepTwo = ({
+export const StepTwo = ({
     formData,
     setFormData,
     activeStepIndex,
@@ -82,7 +53,7 @@ const StepTwo = ({
             const result = await carIntroduction.getAddCarsIntroductionProps(
                 introductionId
             );
-           
+            console.log("rrrrrrr", result);
             if (result === null) {
                 dispatch(
                     setMessageAction(
@@ -122,6 +93,8 @@ const StepTwo = ({
         const getCarIntroduction = async () => {
             setLoading(true);
             const result = await carIntroduction.getCarIntroduction(carid);
+
+            console.log(result);
 
             if (result === null) {
                 dispatch(
@@ -173,8 +146,6 @@ const StepTwo = ({
             carrierLoadingCommission,
             forwardingLoadingCommission
         );
-
-console.log("result",result);
 
         if (result === null) {
             dispatch(
@@ -250,6 +221,7 @@ console.log("result",result);
     });
 
     useEffect(() => {
+        console.log("carrierTotalIRR", formik.values.carrierTotalIRR);
         const carrierTotalUSD =
             formik.values.loadingTonnage * formik.values.carrierRateUSD;
         const carrierTotalIRR =
@@ -257,11 +229,11 @@ console.log("result",result);
 
         formik.setFieldValue(
             "carrierTotalUSD",
-            isNaN(carrierTotalUSD) ? "" : carrierTotalUSD.toString()
+            carrierTotalUSD.toString() || ""
         );
         formik.setFieldValue(
             "carrierTotalIRR",
-            isNaN(carrierTotalIRR) ? "" : carrierTotalIRR.toString()
+            carrierTotalIRR.toString() || ""
         );
 
         const ownerTotalIRR =
@@ -273,6 +245,7 @@ console.log("result",result);
             formik.values.carrierUnitUSD !== "" &&
             formik.values.carrierUnitIRR !== ""
         ) {
+            console.log("daryaaaaaaaaaa");
             formik.setFieldValue(
                 "ownerTotalIRR",
                 ownerTotalIRR.toString() || ""
@@ -388,5 +361,3 @@ console.log("result",result);
         </FormikForm>
     );
 };
-
-export default StepTwo;

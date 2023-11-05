@@ -152,8 +152,6 @@ const CarsIntroduction = () => {
                 currentPage
             );
 
-            console.log(result);
-
             if (result === null) {
                 dispatch(
                     setMessageAction(
@@ -348,7 +346,7 @@ const CarsIntroduction = () => {
                     {isShow.actions && (
                         <Operation
                             link={`${BASE_PATH}/introduction/car/edit/${item.id}`}
-                            continueLink={`${BASE_PATH}/introduction/car/complete/${item.id}`}
+                            continueLink={`${BASE_PATH}/introduction/car/complete/${introductionId}/${item.id}`}
                             onCancel={() => cancelHandler(item.id)}
                         />
                     )}

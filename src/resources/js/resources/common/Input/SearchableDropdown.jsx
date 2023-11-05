@@ -103,7 +103,7 @@ const SearchableDropdown = ({
                     isOpen ? "block" : "hidden"
                 }`}
             >
-                {selectOptions.length !== 0 &&
+                {selectOptions?.length &&
                     filter(selectOptions).map((option) => {
                         return (
                             <div

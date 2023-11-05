@@ -21,7 +21,7 @@ const initialValues = {
     deficitOrSurplus: "",
     unloadingReceipt: "",
 };
-let loadingTonnage = 1000;
+// let loadingTonnage = 1000;
 
 const validationSchema = Yup.object({
     unloadingDate: Yup.string(),
@@ -37,8 +37,8 @@ const StepThree = ({
     setActiveStepIndex,
 }) => {
     const carIntroduction = new CarIntroduction();
-    const params = useParams();
-    const introductionId = params.id;
+    const {params,carid} = useParams();
+    const introductionId = params;
     const navigate = useNavigate();
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
@@ -48,6 +48,32 @@ const StepThree = ({
     useEffect(() => {
         dispatch(clearMessageAction());
     }, []);
+
+    useEffect(() => {
+        dispatch(clearMessageAction());
+        const getCarIntroduction = async () => {
+            setLoading(true);
+            const result = await carIntroduction.getCarIntroduction(
+                carid
+            );
+
+            if (result === null) {
+                dispatch(
+                    setMessageAction(
+                        carIntroduction.errorMessage,
+                        carIntroduction.errorCode
+                    )
+                );
+                setLoading(false);
+
+                return;
+            }
+            setLoading(false);
+            setFormValues(result.item);
+        };
+        getCarIntroduction();
+    }, []);
+
     const onSubmit = async (values) => {
         const data = { ...formData, ...values };
         const {
@@ -59,7 +85,8 @@ const StepThree = ({
             unloadingReceipt,
         } = data;
         setLoading(true);
-        const result = await carIntroduction.storeCarIntroductionSecondStage(
+        const result = await carIntroduction.storeCarIntroductionThirdStep(
+            introductionId,
             unloadingDate,
             unloadingTonnage,
             difference,
@@ -98,33 +125,39 @@ const StepThree = ({
         onSubmit,
         validationSchema,
         validateOnMount: true,
+        enableReinitialize: true,
     });
 
     useEffect(() => {
-        const difference = loadingTonnage - formik.values.unloadingTonnage;
-        formik.setFieldValue("difference", difference.toString() || "");
+        if (formik.values.unloadingTonnage) {
+            const difference =
+                formValues?.loadingTonnage - formik.values.unloadingTonnage;
+            formik.setFieldValue("difference", difference.toString() || "");
+        }
     }, [formik.values.unloadingTonnage]);
 
     useEffect(() => {
+        if (formik.values.allowableDeficit) {
+            const deficitOrSurplusOne =
+                formik.values.allowableDeficit - formik.values.difference;
+            formik.setFieldValue(
+                "deficitOrSurplus",
+                deficitOrSurplusOne >= 0
+                    ? `${deficitOrSurplusOne.toString() + " مجاز "}`
+                    : `${deficitOrSurplusOne.toString() + " غیر مجاز "}` || ""
+            );
+        }
         // const deficitOrSurplusOne =
         //     formik.values.allowableDeficit - formik.values.difference;
+        // console.log(deficitOrSurplusOne);
         // formik.setFieldValue(
         //     "deficitOrSurplus",
-        //     `${deficitOrSurplusOne}>= ${0} ? ${
-        //         deficitOrSurplusOne.toString() + " مجاز "
-        //     }:${deficitOrSurplusOne.toString() + " غیر مجاز "}` || ""
+        //     deficitOrSurplusOne >= 0 && formik.values.difference > 0
+        //         ? ` ${addIntroductionPage.allowed}`
+        //         : deficitOrSurplusOne < 0
+        //         ? "iman"
+        //         : ` ${addIntroductionPage.notAllowed}` || ""
         // );
-        const deficitOrSurplusOne =
-            formik.values.allowableDeficit - formik.values.difference;
-        console.log(deficitOrSurplusOne);
-        formik.setFieldValue(
-            "deficitOrSurplus",
-            deficitOrSurplusOne >= 0 && formik.values.difference > 0
-                ? ` ${addIntroductionPage.allowed}`
-                : deficitOrSurplusOne < 0
-                ? "iman"
-                : ` ${addIntroductionPage.notAllowed}` || ""
-        );
     }, [formik.values.allowableDeficit]);
 
     return (
