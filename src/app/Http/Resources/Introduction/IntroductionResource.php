@@ -11,6 +11,7 @@ class IntroductionResource extends JsonResource
         return [
             'id' => intval($this->id),
             'introductionNo' => intval($this->introduction_no),
+            'introductionDate' => $this->introduction_date ?? '',
             'barOwnerId' => intval($this->bar_owner_id),
             'barOwnerCompanyName' => $this->bar_owner_company_name,
             'startPointId' => intval($this->start_point_id),
