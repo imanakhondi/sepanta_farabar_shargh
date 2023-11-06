@@ -24,6 +24,7 @@ import ShowTank from "./Tank/Tanks/ShowTank";
 import AddTanks from "./Tank/Tanks/AddTank";
 import EditTanks from "./Tank/Tanks/EditTank";
 import RepairsTank from "./Tank/Tanks/RepairTank";
+import EditRepairTank from "./Tank/Tanks/EditRepairTank";
 import BarOwners from "./BarOwner/BarOwners";
 import ShowBarOwner from "./BarOwner/ShowBarOwner";
 import AddBarOwners from "./BarOwner/AddBarOwner";
@@ -66,6 +67,7 @@ export {
     AddTanks,
     EditTanks,
     RepairsTank,
+    EditRepairTank,
     BarOwners,
     ShowBarOwner,
     AddBarOwners,

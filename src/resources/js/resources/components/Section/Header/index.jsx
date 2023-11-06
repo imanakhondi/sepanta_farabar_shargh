@@ -201,7 +201,7 @@ const Header = ({ customStyle = "" }) => {
                         </Modal>
                     )}
                 </div>
-                <Search />
+                {/* <Search /> */}
             </div>
         </div>
     );

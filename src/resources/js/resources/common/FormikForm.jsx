@@ -13,6 +13,7 @@ const FormikForm = ({
     subTitle = "",
     showEditBTN,
     onClick,
+    onCancel=false
 }) => {
     return (
         <div
@@ -37,6 +38,7 @@ const FormikForm = ({
                         customStyleBtn={customStyleBtn}
                         showEditBTN={showEditBTN}
                         onClick={onClick}
+                        onCancel={onCancel}
                     />
                 </form>
             {/* )} */}

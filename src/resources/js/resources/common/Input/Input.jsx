@@ -5,7 +5,7 @@ const Input = ({
     type = "text",
     formik,
     strings = null,
-    showLabel = false,
+    showLabel = true,
     readOnly=false,
     custom = "",
     customStyleInput = "",
@@ -37,7 +37,7 @@ const Input = ({
             {showLabel && (
                 <label
                     htmlFor={name}
-                    className="text-primaryColor dark:text-primaryColorDark mb-1 text-sm"
+                    className="text-primaryColor dark:text-primaryColorDark mb-1 text-xs"
                 >
                     {label}
                 </label>

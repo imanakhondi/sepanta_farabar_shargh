@@ -66,7 +66,6 @@ const CarsIntroduction = () => {
     });
 
     useEffect(() => {
-        console.log("ss");
         dispatch(clearMessageAction());
     }, []);
 
@@ -179,6 +178,7 @@ const CarsIntroduction = () => {
                 error={messageState}
                 title={`${addCarIntroductionPage._title}`}
                 subTitle={`${addCarIntroductionPage._subTitle}`}
+                onCancel={() =>setModal(false)}
             >
                 <FormikControl
                     control="searchableDropdown"
@@ -291,17 +291,17 @@ const CarsIntroduction = () => {
                     )}
                     {isShow.nameCar && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl">
-                            {item.carName}
+                            {item.truckName} {item.truckFamily}
                         </td>
                     )}
                     {isShow.irNo && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.irlNo}
+                            {item.truckIrlNo}
                         </td>
                     )}
                     {isShow.transitNo && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.transitNo}
+                            {item.truckTransitNo}
                         </td>
                     )}
                     {isShow.tankNo && (
@@ -316,32 +316,32 @@ const CarsIntroduction = () => {
                     )}
                     {isShow.nationalNoCar && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.nationalNoCar}
+                            {item.truckNationalNo}
                         </td>
                     )}
                     {isShow.mobileDriver && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.mobileDriver}
+                            {item.driverMobile}
                         </td>
                     )}
                     {isShow.mobileCar && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.mobileCar}
+                            {item.truckMobile}
                         </td>
                     )}
                     {isShow.licenseNo && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.licenseNo}
+                            {item.driverLicenseNo}
                         </td>
                     )}
                     {isShow.startPoint && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.startPoint}
+                            {item.firstPointName}
                         </td>
                     )}
                     {isShow.endPoint && (
                         <td className="dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ">
-                            {item.endPoint}
+                            {item.endPointName}
                         </td>
                     )}
                     {isShow.actions && (

@@ -29,11 +29,11 @@ export class Repair extends Entity {
         );
     }
 
-    async updateRepairTank(id, repairDate, repairCost, repairDesc) {
-        return await this.handlePost(`${BASE_URL}/a/repairs/store/${id}`, {
+    async updateRepairTank(id, repairDate, cost, description) {
+        return await this.handlePost(`${BASE_URL}/a/repairs/update/${id}`, {
             repair_date: repairDate,
-            cost: repairCost,
-            description: repairDesc,
+            cost,
+            description,
         });
     }
 

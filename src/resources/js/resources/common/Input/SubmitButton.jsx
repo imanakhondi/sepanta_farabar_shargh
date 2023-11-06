@@ -5,10 +5,11 @@ const SubmitButton = ({
     submit = `${general.submit}`,
     customStyleBtn = "",
     showEditBTN = false,
-    onClick
+    onClick,
+    onCancel,
 }) => {
     return (
-        <>
+        <div className="flex gap-x-10 w-full">
             {showEditBTN ? (
                 <button
                     type="submit"
@@ -29,7 +30,16 @@ const SubmitButton = ({
                     {submit}
                 </button>
             )}
-        </>
+            {onCancel && (
+                <button
+                    type="submit"
+                    className={`${customStyleBtn} w-full bg-red-500 rounded-xl py-3 mx-auto px-5 mt-3 text-white`}
+                    onClick={onCancel}
+                >
+                    کنسل
+                </button>
+            )}
+        </div>
     );
 };
 

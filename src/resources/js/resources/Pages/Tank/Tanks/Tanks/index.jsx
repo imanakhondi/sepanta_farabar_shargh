@@ -106,6 +106,7 @@ const Tanks = () => {
                 error={messageState}
                 title={`${addTankPage._title}`}
                 subTitle={`${addTankPage._subTitle}`}
+                onCancel={() =>setModal(false)}
             >
                 <FormikControl
                     control="input"

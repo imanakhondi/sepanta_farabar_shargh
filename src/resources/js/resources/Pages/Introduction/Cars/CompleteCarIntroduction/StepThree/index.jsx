@@ -12,6 +12,7 @@ import { addIntroductionPage } from "../../../../../constants/strings/fa";
 import { useNavigate, useParams } from "react-router-dom";
 import { CarIntroduction } from "../../../../../http/entities/CarIntroduction";
 import { toast } from "react-toastify";
+import { BASE_PATH } from "../../../../../constants";
 
 const initialValues = {
     unloadingDate: "",
@@ -21,7 +22,6 @@ const initialValues = {
     deficitOrSurplus: "",
     unloadingReceipt: "",
 };
-// let loadingTonnage = 1000;
 
 const validationSchema = Yup.object({
     unloadingDate: Yup.string(),
@@ -37,8 +37,7 @@ const StepThree = ({
     setActiveStepIndex,
 }) => {
     const carIntroduction = new CarIntroduction();
-    const {params,carid} = useParams();
-    const introductionId = params;
+    const { params, carid } = useParams();
     const navigate = useNavigate();
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
@@ -53,9 +52,7 @@ const StepThree = ({
         dispatch(clearMessageAction());
         const getCarIntroduction = async () => {
             setLoading(true);
-            const result = await carIntroduction.getCarIntroduction(
-                carid
-            );
+            const result = await carIntroduction.getCarIntroduction(carid);
 
             if (result === null) {
                 dispatch(
@@ -86,7 +83,7 @@ const StepThree = ({
         } = data;
         setLoading(true);
         const result = await carIntroduction.storeCarIntroductionThirdStep(
-            introductionId,
+            carid,
             unloadingDate,
             unloadingTonnage,
             difference,
@@ -106,18 +103,50 @@ const StepThree = ({
             return;
         }
         setLoading(false);
-        toast.success(`${addIntroductionPage.submitted}`);
+        toast.success(`${addIntroductionPage.submittedThree}`);
         window.location.reload();
 
         setFormData(data);
         setActiveStepIndex(activeStepIndex + 1);
     };
 
-    const updateHandler = (e, values) => {
+    const updateHandler = async (e, values) => {
         e.preventDefault();
         const data = { ...formData, ...values };
+        const {
+            unloadingDate,
+            unloadingTonnage,
+            difference,
+            allowableDeficit,
+            deficitOrSurplus,
+            unloadingReceipt,
+        } = data;
+        setLoading(true);
+        const result = await carIntroduction.storeCarIntroductionThirdStep(
+            carid,
+            unloadingDate,
+            unloadingTonnage,
+            difference,
+            allowableDeficit,
+            deficitOrSurplus,
+            unloadingReceipt
+        );
+
+        if (result === null) {
+            dispatch(
+                setMessageAction(
+                    carIntroduction.errorMessage,
+                    carIntroduction.errorCode
+                )
+            );
+            setLoading(false);
+            return;
+        }
+        setLoading(false);
+        toast.success(`${addIntroductionPage.submittedThree}`);
+        navigate(`${BASE_PATH}/introduction/cars/${params}`);
+
         setFormData(data);
-        setActiveStepIndex(activeStepIndex + 1);
     };
 
     const formik = useFormik({

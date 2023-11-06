@@ -49,25 +49,24 @@ const RepairsTank = () => {
         dispatch(clearMessageAction());
     }, []);
 
-    const getRepairsTank = async () => {
-        setLoading(true);
-        const result = await repair.getAllRepairsTank(
-            tankId,
-            pageSize,
-            currentPage
-        );
-        if (result === null) {
-            dispatch(setMessageAction(repair.errorMessage, repair.errorCode));
-            setLoading(false);
-
-            return;
-        }
-        setTimeout(() => setLoading(false), 200);
-        setData(result.items);
-        setCount(result.count);
-    };
-    console.log(data);
     useEffect(() => {
+        const getRepairsTank = async () => {
+            setLoading(true);
+            const result = await repair.getAllRepairsTank(
+                tankId,
+                pageSize,
+                currentPage
+            );
+            if (result === null) {
+                dispatch(setMessageAction(repair.errorMessage, repair.errorCode));
+                setLoading(false);
+    
+                return;
+            }
+            setTimeout(() => setLoading(false), 200);
+            setData(result.items);
+            setCount(result.count);
+        };
         getRepairsTank();
     }, [currentPage]);
 
@@ -96,7 +95,7 @@ const RepairsTank = () => {
         validationSchema,
         validateOnMount: true,
     });
-    console.log(messageState);
+   
     const renderForm = () => {
         return (
             <FormikForm
@@ -105,6 +104,7 @@ const RepairsTank = () => {
                 error={messageState}
                 title={`${repairTankPage._titleAdd}`}
                 subTitle={`${repairTankPage._subTitleAdd}`}
+                onCancel={() =>setModal(false)}
             >
                 <FormikControl
                     control="date"
@@ -164,8 +164,8 @@ const RepairsTank = () => {
                         {item.description}
                     </td>
                     <Operation
-                        link={`${BASE_PATH}/tank/edit/${item.id}`}
-                        showLink={`${BASE_PATH}/tank/show/${item.id}`}
+                        link={`${BASE_PATH}/company/tank/repairs/edit/${item.id}`}
+                        // showLink={`${BASE_PATH}/tank/show/${item.id}`}
                     />
                 </tr>
             );

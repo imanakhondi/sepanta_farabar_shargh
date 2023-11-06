@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 const TextAreaInput = ({
     name,
     formik,
@@ -31,7 +31,7 @@ const TextAreaInput = ({
             className={`${custom} flex flex-col justify-center mt-2 w-full md:w-full`}
         >
             {showLabel && (
-                <label className="intro-x text-primaryColor mb-1 text-sm">
+                <label className="intro-x text-primaryColor mb-1 text-xs">
                     {label}
                 </label>
             )}

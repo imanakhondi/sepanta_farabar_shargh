@@ -8,7 +8,7 @@ const DateInput = ({
     formik,
     strings = null,
     pageString,
-    showLabel = false,
+    showLabel = true,
     onChange,
     custom = "",
     // customStyleInput = "",
@@ -36,7 +36,7 @@ const DateInput = ({
     return (
         <div className={`${custom} flex flex-col mt-2 w-full lg:w-[300px] xl:w-[400px]`}>
             {showLabel && (
-                <label className="text-primaryColor dark:text-primaryColorDark mb-1 text-sm">
+                <label className="text-primaryColor dark:text-primaryColorDark mb-1 text-xs">
                     {label}
                 </label>
             )}

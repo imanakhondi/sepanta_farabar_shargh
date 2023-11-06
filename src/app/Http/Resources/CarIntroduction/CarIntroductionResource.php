@@ -15,6 +15,7 @@ class CarIntroductionResource extends JsonResource
             'driverName' => $this->driver_name ?? '',
             'driverFamily' => $this->driver_family ?? '',
             'driverNationalNo' => $this->driver_national_no ?? '',
+            'driverMobile' => $this->driver_mobile ?? '',
             'truckId' => intval($this->truck_id),
             'truckName' => $this->truck_name ?? '',
             'truckFamily' => $this->truck_family ?? '',
@@ -43,7 +44,7 @@ class CarIntroductionResource extends JsonResource
             'deficitOrSurplus' => intval($this->deficit_or_surplus),
             'unloadingReceipt' => $this->unloading_receipt ?? '',
             'firstPointName' => $this->first_point_name ?? '',
-            'endPointName' => $this->endPointName ?? '',
+            'endPointName' => $this->end_point_name ?? '',
         ];
     }
 }

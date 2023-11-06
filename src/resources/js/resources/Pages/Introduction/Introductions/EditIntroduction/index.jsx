@@ -54,7 +54,7 @@ const EditIntroduction = () => {
         const getAllProps = async () => {
             setLoading(true);
             const result = await introduction.getAllIntroductionProps();
-            console.log("result", result);
+         
             if (result === null) {
                 dispatch(
                     setMessageAction(

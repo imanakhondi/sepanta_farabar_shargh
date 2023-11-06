@@ -149,6 +149,7 @@ export const addUserPage = {
     nationalNoPlaceholder: "کد ملی",
     mobile: "موبایل",
     mobilePlaceholder: "موبایل",
+    username: "نام کاربری",
     userName: "نام کاربری",
     userNamePlaceholder: "نام کاربری",
     email: "پست الکترونیک",
@@ -625,6 +626,7 @@ export const editCompanyPage = {
     _title: "ویرایش شرکت ",
     _subTitle: "شرکت را ویرایش کنید",
     description: "",
+    name: "نام شرکت",
     companyName: "نام شرکت",
     companyNamePlaceholder: "نام شرکت",
     mobile: "موبایل",
@@ -839,6 +841,8 @@ export const addIntroductionPage = {
     confirm: "تایید",
     submit: "ورود به سامانه",
     submitted: "افزودن معرفی نامه با موفقیت انجام گردید.",
+    submittedTwo: "مرحله 2 با موفقیت انجام گردید.",
+    submittedThree: "مرحله 3 با موفقیت انجام گردید.",
 };
 
 export const editIntroductionPage = {
@@ -1006,6 +1010,7 @@ export const editCityPage = {
     _subTitle: "شهر را ویرایش کنید",
     description: "",
     cityName: "شهر",
+    name: "شهر",
     cityNamePlaceholder: "شهر",
     confirm: "تایید",
     submit: "ورود به سامانه",
