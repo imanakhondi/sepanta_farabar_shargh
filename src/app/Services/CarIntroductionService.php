@@ -2,7 +2,12 @@
 
 namespace App\Services;
 
+use App\Http\Resources\Driver\DriverResource;
+use App\Http\Resources\Introduction\IntroductionResource;
+use App\Http\Resources\Tank\TankResource;
+use App\Http\Resources\Truck\TruckResource;
 use App\Models\CarIntroduction as Model;
+use App\Models\Introduction;
 
 class CarIntroductionService
 {
@@ -89,6 +94,18 @@ class CarIntroductionService
             'unloading_receipt' => $unloadingReceipt ?? '',
         ];
         return $model->update($data);
+    }
+
+    public function getCarIntroductionProps(Introduction $introduction): array
+    {
+        $driverService = new DriverService();
+        $truckService = new TruckService();
+        $tankService = new TankService();
+        $introduction = new IntroductionResource($introduction);
+        $drivers = DriverResource::collection($driverService->getAll());
+        $trucks = TruckResource::collection($truckService->getAll());
+        $tanks = TankResource::collection($tankService->getAll());
+        return ['introduction' => $introduction, 'drivers' => $drivers, 'trucks' => $trucks, 'tanks' => $tanks];
     }
 
     public function count(int $introductionId): int

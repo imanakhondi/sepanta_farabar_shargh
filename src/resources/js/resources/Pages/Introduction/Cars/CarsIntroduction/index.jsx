@@ -178,7 +178,7 @@ const CarsIntroduction = () => {
                 error={messageState}
                 title={`${addCarIntroductionPage._title}`}
                 subTitle={`${addCarIntroductionPage._subTitle}`}
-                onCancel={() =>setModal(false)}
+                onCancel={() => setModal(false)}
             >
                 <FormikControl
                     control="searchableDropdown"
