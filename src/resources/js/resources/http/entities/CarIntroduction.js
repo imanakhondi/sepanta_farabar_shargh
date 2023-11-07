@@ -126,14 +126,17 @@ export class CarIntroduction extends Entity {
         deficitOrSurplus,
         unloadingReceipt
     ) {
-        return await this.handlePost(`${BASE_URL}/a/car_introductions/update_3/${id}`, {
-            unloading_date: unloadingDate,
-            unloading_tonnage: unloadingTonnage,
-            difference: difference,
-            allowable_deficit: allowableDeficit,
-            deficit_or_surplus: deficitOrSurplus,
-            unloading_receipt: unloadingReceipt,
-        });
+        return await this.handlePost(
+            `${BASE_URL}/a/car_introductions/update_3/${id}`,
+            {
+                unloading_date: unloadingDate,
+                unloading_tonnage: unloadingTonnage,
+                difference: difference,
+                allowable_deficit: allowableDeficit,
+                deficit_or_surplus: deficitOrSurplus,
+                unloading_receipt: unloadingReceipt,
+            }
+        );
     }
 
     async updateCarIntroductionThirdStep(

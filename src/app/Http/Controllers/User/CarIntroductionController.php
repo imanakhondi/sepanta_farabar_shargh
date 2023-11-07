@@ -4,10 +4,12 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CarIntroduction\IndexCarIntroductionsRequest;
+use App\Http\Resources\CarIntroduction\CarIntroductionResource;
 use App\Models\CarIntroduction as Model;
 use App\Models\Introduction;
 use App\Packages\JsonResponse;
 use App\Services\CarIntroductionService;
+use App\Services\IntroductionService;
 use Illuminate\Http\JsonResponse as HttpJsonResponse;
 
 class CarIntroductionController extends Controller
@@ -24,6 +26,14 @@ class CarIntroductionController extends Controller
 
     public function show(Model $model): HttpJsonResponse
     {
-        return $this->onItem($this->service->get($model->id));
+        $carIntroduction = new CarIntroductionResource($this->service->get($model->id));
+        $introductionService = new IntroductionService();
+        $introduction = $introductionService->get($carIntroduction->id);
+        $props = $this->service->getCarIntroductionProps($introduction);
+        $items = ['item' => $carIntroduction];
+        foreach ($props as $key => $value) {
+            $items[$key] = $value;
+        }
+        return $this->onOk($items);
     }
 }
