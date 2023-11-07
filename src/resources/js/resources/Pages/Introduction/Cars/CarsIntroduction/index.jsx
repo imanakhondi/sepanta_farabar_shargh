@@ -346,7 +346,7 @@ const CarsIntroduction = () => {
                     )}
                     {isShow.actions && (
                         <Operation
-                            link={`${BASE_PATH}/introduction/car/edit/${item.id}`}
+                            link={`${BASE_PATH}/introduction/car/edit/${introductionId}/${item.id}`}
                             continueLink={`${BASE_PATH}/introduction/car/complete/${introductionId}/${item.id}`}
                             onCancel={() => cancelHandler(item.id)}
                         />

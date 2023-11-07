@@ -40,15 +40,16 @@ export default function authRoute() {
                 <Route path="company/tank/show/:id" element={<Pages.ShowTank />} />
                 {/* <Route path="company/tank/add/:id" element={<Pages.AddTanks />} /> */}
                 <Route path="company/tank/edit/:id" element={<Pages.EditTanks />} />
+
                 <Route path="company/tank/repairs/:id" element={<Pages.RepairsTank />} />
-                <Route path="company/tank/repairs/edit/:id" element={<Pages.EditRepairTank />} />
+                <Route path="company/tank/repairs/edit/:params/:id" element={<Pages.EditRepairTank />} />
 
                 <Route path="introductions" element={<Pages.Introductions />} />
                 <Route path="introduction/show/:id" element={<Pages.ShowIntroduction />} />
                 <Route path="introduction/add" element={<Pages.AddIntroduction />} />
                 <Route path="introduction/edit/:id" element={<Pages.EditIntroduction />} />
                 <Route path="introduction/cars/:id" element={<Pages.CarsIntroduction />} />
-                <Route path="introduction/car/edit/:id" element={<Pages.EditCarIntroduction />} />
+                <Route path="introduction/car/edit/:tankId/:introductionId" element={<Pages.EditCarIntroduction />} />
                 <Route path="introduction/car/complete/:params/:carid" element={<Pages.CompleteCarIntroduction />} />
 
                 <Route path="cities" element={<Pages.Cities />} />

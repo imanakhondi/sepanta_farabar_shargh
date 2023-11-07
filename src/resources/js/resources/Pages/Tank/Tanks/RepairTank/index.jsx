@@ -33,7 +33,6 @@ const RepairsTank = () => {
     const params = useParams();
     const tankId = params.id;
     const navigate = useNavigate();
-    const tank = new Tank();
     const repair = new Repair();
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
@@ -81,7 +80,7 @@ const RepairsTank = () => {
         );
 
         if (result === null) {
-            dispatch(setMessageAction(tank.errorMessage, tank.errorCode));
+            dispatch(setMessageAction(repair.errorMessage, repair.errorCode));
             setLoading(false);
             return;
         }
@@ -164,7 +163,7 @@ const RepairsTank = () => {
                         {item.description}
                     </td>
                     <Operation
-                        link={`${BASE_PATH}/company/tank/repairs/edit/${item.id}`}
+                        link={`${BASE_PATH}/company/tank/repairs/edit/${tankId}/${item.id}`}
                         // showLink={`${BASE_PATH}/tank/show/${item.id}`}
                     />
                 </tr>

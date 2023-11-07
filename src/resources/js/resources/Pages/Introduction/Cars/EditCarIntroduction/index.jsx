@@ -15,7 +15,6 @@ import { editCarIntroductionPage } from "../../../../constants/strings/fa";
 
 import { CarIntroduction } from "../../../../http/entities/CarIntroduction";
 
-
 const initialValues = {
     driverInfoOptions: [],
     carInfoOptions: [],
@@ -34,8 +33,9 @@ const validationSchema = Yup.object({
 });
 
 const EditCarIntroduction = () => {
-    const params = useParams();
-    const carId = params.id;
+    // const params = useParams();
+    // const carId = params.id;
+    const { tankId, introductionId } = useParams();
     const navigate = useNavigate();
     const carIntroduction = new CarIntroduction();
     const [formValues, setFormValues] = useState(null);
@@ -43,18 +43,15 @@ const EditCarIntroduction = () => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
 
-    
-
     useEffect(() => {
         dispatch(clearMessageAction());
 
         const getAllProps = async () => {
             setLoading(true);
             const result = await carIntroduction.getAddCarsIntroductionProps(
-                carId
+                tankId
             );
 
-            console.log("naghi",result);
             if (result === null) {
                 dispatch(
                     setMessageAction(
@@ -86,18 +83,16 @@ const EditCarIntroduction = () => {
             formik.setFieldValue("driverInfoOptions", drivers);
             formik.setFieldValue("carInfoOptions", trucks);
             formik.setFieldValue("tankInfoOptions", tanks);
-                        
         };
-        // getAllProps();
+        getAllProps();
     }, []);
 
     useEffect(() => {
         dispatch(clearMessageAction());
         const getCarIntroduction = async () => {
             setLoading(true);
-            const result = await carIntroduction.getCarIntroduction(carId);
-    console.log("iman",result);
-    
+            const result = await carIntroduction.getCarIntroduction(introductionId);
+
             if (result === null) {
                 dispatch(
                     setMessageAction(
@@ -106,12 +101,11 @@ const EditCarIntroduction = () => {
                     )
                 );
                 setLoading(false);
-    
+
                 return;
             }
             setLoading(false);
             setFormValues(result.item);
-           
         };
         getCarIntroduction();
         // setFormValues({
@@ -125,7 +119,7 @@ const EditCarIntroduction = () => {
         const { driverInfo, carInfo, tankInfo } = values;
         setLoading(true);
         const result = await carIntroduction.updateCarIntroduction(
-            carId,
+            introductionId,
             driverInfo,
             carInfo,
             tankInfo
@@ -142,7 +136,7 @@ const EditCarIntroduction = () => {
         }
         setLoading(false);
         toast.success(`${editCarIntroductionPage.submitted}`);
-        navigate(`${BASE_PATH}/cars/${carId}`);
+        // navigate(`${BASE_PATH}/cars/${introductionId}`);
     };
 
     const formik = useFormik({
