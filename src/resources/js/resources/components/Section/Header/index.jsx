@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import profile from "../../../images/profile.jpeg";
 import logo from "../../../images/logo-sepanta.png";
 import Modal from "../../../common/Modal";
@@ -7,7 +7,6 @@ import { header, sidebar } from "../../../constants/strings/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { User } from "../../../http/entities/User";
 import { userLogOut } from "../../../state/user/userAction";
-import Search from "../../../common/Input/Search";
 const Header = ({ customStyle = "" }) => {
     const [modal, setModal] = useState(false);
     const [menuMobile, setMenuMobile] = useState(false);
@@ -212,26 +211,7 @@ export default Header;
 export const MenuItem = ({ item, index, id, setMenuMobile, menuMobile }) => {
     const [subMenu, setSubMenu] = useState(false);
     const [sub, setSub] = useState(false);
-    // const submenuHandler = (id) => {
-    //     const allUlSubmenu = document.querySelectorAll(".clickSlide ul");
-    //     const allclickSlide = document.querySelectorAll(".clickSlide");
-    //     const arrayUlSubmenu = [...allUlSubmenu];
-    //     arrayUlSubmenu.map((sub) => {
-    //         sub.style.display = "none";
-    //     });
-    //     const arrayClickSlide = [...allclickSlide];
-    //     const findClickSlide = arrayClickSlide.find((item) => item.id == id);
-    //     console.log("findClickSlide",findClickSlide);
-    //     arrayClickSlide.map((sub) => {
-    //         sub.setAttribute("aria-expanded", false);
-    //         findClickSlide.childNodes[1].style.height = 0;
-    //         findClickSlide.childNodes[1].style.overflow = "hidden";
-    //     });
-    //     findClickSlide.childNodes[1].style.display = "block";
-    //     findClickSlide.childNodes[1].style.background = "#00000006";
-    //     findClickSlide.childNodes[1].style.height = "auto";
-    //     findClickSlide.setAttribute("aria-expanded", true);
-    // };
+   
     return (
         <>
             {item.submenu ? (
@@ -241,7 +221,6 @@ export const MenuItem = ({ item, index, id, setMenuMobile, menuMobile }) => {
                         role="link"
                         className="clickSlide"
                         id={id}
-                        // onClick={() => submenuHandler(id)}
                         onClick={() => {
                             setSubMenu(!subMenu);
                         }}
