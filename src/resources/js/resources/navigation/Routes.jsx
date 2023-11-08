@@ -49,7 +49,7 @@ export default function authRoute() {
                 <Route path="introduction/add" element={<Pages.AddIntroduction />} />
                 <Route path="introduction/edit/:id" element={<Pages.EditIntroduction />} />
                 <Route path="introduction/cars/:id" element={<Pages.CarsIntroduction />} />
-                <Route path="introduction/car/edit/:tankId/:introductionId" element={<Pages.EditCarIntroduction />} />
+                <Route path="introduction/car/edit/:carId" element={<Pages.EditCarIntroduction />} />
                 <Route path="introduction/car/complete/:params/:carid" element={<Pages.CompleteCarIntroduction />} />
 
                 <Route path="cities" element={<Pages.Cities />} />

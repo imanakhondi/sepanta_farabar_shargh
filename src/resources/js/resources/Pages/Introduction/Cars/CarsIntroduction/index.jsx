@@ -71,6 +71,7 @@ const CarsIntroduction = () => {
 
     const onSubmit = async (values) => {
         const { driverInfo, carInfo, tankInfo } = values;
+        console.log(driverInfo, carInfo, tankInfo);
         setLoading(true);
         const result = await carIntroduction.storeCarIntroductionFirstStep(
             introductionId,
@@ -346,7 +347,7 @@ const CarsIntroduction = () => {
                     )}
                     {isShow.actions && (
                         <Operation
-                            link={`${BASE_PATH}/introduction/car/edit/${introductionId}/${item.id}`}
+                            link={`${BASE_PATH}/introduction/car/edit/${item.id}`}
                             continueLink={`${BASE_PATH}/introduction/car/complete/${introductionId}/${item.id}`}
                             onCancel={() => cancelHandler(item.id)}
                         />

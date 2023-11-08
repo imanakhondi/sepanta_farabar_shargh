@@ -28,7 +28,7 @@ class CarIntroductionController extends Controller
     {
         $carIntroduction = new CarIntroductionResource($this->service->get($model->id));
         $introductionService = new IntroductionService();
-        $introduction = $introductionService->get($carIntroduction->id);
+        $introduction = $introductionService->get($carIntroduction->introduction_id);
         $props = $this->service->getCarIntroductionProps($introduction);
         $items = ['item' => $carIntroduction];
         foreach ($props as $key => $value) {

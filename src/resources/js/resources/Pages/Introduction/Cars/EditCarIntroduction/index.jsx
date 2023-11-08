@@ -33,24 +33,19 @@ const validationSchema = Yup.object({
 });
 
 const EditCarIntroduction = () => {
-    // const params = useParams();
-    // const carId = params.id;
-    const { tankId, introductionId } = useParams();
+    const {carId} = useParams();
+    console.log(carId);
     const navigate = useNavigate();
     const carIntroduction = new CarIntroduction();
-    const [formValues, setFormValues] = useState(null);
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         dispatch(clearMessageAction());
-
-        const getAllProps = async () => {
+        const getCarIntroduction = async () => {
             setLoading(true);
-            const result = await carIntroduction.getAddCarsIntroductionProps(
-                tankId
-            );
+            const result = await carIntroduction.getCarIntroduction(carId);
 
             if (result === null) {
                 dispatch(
@@ -64,17 +59,18 @@ const EditCarIntroduction = () => {
                 return;
             }
             setTimeout(() => setLoading(false), 200);
-
+            
             const drivers = result.drivers?.map((driver) => ({
                 id: driver.id,
                 name: `${driver.name} - ${driver.family} - ${driver.nationalNo} - ${driver.mobile}`,
             }));
 
+            
             const trucks = result.trucks?.map((truck) => ({
                 id: truck.id,
                 name: `${truck.irNo} - ${truck.transitNo} `,
             }));
-
+            
             const tanks = result.tanks?.map((tank) => ({
                 id: tank.id,
                 name: `${tank.tankNo} `,
@@ -83,43 +79,25 @@ const EditCarIntroduction = () => {
             formik.setFieldValue("driverInfoOptions", drivers);
             formik.setFieldValue("carInfoOptions", trucks);
             formik.setFieldValue("tankInfoOptions", tanks);
-        };
-        getAllProps();
-    }, []);
-
-    useEffect(() => {
-        dispatch(clearMessageAction());
-        const getCarIntroduction = async () => {
-            setLoading(true);
-            const result = await carIntroduction.getCarIntroduction(introductionId);
-
-            if (result === null) {
-                dispatch(
-                    setMessageAction(
-                        carIntroduction.errorMessage,
-                        carIntroduction.errorCode
-                    )
-                );
-                setLoading(false);
-
-                return;
-            }
-            setLoading(false);
-            setFormValues(result.item);
+            
+            const findDriver=drivers.find(driver=>driver.id===result.item.driverId)
+            const findCar=trucks.find(truck=>truck.id===result.item.truckId)
+            const findTank=tanks.find(tank=>tank.id===result.item.tankId)
+            
+            formik.setFieldValue("driverInfo", findDriver.name);
+            formik.setFieldValue("carInfo", findCar.name);
+            formik.setFieldValue("tankInfo", findTank.name);
         };
         getCarIntroduction();
-        // setFormValues({
-        //     driverInfo: "آوا شریعت-0740004931-09356451716",
-        //     carInfo: "21ع426-12 / 21u222-36",
-        //     tankInfo: "123",
-        // });
+     
     }, []);
 
     const onSubmit = async (values) => {
         const { driverInfo, carInfo, tankInfo } = values;
+        console.log(driverInfo, carInfo, tankInfo);
         setLoading(true);
         const result = await carIntroduction.updateCarIntroduction(
-            introductionId,
+            carId,
             driverInfo,
             carInfo,
             tankInfo
@@ -140,7 +118,7 @@ const EditCarIntroduction = () => {
     };
 
     const formik = useFormik({
-        initialValues: formValues || initialValues,
+        initialValues,
         onSubmit,
         validationSchema,
         validateOnMount: true,
