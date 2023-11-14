@@ -39,6 +39,7 @@ import CompleteCarIntroduction from "./Introduction/Cars/CompleteCarIntroduction
 import Cities from "./City/Cities";
 import AddCity from "./City/AddCity";
 import EditCity from "./City/EditCity";
+import Reports from "./Reports";
 
 export {
     HomePage,
@@ -82,4 +83,5 @@ export {
     Cities,
     AddCity,
     EditCity,
+    Reports
 };

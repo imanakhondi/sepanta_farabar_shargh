@@ -103,6 +103,7 @@ const Users = () => {
                         title={`${UserPage._title}`}
                         subTitle={`${UserPage._subTitle}`}
                         loading={loading}
+                        addLink={`${BASE_PATH}/user/add`}
                     />
                 </div>
             )}

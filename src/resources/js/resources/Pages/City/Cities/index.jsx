@@ -88,6 +88,7 @@ const Cities = () => {
                         title={`${CityPage._title}`}
                         subTitle={`${CityPage._subTitle}`}
                         loading={loading}
+                        addLink={`${BASE_PATH}/city/add`}
                     />
                 </div>
             )}

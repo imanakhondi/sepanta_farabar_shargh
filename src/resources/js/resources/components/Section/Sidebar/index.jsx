@@ -24,24 +24,24 @@ const Siderbar = ({ customStyle = "" }) => {
                     icon: "people4",
                     style: "",
                 },
-                {
-                    title: `${sidebar.addDriver}`,
-                    to: "driver/add",
-                    icon: "profile-add4",
-                    style: "",
-                },
+                // {
+                //     title: `${sidebar.addDriver}`,
+                //     to: "driver/add",
+                //     icon: "profile-add4",
+                //     style: "",
+                // },
                 {
                     title: `${sidebar.cars}`,
                     to: "cars",
                     icon: "truck-fast3",
                     style: "",
                 },
-                {
-                    title: `${sidebar.addCar}`,
-                    to: "car/add",
-                    icon: "truck-tick4",
-                    style: "",
-                },
+                // {
+                //     title: `${sidebar.addCar}`,
+                //     to: "car/add",
+                //     icon: "truck-tick4",
+                //     style: "",
+                // },
             ],
         },
         {
@@ -54,12 +54,12 @@ const Siderbar = ({ customStyle = "" }) => {
                     icon: "colorfilter4",
                     style: "",
                 },
-                {
-                    title: `${sidebar.addCompany}`,
-                    to: "company/add",
-                    icon: "add-square",
-                    style: "",
-                },
+                // {
+                //     title: `${sidebar.addCompany}`,
+                //     to: "company/add",
+                //     icon: "add-square",
+                //     style: "",
+                // },
             ],
         },
         {
@@ -69,16 +69,16 @@ const Siderbar = ({ customStyle = "" }) => {
             submenu: [
                 {
                     title: `${sidebar.barOwners}`,
-                    to: "barOwners",
+                    to: "barowners",
                     icon: "wallet-24",
                     style: "",
                 },
-                {
-                    title: `${sidebar.addBarOwner}`,
-                    to: "barOwner/add",
-                    icon: "wallet-add-14",
-                    style: "",
-                },
+                // {
+                //     title: `${sidebar.addBarOwner}`,
+                //     to: "barowner/add",
+                //     icon: "wallet-add-14",
+                //     style: "",
+                // },
             ],
         },
         {
@@ -92,12 +92,12 @@ const Siderbar = ({ customStyle = "" }) => {
                     icon: "note-25",
                     style: "",
                 },
-                {
-                    title: `${sidebar.addIntroduction}`,
-                    to: "introduction/add",
-                    icon: "note-add4",
-                    style: "",
-                }
+                // {
+                //     title: `${sidebar.addIntroduction}`,
+                //     to: "introduction/add",
+                //     icon: "note-add4",
+                //     style: "",
+                // }
             ],
         },
         {
@@ -111,12 +111,12 @@ const Siderbar = ({ customStyle = "" }) => {
                     icon: "note-25",
                     style: "",
                 },
-                {
-                    title: `${sidebar.addCity}`,
-                    to: "city/add",
-                    icon: "note-add4",
-                    style: "",
-                },
+                // {
+                //     title: `${sidebar.addCity}`,
+                //     to: "city/add",
+                //     icon: "note-add4",
+                //     style: "",
+                // },
             ],
         },
         {
@@ -130,12 +130,12 @@ const Siderbar = ({ customStyle = "" }) => {
                     icon: "people4",
                     style: "",
                 },
-                {
-                    title: `${sidebar.addUsers}`,
-                    to: "user/add",
-                    icon: "profile-add4",
-                    style: "",
-                },
+                // {
+                //     title: `${sidebar.addUsers}`,
+                //     to: "user/add",
+                //     icon: "profile-add4",
+                //     style: "",
+                // },
                 {
                     title: `${sidebar.changePassword}`,
                     to: "user/change_password",
@@ -143,6 +143,12 @@ const Siderbar = ({ customStyle = "" }) => {
                     style: "",
                 },
             ],
+        },
+        {
+            title: `${sidebar.reports}`,
+            icon: "personalcard",
+            style: "",
+            to: "reports",
         },
     ];
 

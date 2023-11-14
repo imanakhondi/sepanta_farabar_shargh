@@ -1,5 +1,6 @@
 import TableFooter from "./TableFooter";
 import Loading from "../../common/Loading";
+import { Link } from "react-router-dom";
 
 const Table = ({
     pageSize,
@@ -15,7 +16,8 @@ const Table = ({
     showBTN = false,
     modal,
     setModal,
-    showText=false,
+    showText = false,
+    addLink
 }) => {
     const pageNumber = Math.ceil(count / pageSize);
     const numbers = [...Array(pageNumber + 1).keys()].slice(1);
@@ -29,9 +31,15 @@ const Table = ({
                         {subTitle}
                     </h3>
                 </div>
+                {addLink && <Link
+                    to={addLink}
+                    className="w-20 text-center py-2 px-4 bg-btnPrimaryColor text-white text-sm border-2 border-btnPrimaryColor duration-100 font-IRANSansWeb font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-navBgColor focus:ring-opacity-75"
+                >
+                    افزودن
+                </Link>}
                 {showBTN && (
                     <button
-                        className="py-2 px-4 bg-btnPrimaryColor text-white text-sm border-2 border-btnPrimaryColor duration-100 font-IRANSansWeb font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-navBgColor focus:ring-opacity-75"
+                        className="w-20 text-center py-2 px-4 bg-btnPrimaryColor text-white text-sm border-2 border-btnPrimaryColor duration-100 font-IRANSansWeb font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-navBgColor focus:ring-opacity-75"
                         onClick={() => setModal(!modal)}
                     >
                         افزودن

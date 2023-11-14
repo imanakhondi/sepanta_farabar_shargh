@@ -57,9 +57,11 @@ const RepairsTank = () => {
                 currentPage
             );
             if (result === null) {
-                dispatch(setMessageAction(repair.errorMessage, repair.errorCode));
+                dispatch(
+                    setMessageAction(repair.errorMessage, repair.errorCode)
+                );
                 setLoading(false);
-    
+
                 return;
             }
             setTimeout(() => setLoading(false), 200);
@@ -94,7 +96,7 @@ const RepairsTank = () => {
         validationSchema,
         validateOnMount: true,
     });
-   
+
     const renderForm = () => {
         return (
             <FormikForm
@@ -103,7 +105,7 @@ const RepairsTank = () => {
                 error={messageState}
                 title={`${repairTankPage._titleAdd}`}
                 subTitle={`${repairTankPage._subTitleAdd}`}
-                onCancel={() =>setModal(false)}
+                onCancel={() => setModal(false)}
             >
                 <FormikControl
                     control="date"
@@ -172,7 +174,7 @@ const RepairsTank = () => {
     };
     return (
         <>
-            {modal ? (
+            {modal && (
                 <Modal
                     modal={modal}
                     setModal={setModal}
@@ -180,34 +182,33 @@ const RepairsTank = () => {
                 >
                     {renderForm()}
                 </Modal>
-            ) : (
-                <div className="container flex flex-col">
-                    {messageState.message !== null && (
-                        <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
-                            {messageState.message}
-                        </span>
-                    )}
-                    {data && messageState.message === null && (
-                        <div>
-                            <Table
-                                pageSize={pageSize}
-                                renderHeader={renderHeader}
-                                renderItems={renderItems}
-                                items={data}
-                                count={count}
-                                currentPage={currentPage}
-                                setCurrentPage={setCurrentPage}
-                                title={`${repairTankPage._title}`}
-                                subTitle={`${repairTankPage._subTitle}`}
-                                loading={loading}
-                                showBTN
-                                modal={modal}
-                                setModal={setModal}
-                            />
-                        </div>
-                    )}
-                </div>
             )}
+            <div className="container flex flex-col">
+                {messageState.message !== null && (
+                    <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
+                        {messageState.message}
+                    </span>
+                )}
+                {data && messageState.message === null && (
+                    <div>
+                        <Table
+                            pageSize={pageSize}
+                            renderHeader={renderHeader}
+                            renderItems={renderItems}
+                            items={data}
+                            count={count}
+                            currentPage={currentPage}
+                            setCurrentPage={setCurrentPage}
+                            title={`${repairTankPage._title}`}
+                            subTitle={`${repairTankPage._subTitle}`}
+                            loading={loading}
+                            showBTN
+                            modal={modal}
+                            setModal={setModal}
+                        />
+                    </div>
+                )}
+            </div>
         </>
     );
 };

@@ -38,7 +38,7 @@ export default function authRoute() {
 
                 <Route path="company/tank/:id" element={<Pages.Tanks />} />
                 <Route path="company/tank/show/:id" element={<Pages.ShowTank />} />
-                {/* <Route path="company/tank/add/:id" element={<Pages.AddTanks />} /> */}
+                <Route path="company/tank/add/:id" element={<Pages.AddTanks />} />
                 <Route path="company/tank/edit/:id" element={<Pages.EditTanks />} />
 
                 <Route path="company/tank/repairs/:id" element={<Pages.RepairsTank />} />
@@ -60,6 +60,8 @@ export default function authRoute() {
                 <Route path="barowner/show/:id" element={<Pages.ShowBarOwner />} />
                 <Route path="barowner/add" element={<Pages.AddBarOwners />} />
                 <Route path="barowner/edit/:id" element={<Pages.EditBarOwners />} />
+
+                <Route path="reports" element={<Pages.Reports />} />
             </Route>
         </Routes>
     );

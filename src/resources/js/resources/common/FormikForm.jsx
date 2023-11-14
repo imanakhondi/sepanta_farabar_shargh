@@ -13,7 +13,8 @@ const FormikForm = ({
     subTitle = "",
     showEditBTN,
     onClick,
-    onCancel=false
+    onCancel=false,
+    hasCancel
 }) => {
     return (
         <div
@@ -39,6 +40,7 @@ const FormikForm = ({
                         showEditBTN={showEditBTN}
                         onClick={onClick}
                         onCancel={onCancel}
+                        hasCancel={hasCancel}
                     />
                 </form>
             {/* )} */}

@@ -20,20 +20,20 @@ import FormikForm from "../../../../common/FormikForm";
 import FormikControl from "../../../../common/FormikControl";
 import Modal from "../../../../common/Modal";
 import { toast } from "react-toastify";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const initialValues = {
-    tankNo: "",
-    psiDate: "",
-    testValidityDate: "",
-    capotageDate: "",
-};
-const validationSchema = Yup.object({
-    tankNo: Yup.string(),
-    psiDate: Yup.string(),
-    testValidityDate: Yup.string(),
-    capotageDate: Yup.string(),
-});
+// const initialValues = {
+//     tankNo: "",
+//     psiDate: "",
+//     testValidityDate: "",
+//     capotageDate: "",
+// };
+// const validationSchema = Yup.object({
+//     tankNo: Yup.string(),
+//     psiDate: Yup.string(),
+//     testValidityDate: Yup.string(),
+//     capotageDate: Yup.string(),
+// });
 
 const Tanks = () => {
     const tank = new Tank();
@@ -53,101 +53,104 @@ const Tanks = () => {
         dispatch(clearMessageAction());
     }, []);
 
-    const onSubmit = async (values) => {
-        const { tankNo, psiDate, testValidityDate, capotageDate } = values;
-        setLoading(true);
-        const result = await tank.storeTank(
-            companyId,
-            tankNo,
-            psiDate,
-            testValidityDate,
-            capotageDate
-        );
+    // const onSubmit = async (values) => {
+    //     const { tankNo, psiDate, testValidityDate, capotageDate } = values;
+    //     setLoading(true);
+    //     const result = await tank.storeTank(
+    //         companyId,
+    //         tankNo,
+    //         psiDate,
+    //         testValidityDate,
+    //         capotageDate
+    //     );
 
-        if (result === null) {
-            dispatch(setMessageAction(tank.errorMessage, tank.errorCode));
-            setLoading(false);
-            return;
-        }
-        setLoading(false);
-        toast.success(`${addTankPage.submitted}`);
-        window.location.reload();
-    };
-    const formik = useFormik({
-        initialValues,
-        onSubmit,
-        validationSchema,
-        validateOnMount: true,
-    });
-
-    const getAllTanks = async () => {
-        setLoading(true);
-        const result = await tank.getAllTanks(companyId, pageSize, currentPage);
-        if (result === null) {
-            dispatch(setMessageAction(tank.errorMessage, tank.errorCode));
-            setLoading(false);
-
-            return;
-        }
-        setTimeout(() => setLoading(false), 200);
-        setData(result.items);
-        setCount(result.count);
-    };
+    //     if (result === null) {
+    //         dispatch(setMessageAction(tank.errorMessage, tank.errorCode));
+    //         setLoading(false);
+    //         return;
+    //     }
+    //     setLoading(false);
+    //     toast.success(`${addTankPage.submitted}`);
+    //     window.location.reload();
+    // };
+    // const formik = useFormik({
+    //     initialValues,
+    //     onSubmit,
+    //     validationSchema,
+    //     validateOnMount: true,
+    // });
 
     useEffect(() => {
+        const getAllTanks = async () => {
+            setLoading(true);
+            const result = await tank.getAllTanks(
+                companyId,
+                pageSize,
+                currentPage
+            );
+            if (result === null) {
+                dispatch(setMessageAction(tank.errorMessage, tank.errorCode));
+                setLoading(false);
+
+                return;
+            }
+            setTimeout(() => setLoading(false), 200);
+            setData(result.items);
+            setCount(result.count);
+        };
         getAllTanks();
     }, [currentPage]);
 
-    const renderForm = () => {
-        return (
-            <FormikForm
-                onSubmit={formik.handleSubmit}
-                loading={loading}
-                error={messageState}
-                title={`${addTankPage._title}`}
-                subTitle={`${addTankPage._subTitle}`}
-                onCancel={() =>setModal(false)}
-            >
-                <FormikControl
-                    control="input"
-                    name="tankNo"
-                    formik={formik}
-                    pageString={addTankPage}
-                    type="number"
-                />
-                <FormikControl
-                    control="date"
-                    name="psiDate"
-                    formik={formik}
-                    pageString={addTankPage}
-                    onChange={(event) => {
-                        formik.setFieldValue("psiDate", event.toString());
-                    }}
-                />
-                <FormikControl
-                    control="date"
-                    name="testValidityDate"
-                    formik={formik}
-                    pageString={addTankPage}
-                    onChange={(event) => {
-                        formik.setFieldValue(
-                            "testValidityDate",
-                            event.toString()
-                        );
-                    }}
-                />
-                <FormikControl
-                    control="date"
-                    name="capotageDate"
-                    formik={formik}
-                    pageString={addTankPage}
-                    onChange={(event) => {
-                        formik.setFieldValue("capotageDate", event.toString());
-                    }}
-                />
-            </FormikForm>
-        );
-    };
+    // const renderForm = () => {
+    //     return (
+    //         <FormikForm
+    //             onSubmit={formik.handleSubmit}
+    //             loading={loading}
+    //             error={messageState}
+    //             title={`${addTankPage._title}`}
+    //             subTitle={`${addTankPage._subTitle}`}
+    //             onCancel={() => setModal(false)}
+    //         >
+    //             <FormikControl
+    //                 control="input"
+    //                 name="tankNo"
+    //                 formik={formik}
+    //                 pageString={addTankPage}
+    //                 type="number"
+    //             />
+    //             <FormikControl
+    //                 control="date"
+    //                 name="psiDate"
+    //                 formik={formik}
+    //                 pageString={addTankPage}
+    //                 onChange={(event) => {
+    //                     formik.setFieldValue("psiDate", event.toString());
+    //                 }}
+    //             />
+    //             <FormikControl
+    //                 control="date"
+    //                 name="testValidityDate"
+    //                 formik={formik}
+    //                 pageString={addTankPage}
+    //                 onChange={(event) => {
+    //                     formik.setFieldValue(
+    //                         "testValidityDate",
+    //                         event.toString()
+    //                     );
+    //                 }}
+    //             />
+    //             <FormikControl
+    //                 control="date"
+    //                 name="capotageDate"
+    //                 formik={formik}
+    //                 pageString={addTankPage}
+    //                 onChange={(event) => {
+    //                     formik.setFieldValue("capotageDate", event.toString());
+    //                 }}
+    //             />
+    //         </FormikForm>
+    //     );
+    // };
 
     const renderHeader = () => {
         return (
@@ -198,7 +201,7 @@ const Tanks = () => {
     };
     return (
         <>
-            {modal ? (
+            {/* {modal && (
                 <Modal
                     modal={modal}
                     setModal={setModal}
@@ -206,34 +209,35 @@ const Tanks = () => {
                 >
                     {renderForm()}
                 </Modal>
-            ) : (
-                <div className="container flex flex-col">
-                    {messageState.message !== null && (
-                        <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
-                            {messageState.message}
-                        </span>
-                    )}
-                    {data && messageState.message === null && (
-                        <div>
-                            <Table
-                                pageSize={pageSize}
-                                renderHeader={renderHeader}
-                                renderItems={renderItems}
-                                items={data}
-                                count={count}
-                                currentPage={currentPage}
-                                setCurrentPage={setCurrentPage}
-                                title={`${TankPage._title}`}
-                                subTitle={`${TankPage._subTitle}`}
-                                loading={loading}
-                                showBTN
-                                modal={modal}
-                                setModal={setModal}
-                            />
-                        </div>
-                    )}
-                </div>
-            )}
+            )} */}
+
+            <div className="container flex flex-col">
+                {messageState.message !== null && (
+                    <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
+                        {messageState.message}
+                    </span>
+                )}
+                {data && messageState.message === null && (
+                    <div>
+                        <Table
+                            pageSize={pageSize}
+                            renderHeader={renderHeader}
+                            renderItems={renderItems}
+                            items={data}
+                            count={count}
+                            currentPage={currentPage}
+                            setCurrentPage={setCurrentPage}
+                            title={`${TankPage._title}`}
+                            subTitle={`${TankPage._subTitle}`}
+                            loading={loading}
+                            // showBTN
+                            // modal={modal}
+                            // setModal={setModal}
+                            addLink={`${BASE_PATH}/company/tank/add/${companyId}`}
+                        />
+                    </div>
+                )}
+            </div>
         </>
     );
 };

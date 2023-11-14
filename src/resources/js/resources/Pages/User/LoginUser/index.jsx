@@ -78,6 +78,7 @@ const LoginUser = () => {
                         customStyleForm="!block"
                         loading={loading}
                         error={messageState}
+                        hasCancel={false}
                     >
                         <FormikControl
                             control="input"

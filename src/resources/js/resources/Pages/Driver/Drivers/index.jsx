@@ -107,6 +107,7 @@ const Drivers = () => {
                         title={`${DriverPage._title}`}
                         subTitle={`${DriverPage._subTitle}`}
                         loading={loading}
+                        addLink={`${BASE_PATH}/driver/add`}
                     />
                 </div>
             )}

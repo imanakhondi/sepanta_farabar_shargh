@@ -181,16 +181,16 @@ const StepTwo = ({
     }, []);
 
     useEffect(() => {
-        const carrierTotalUSD = formik.values.loadingTonnage * carrierRateUSD;
-        const carrierTotalIRR = formik.values.loadingTonnage * carrierRateIRR;
+        const carrierTotalUSD = formik.values.loadingTonnage * carrierRateUSD/1000;
+        const carrierTotalIRR = formik.values.loadingTonnage * carrierRateIRR/1000;
 
         formik.setFieldValue("carrierTotalUSD", carrierTotalUSD.toString());
         formik.setFieldValue("carrierTotalIRR", carrierTotalIRR.toString());
 
         const ownerTotalIRR =
-            formik.values.loadingTonnage * formik.values.carrierUnitIRR;
+            formik.values.loadingTonnage * formik.values.carrierUnitIRR/1000;
         const ownerTotalUSD =
-            formik.values.loadingTonnage * formik.values.carrierUnitUSD;
+            formik.values.loadingTonnage * formik.values.carrierUnitUSD/1000;
 
         formik.setFieldValue("ownerTotalIRR", ownerTotalIRR.toString());
         formik.setFieldValue("ownerTotalUSD", ownerTotalUSD.toString());
@@ -198,9 +198,9 @@ const StepTwo = ({
 
     useEffect(() => {
         const ownerTotalIRR =
-            formik.values.loadingTonnage * formik.values.carrierUnitIRR;
+            formik.values.loadingTonnage * formik.values.carrierUnitIRR/1000;
         const ownerTotalUSD =
-            formik.values.loadingTonnage * formik.values.carrierUnitUSD;
+            formik.values.loadingTonnage * formik.values.carrierUnitUSD/1000;
 
         formik.setFieldValue("ownerTotalIRR", ownerTotalIRR.toString());
         formik.setFieldValue("ownerTotalUSD", ownerTotalUSD.toString());

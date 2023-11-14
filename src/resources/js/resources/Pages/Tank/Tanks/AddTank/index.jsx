@@ -12,51 +12,38 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Company } from "../../../../http/entities/Copmany";
+import { useParams } from "react-router-dom";
 
 const initialValues = {
-    name: "",
-    family: "",
-    nationalNo: "",
-    mobile: "",
     tankNo: "",
     psiDate: "",
     testValidityDate: "",
     capotageDate: "",
 };
 const validationSchema = Yup.object({
-    name: Yup.string()
-        .min(2, `${validation.minMessage}`)
-        .max(50, `${validation.maxMessage}`)
-        .required(`${validation.stringMessage}`),
+    tankNo: Yup.string(),
+    psiDate: Yup.string(),
+    testValidityDate: Yup.string(),
+    capotageDate: Yup.string(),
 });
 
 const AddTank = () => {
-    const Company = new Company();
+    const tank = new Tank();
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
+    const params = useParams();
+    const companyId = params.id;
 
     useEffect(() => {
         dispatch(clearMessageAction());
     }, []);
 
     const onSubmit = async (values) => {
-        const {
-            name,
-            family,
-            nationalNo,
-            mobile,
-            tankNo,
-            psiDate,
-            testValidityDate,
-            capotageDate,
-        } = values;
+        const { tankNo, psiDate, testValidityDate, capotageDate } = values;
         setLoading(true);
-        const result = await Company.storeCompany(
-            name,
-            family,
-            nationalNo,
-            mobile,
+        const result = await tank.storeTank(
+            companyId,
             tankNo,
             psiDate,
             testValidityDate,
@@ -64,12 +51,7 @@ const AddTank = () => {
         );
 
         if (result === null) {
-            dispatch(
-                setMessageAction(
-                    Company.errorMessage,
-                    Company.errorCode
-                )
-            );
+            dispatch(setMessageAction(tank.errorMessage, tank.errorCode));
             setLoading(false);
             return;
         }
@@ -87,71 +69,50 @@ const AddTank = () => {
 
     return (
         <FormikForm
-            onSubmit={formik.handleSubmit}
-            loading={loading}
-            error={messageState}
-            title={`${addTankPage._title}`}
-            subTitle={`${addTankPage._subTitle}`}
-        >
-            <FormikControl
-                control="input"
-                name="name"
-                formik={formik}
-                pageString={addTankPage}
-            />
-            <FormikControl
-                control="input"
-                name="family"
-                formik={formik}
-                pageString={addTankPage}
-            />
-            <FormikControl
-                control="input"
-                name="nationalNo"
-                formik={formik}
-                pageString={addTankPage}
-            />
-            <FormikControl
-                control="input"
-                name="mobile"
-                formik={formik}
-                pageString={addTankPage}
-            />
-            <FormikControl
-                control="input"
-                name="tankNo"
-                formik={formik}
-                pageString={addTankPage}
-                type="number"
-            />
-            <FormikControl
-                control="date"
-                name="psiDate"
-                formik={formik}
-                pageString={addTankPage}
-                onChange={(event) => {
-                    formik.setFieldValue("psiDate", event.toString());
-                }}
-            />
-            <FormikControl
-                control="date"
-                name="testValidityDate"
-                formik={formik}
-                pageString={addTankPage}
-                onChange={(event) => {
-                    formik.setFieldValue("testValidityDate", event.toString());
-                }}
-            />
-            <FormikControl
-                control="date"
-                name="capotageDate"
-                formik={formik}
-                pageString={addTankPage}
-                onChange={(event) => {
-                    formik.setFieldValue("capotageDate", event.toString());
-                }}
-            />
-        </FormikForm>
+        onSubmit={formik.handleSubmit}
+        loading={loading}
+        error={messageState}
+        title={`${addTankPage._title}`}
+        subTitle={`${addTankPage._subTitle}`}
+    >
+        <FormikControl
+            control="input"
+            name="tankNo"
+            formik={formik}
+            pageString={addTankPage}
+            type="number"
+        />
+        <FormikControl
+            control="date"
+            name="psiDate"
+            formik={formik}
+            pageString={addTankPage}
+            onChange={(event) => {
+                formik.setFieldValue("psiDate", event.toString());
+            }}
+        />
+        <FormikControl
+            control="date"
+            name="testValidityDate"
+            formik={formik}
+            pageString={addTankPage}
+            onChange={(event) => {
+                formik.setFieldValue(
+                    "testValidityDate",
+                    event.toString()
+                );
+            }}
+        />
+        <FormikControl
+            control="date"
+            name="capotageDate"
+            formik={formik}
+            pageString={addTankPage}
+            onChange={(event) => {
+                formik.setFieldValue("capotageDate", event.toString());
+            }}
+        />
+    </FormikForm>
     );
 };
 

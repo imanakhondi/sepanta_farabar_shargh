@@ -93,8 +93,8 @@ const BarOwners = () => {
                         {item.tankNo}
                     </td>
                     <Operation
-                        link={`${BASE_PATH}/barOwner/edit/${item.id}`}
-                        showLink={`${BASE_PATH}/barOwner/show/${item.id}`}
+                        link={`${BASE_PATH}/barowner/edit/${item.id}`}
+                        showLink={`${BASE_PATH}/barowner/show/${item.id}`}
                     />
                 </tr>
             );
@@ -120,6 +120,7 @@ const BarOwners = () => {
                         title={`${BarOwnerPage._title}`}
                         subTitle={`${BarOwnerPage._subTitle}`}
                         loading={loading}
+                        addLink={`${BASE_PATH}/barowner/add`}
                     />
                 </div>
             )}

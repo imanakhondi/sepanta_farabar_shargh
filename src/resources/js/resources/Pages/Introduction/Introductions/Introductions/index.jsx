@@ -110,6 +110,7 @@ const Introductions = () => {
                         title={`${IntroductionPage._title}`}
                         subTitle={`${IntroductionPage._subTitle}`}
                         loading={loading}
+                        addLink={`${BASE_PATH}/introduction/add`}
                     />
                 </div>
             )}

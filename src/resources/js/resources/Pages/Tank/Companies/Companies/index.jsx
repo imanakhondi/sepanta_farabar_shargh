@@ -87,6 +87,7 @@ const Companies = () => {
                         title={`${CompaniesPage._title}`}
                         subTitle={`${CompaniesPage._subTitle}`}
                         loading={loading}
+                        addLink={`${BASE_PATH}/company/add`}
                     />
                 </div>
             )}

@@ -1,4 +1,3 @@
-import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import store from "./state/store";
@@ -10,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     return (
-        <div className=" bg-[#EAEDF4] overflow-hidden font-IRANSansWeb">
+        <div className=" bg-[#EAEDF4] overflow-hidden font-IRANSansWeb relative">
             <Routes />
         </div>
     );

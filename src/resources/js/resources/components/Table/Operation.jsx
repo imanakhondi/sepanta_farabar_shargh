@@ -50,7 +50,7 @@ const Operation = ({
             {continueLink && (
                 <Tooltip message={general.continue}>
                     <Link to={continueLink}>
-                        <i className="icon-add-square before:content-['\ee7f'] text-2xl cursor-pointer font-bold text-yellow-500"></i>
+                        <i className="icon-arrow-square-left before:content-['\f234'] text-2xl cursor-pointer font-bold text-yellow-500"></i>
                     </Link>
                 </Tooltip>
             )}

@@ -111,6 +111,7 @@ const Cars = () => {
                         title={`${CarPage._title}`}
                         subTitle={`${CarPage._subTitle}`}
                         loading={loading}
+                        addLink={`${BASE_PATH}/car/add`}
                     />
                 </div>
             )}

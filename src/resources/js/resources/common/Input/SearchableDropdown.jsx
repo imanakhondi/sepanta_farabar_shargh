@@ -77,14 +77,14 @@ const SearchableDropdown = ({
     };
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col mt-2 w-full lg:w-[300px] xl:w-[400px]">
             <label
                 htmlFor=""
                 className="text-primaryColor dark:text-primaryColorDark mb-1 text-xs"
             >
                 {labelTwo}
             </label>
-            <div className="dropdown flex flex-col mt-2 w-full lg:w-[300px] xl:w-[400px] relative cursor-pointer">
+            <div className="dropdown flex flex-col w-full lg:w-[300px] xl:w-[400px] relative cursor-pointer">
                 <div className="control ">
                     <div className="selected-value ">
                         <input

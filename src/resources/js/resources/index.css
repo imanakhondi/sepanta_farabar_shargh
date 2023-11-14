@@ -98,3 +98,7 @@
 .icon-sun-1:before {
     content: "\f0aa";
 }
+
+.arrow-square-left:before {
+    content: "\f234";
+}

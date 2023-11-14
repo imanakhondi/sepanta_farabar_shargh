@@ -358,7 +358,7 @@ const CarsIntroduction = () => {
     };
     return (
         <>
-            {modal ? (
+            {modal && (
                 <Modal
                     modal={modal}
                     setModal={setModal}
@@ -366,115 +366,114 @@ const CarsIntroduction = () => {
                 >
                     {renderForm()}
                 </Modal>
-            ) : (
-                <div className="container flex flex-col">
-                    <div className="flex flex-wrap my-5">
-                        <IsInput
-                            name="nameDriver"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.driverName}
-                        />
-                        <IsInput
-                            name="nameCar"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.carName}
-                        />
-                        <IsInput
-                            name="irNo"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.irNo}
-                        />
-                        <IsInput
-                            name="transitNo"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.transitNo}
-                        />
-                        <IsInput
-                            name="tankNo"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.tankNo}
-                        />
-                        <IsInput
-                            name="nationalNoDriver"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.nationalNoDriver}
-                        />
-                        <IsInput
-                            name="nationalNoCar"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.nationalNoCar}
-                        />
-                        <IsInput
-                            name="mobileDriver"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.mobileDriver}
-                        />
-                        <IsInput
-                            name="mobileCar"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.mobileCar}
-                        />
-                        <IsInput
-                            name="licenseNo"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.licenseNo}
-                        />
-                        <IsInput
-                            name="startPoint"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.startPoint}
-                        />
-                        <IsInput
-                            name="endPoint"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={addCarIntroductionPage.endPoint}
-                        />
-                        <IsInput
-                            name="actions"
-                            isShow={isShow}
-                            setIsShow={setIsShow}
-                            label={general.actions}
+            )}
+            <div className="container flex flex-col">
+                <div className="flex flex-wrap my-5">
+                    <IsInput
+                        name="nameDriver"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.driverName}
+                    />
+                    <IsInput
+                        name="nameCar"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.carName}
+                    />
+                    <IsInput
+                        name="irNo"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.irNo}
+                    />
+                    <IsInput
+                        name="transitNo"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.transitNo}
+                    />
+                    <IsInput
+                        name="tankNo"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.tankNo}
+                    />
+                    <IsInput
+                        name="nationalNoDriver"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.nationalNoDriver}
+                    />
+                    <IsInput
+                        name="nationalNoCar"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.nationalNoCar}
+                    />
+                    <IsInput
+                        name="mobileDriver"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.mobileDriver}
+                    />
+                    <IsInput
+                        name="mobileCar"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.mobileCar}
+                    />
+                    <IsInput
+                        name="licenseNo"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.licenseNo}
+                    />
+                    <IsInput
+                        name="startPoint"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.startPoint}
+                    />
+                    <IsInput
+                        name="endPoint"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={addCarIntroductionPage.endPoint}
+                    />
+                    <IsInput
+                        name="actions"
+                        isShow={isShow}
+                        setIsShow={setIsShow}
+                        label={general.actions}
+                    />
+                </div>
+                {messageState.message !== null && (
+                    <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
+                        {messageState.message}
+                    </span>
+                )}
+                {data && messageState.message === null && (
+                    <div>
+                        <Table
+                            pageSize={pageSize}
+                            renderHeader={renderHeader}
+                            renderItems={renderItems}
+                            items={data}
+                            count={count}
+                            currentPage={currentPage}
+                            setCurrentPage={setCurrentPage}
+                            title={`${CarsIntroductionPage._title}`}
+                            subTitle={`${CarsIntroductionPage._subTitle}`}
+                            loading={loading}
+                            showBTN
+                            modal={modal}
+                            setModal={setModal}
+                            showText
                         />
                     </div>
-                    {messageState.message !== null && (
-                        <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
-                            {messageState.message}
-                        </span>
-                    )}
-                    {data && messageState.message === null && (
-                        <div>
-                            <Table
-                                pageSize={pageSize}
-                                renderHeader={renderHeader}
-                                renderItems={renderItems}
-                                items={data}
-                                count={count}
-                                currentPage={currentPage}
-                                setCurrentPage={setCurrentPage}
-                                title={`${CarsIntroductionPage._title}`}
-                                subTitle={`${CarsIntroductionPage._subTitle}`}
-                                loading={loading}
-                                showBTN
-                                modal={modal}
-                                setModal={setModal}
-                                showText
-                            />
-                        </div>
-                    )}
-                </div>
-            )}
+                )}
+            </div>
         </>
     );
 };

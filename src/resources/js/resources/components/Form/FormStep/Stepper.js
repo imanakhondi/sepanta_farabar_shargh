@@ -18,7 +18,7 @@ function Stepper({ activeStepIndex, setActiveStepIndex }) {
 
     return (
         <div className="flex items-center justify-center mx-3">
-            <div className="flex-[4]">item</div>
+            <div className="flex-[4]"></div>
             <div className="w-full flex-[3] flex flex-row items-center justify-center py-8 mx-auto ">
                 <div className=""></div>
                 <div

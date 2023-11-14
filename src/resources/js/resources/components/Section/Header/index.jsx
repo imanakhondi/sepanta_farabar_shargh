@@ -27,12 +27,12 @@ const Header = ({ customStyle = "" }) => {
                     icon: "people4",
                     style: "",
                 },
-                {
-                    title: `${sidebar.addDriver}`,
-                    to: "driver/add",
-                    icon: "profile-add4",
-                    style: "",
-                },
+                // {
+                //     title: `${sidebar.addDriver}`,
+                //     to: "driver/add",
+                //     icon: "profile-add4",
+                //     style: "",
+                // },
             ],
         },
         {
@@ -45,12 +45,12 @@ const Header = ({ customStyle = "" }) => {
                     icon: "truck-fast3",
                     style: "",
                 },
-                {
-                    title: `${sidebar.addCar}`,
-                    to: "car/add",
-                    icon: "truck-tick4",
-                    style: "",
-                },
+                // {
+                //     title: `${sidebar.addCar}`,
+                //     to: "car/add",
+                //     icon: "truck-tick4",
+                //     style: "",
+                // },
             ],
         },
         {
@@ -63,12 +63,12 @@ const Header = ({ customStyle = "" }) => {
                     icon: "colorfilter4",
                     style: "",
                 },
-                {
-                    title: `${sidebar.addTank}`,
-                    to: "tank/add",
-                    icon: "add-square",
-                    style: "",
-                },
+                // {
+                //     title: `${sidebar.addTank}`,
+                //     to: "tank/add",
+                //     icon: "add-square",
+                //     style: "",
+                // },
             ],
         },
         {
@@ -82,12 +82,12 @@ const Header = ({ customStyle = "" }) => {
                     icon: "people4",
                     style: "",
                 },
-                {
-                    title: `${sidebar.addUsers}`,
-                    to: "user/add",
-                    icon: "profile-add4",
-                    style: "",
-                },
+                // {
+                //     title: `${sidebar.addUsers}`,
+                //     to: "user/add",
+                //     icon: "profile-add4",
+                //     style: "",
+                // },
                 {
                     title: `${sidebar.changePassword}`,
                     to: "user/change_password",
