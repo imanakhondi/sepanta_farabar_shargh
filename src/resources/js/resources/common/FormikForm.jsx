@@ -28,7 +28,6 @@ const FormikForm = ({
                     {error.message}
                 </span>
             )}
-            {/* {!error.message && ( */}
                 <form
                     onSubmit={onSubmit}
                     className={`${customStyleForm} flex flex-wrap justify-between mt-5`}
@@ -43,7 +42,6 @@ const FormikForm = ({
                         hasCancel={hasCancel}
                     />
                 </form>
-            {/* )} */}
         </div>
     );
 };
