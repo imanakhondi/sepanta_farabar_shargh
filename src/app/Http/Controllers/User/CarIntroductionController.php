@@ -24,6 +24,11 @@ class CarIntroductionController extends Controller
         return $this->onItems($this->service->getPaginate($introduction->id, $request->_pn, $request->_pi), $this->service->count($introduction->id));
     }
 
+    public function report(IndexCarIntroductionsRequest $request): HttpJsonResponse
+    {
+        return $this->onItems($this->service->getPaginate(0, $request->_pn, $request->_pi), $this->service->count());
+    }
+
     public function show(Model $model): HttpJsonResponse
     {
         $carIntroduction = new CarIntroductionResource($this->service->get($model->id));

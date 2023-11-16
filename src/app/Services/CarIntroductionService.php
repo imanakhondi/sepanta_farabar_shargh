@@ -18,7 +18,7 @@ class CarIntroductionService
 
     public function getPaginate(int $introductionId, int $page, int $pageItems): mixed
     {
-        return Model::join('tbl_introductions', 'introduction_id', 'tbl_introductions.id')
+        $query = Model::join('tbl_introductions', 'introduction_id', 'tbl_introductions.id')
             ->join('tbl_cities AS tbl_cities_first', 'start_point_id', 'tbl_cities_first.id')
             ->join('tbl_cities AS tbl_cities_end', 'end_point_id', 'tbl_cities_end.id')
             ->join('tbl_drivers', 'driver_id', 'tbl_drivers.id')
@@ -39,8 +39,11 @@ class CarIntroductionService
                 'tbl_trucks.transit_no AS truck_transit_no',
                 'tbl_cities_first.name AS first_point_name',
                 'tbl_cities_end.name AS end_point_name',
-            )
-            ->where('introduction_id', $introductionId)->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
+            );
+        if ($introductionId > 0) {
+            $query->where('introduction_id', $introductionId);
+        }
+        return $query->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
     public function store(int $introductionId, int $driverId, int $truckId, int $tankId): mixed
@@ -108,8 +111,12 @@ class CarIntroductionService
         return ['introduction' => $introduction, 'drivers' => $drivers, 'trucks' => $trucks, 'tanks' => $tanks];
     }
 
-    public function count(int $introductionId): int
+    public function count(int $introductionId = 0): int
     {
-        return Model::where('introduction_id', $introductionId)->count();
+        $query = Model::query();
+        if ($introductionId > 0) {
+            $query->where('introduction_id', $introductionId);
+        }
+        return $query->count();
     }
 }
