@@ -26,6 +26,13 @@ export class CarIntroduction extends Entity {
         );
     }
 
+    async getCarsIntroductionReport(_pi, _pn) {
+        return await this.handlePost(`${BASE_URL}/u/car_introductions/report`, {
+            _pn,
+            _pi,
+        });
+    }
+
     async getAddCarsIntroductionProps(introductionId) {
         return await this.handlePost(
             `${BASE_URL}/a/car_introductions/add_props/${introductionId}`
