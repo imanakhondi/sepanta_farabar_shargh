@@ -23,7 +23,7 @@ const FormikForm = ({
             <h2 className="font-bold text-primaryColorDark">{title}</h2>
             <h3 className="text-primaryColor text-sm mt-2 mb-5">{subTitle}</h3>
             {loading && <Loading />}
-            {error.message && (
+            {error?.message && (
                 <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
                     {error.message}
                 </span>

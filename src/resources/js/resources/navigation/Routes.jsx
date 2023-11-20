@@ -62,6 +62,7 @@ export default function authRoute() {
                 <Route path="barowner/edit/:id" element={<Pages.EditBarOwners />} />
 
                 <Route path="reports" element={<Pages.Reports />} />
+                <Route path="report/edit/:id" element={<Pages.EditReport />} />
             </Route>
         </Routes>
     );

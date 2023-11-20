@@ -71,7 +71,6 @@ const CarsIntroduction = () => {
 
     const onSubmit = async (values) => {
         const { driverInfo, carInfo, tankInfo } = values;
-        console.log(driverInfo, carInfo, tankInfo);
         setLoading(true);
         const result = await carIntroduction.storeCarIntroductionFirstStep(
             introductionId,

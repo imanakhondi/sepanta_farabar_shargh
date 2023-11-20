@@ -34,12 +34,14 @@ import ShowIntroduction from "./Introduction/Introductions/ShowIntroduction";
 import AddIntroduction from "./Introduction/Introductions/AddIntroduction";
 import EditIntroduction from "./Introduction/Introductions/EditIntroduction";
 import CarsIntroduction from "./Introduction/Cars/CarsIntroduction";
-import EditCarIntroduction from "./Introduction/Cars/EditCarIntroduction"
-import CompleteCarIntroduction from "./Introduction/Cars/CompleteCarIntroduction"
+import EditCarIntroduction from "./Introduction/Cars/EditCarIntroduction";
+import CompleteCarIntroduction from "./Introduction/Cars/CompleteCarIntroduction";
 import Cities from "./City/Cities";
 import AddCity from "./City/AddCity";
 import EditCity from "./City/EditCity";
-import Reports from "./Reports";
+import Reports from "./Reports/Reports";
+import EditReport from "./Reports/EditReport";
+
 
 export {
     HomePage,
@@ -83,5 +85,6 @@ export {
     Cities,
     AddCity,
     EditCity,
-    Reports
+    Reports,
+    EditReport
 };

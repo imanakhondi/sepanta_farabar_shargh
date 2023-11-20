@@ -1,13 +1,15 @@
 import { useFormik } from "formik";
-import FormikForm from "../../common/FormikForm";
+import FormikForm from "../../../common/FormikForm";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { useState } from "react";
-import { general, reportsPage } from "../../constants/strings/fa";
-import FormikControl from "../../common/FormikControl";
-import Table from "../../components/Table/Table";
-import { BASE_PATH } from "../../constants";
-import Operation from "../../components/Table/Operation";
+import { general, reportsPage } from "../../../constants/strings/fa";
+import FormikControl from "../../../common/FormikControl";
+import Table from "../../../components/Table/Table";
+import { BASE_PATH } from "../../../constants";
+import Operation from "../../../components/Table/Operation";
+import { CarIntroduction } from "../../../http/entities/CarIntroduction";
+import { setMessageAction } from "../../../state/message/messageAction";
 
 const initialValues = {
     date: "",
@@ -19,6 +21,7 @@ const validationSchema = Yup.object({
 });
 
 const Reports = () => {
+    const carIntroduction = new CarIntroduction();
     const messageState = useSelector((state) => state.messageReducer);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
@@ -29,9 +32,52 @@ const Reports = () => {
     const pageSize = 10;
     const filterdData = data.sort((a, b) => b.id - a.id);
 
-    const onSubmit = (values) => {
-        console.log(values);
+    const onSubmit = async (values) => {
+        const { date, name } = values;
+        setLoading(true);
+        const result = await carIntroduction.getCarsIntroductionReport(
+            pageSize,
+            currentPage
+        );
+
+        if (result === null) {
+            dispatch(
+                setMessageAction(
+                    carIntroduction.errorMessage,
+                    carIntroduction.errorCode
+                )
+            );
+            setLoading(false);
+            return;
+        }
+        setLoading(false);
+
+        if (date && !name) {
+            const filterdData = result.items.filter((item) =>
+                item.registryDate === date ? item : ""
+            );
+            setData(filterdData);
+            return;
+        }
+        if (name && !date) {
+            const filterdData = result.items.filter((item) =>
+                item.driverName === name ? item : ""
+            );
+            setData(filterdData);
+            return;
+        }
+        if (name && date) {
+            const filterdData = result.items.filter((item) =>
+                item.driverName === name && item.registryDate === date
+                    ? item
+                    : ""
+            );
+            setData(filterdData);
+            return;
+        }
+        setData([]);
     };
+
     const formik = useFormik({
         initialValues,
         onSubmit,
@@ -87,7 +133,7 @@ const Reports = () => {
                         {item.endPointName}
                     </td>
                     <Operation
-                        link={`${BASE_PATH}/introduction/car/edit/${item.id}`}
+                        link={`${BASE_PATH}/report/edit/${item.id}`}
                         // continueLink={`${BASE_PATH}/introduction/car/complete/${introductionId}/${item.id}`}
                         onCancel={() => cancelHandler(item.id)}
                     />
@@ -111,7 +157,10 @@ const Reports = () => {
                     formik={formik}
                     pageString={reportsPage}
                     onChange={(event) => {
-                        formik.setFieldValue("date", event.toString());
+                        formik.setFieldValue(
+                            "date",
+                            event?.toString() ? event.toString() : ""
+                        );
                     }}
                 />
                 <FormikControl
@@ -123,13 +172,7 @@ const Reports = () => {
             </FormikForm>
 
             <div className="container flex flex-col">
-                {messageState.message !== null && (
-                    <span className="py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500">
-                        {messageState.message}
-                    </span>
-                )}
-                {/* {data && messageState.message === null && ( */}
-                {true && (
+                {data && messageState.message === null && (
                     <div>
                         <Table
                             pageSize={pageSize}
@@ -139,7 +182,6 @@ const Reports = () => {
                             count={count}
                             currentPage={currentPage}
                             setCurrentPage={setCurrentPage}
-                            loading={loading}
                             // showBTN
                             // modal={modal}
                             // setModal={setModal}
