@@ -46,6 +46,18 @@ class CarIntroductionService
         return $query->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
+    public function getCarIntroductionProps(Introduction $introduction): array
+    {
+        $driverService = new DriverService();
+        $truckService = new TruckService();
+        $tankService = new TankService();
+        $introduction = new IntroductionResource($introduction);
+        $drivers = DriverResource::collection($driverService->getAll());
+        $trucks = TruckResource::collection($truckService->getAll());
+        $tanks = TankResource::collection($tankService->getAll());
+        return ['introduction' => $introduction, 'drivers' => $drivers, 'trucks' => $trucks, 'tanks' => $tanks];
+    }
+
     public function store(int $introductionId, int $driverId, int $truckId, int $tankId): mixed
     {
         $data = [
@@ -99,16 +111,37 @@ class CarIntroductionService
         return $model->update($data);
     }
 
-    public function getCarIntroductionProps(Introduction $introduction): array
+    public function updateReport(Model $model, string $registryDate, ?string $remittanceName, ?string $loadingDate, ?int $loadingTonnage, ?string $carrierUnitUSD, ?int $carrierTotalUSD, ?string $carrierUnitIRR, ?int $carrierTotalIRR, ?int $ownerTotalUSD, ?int $ownerTotalIRR, ?int $carrierLoadingCommission, ?int $forwardingLoadingCommission, string $unloadingDate, ?int $unloadingTonnage, ?int $difference, ?int $allowableDeficit, ?string $deficitOrSurplus, ?string $unloadingReceipt): bool
     {
-        $driverService = new DriverService();
-        $truckService = new TruckService();
-        $tankService = new TankService();
-        $introduction = new IntroductionResource($introduction);
-        $drivers = DriverResource::collection($driverService->getAll());
-        $trucks = TruckResource::collection($truckService->getAll());
-        $tanks = TankResource::collection($tankService->getAll());
-        return ['introduction' => $introduction, 'drivers' => $drivers, 'trucks' => $trucks, 'tanks' => $tanks];
+        $data = [
+            'registry_date' => $registryDate,
+            'remittance_name' => $remittanceName ?? '',
+            'loading_date' => $loadingDate ?? '',
+            'loading_tonnage' => $loadingTonnage ?? 0,
+            'carrier_unit_usd' => $carrierUnitUSD ?? '',
+            'carrier_total_usd' => $carrierTotalUSD ?? 0,
+            'carrier_unit_irr' => $carrierUnitIRR ?? '',
+            'carrier_total_irr' => $carrierTotalIRR ?? 0,
+            'owner_total_usd' => $ownerTotalUSD ?? 0,
+            'owner_total_irr' => $ownerTotalIRR ?? 0,
+            'carrier_loading_commission' => $carrierLoadingCommission ?? 0,
+            'forwarding_loading_commission' => $forwardingLoadingCommission ?? 0,
+            'unloading_date' => $unloadingDate,
+            'unloading_tonnage' => $unloadingTonnage ?? 0,
+            'difference' => $difference ?? 0,
+            'allowable_deficit' => $allowableDeficit ?? 0,
+            'deficit_or_surplus' => $deficitOrSurplus ?? 0,
+            'unloading_receipt' => $unloadingReceipt ?? '',
+        ];
+        return $model->update($data);
+    }
+
+    public function updateStatus(Model $model, int $isCanceled): bool
+    {
+        $data = [
+            'is_canceled' => $isCanceled > 0 ? 1 : 0,
+        ];
+        return $model->update($data);
     }
 
     public function count(int $introductionId = 0): int

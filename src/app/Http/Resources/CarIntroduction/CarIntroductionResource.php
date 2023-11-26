@@ -45,6 +45,7 @@ class CarIntroductionResource extends JsonResource
             'unloadingReceipt' => $this->unloading_receipt ?? '',
             'firstPointName' => $this->first_point_name ?? '',
             'endPointName' => $this->end_point_name ?? '',
+            'isCanceled' => intval($this->is_canceled) > 0 ? 1 : 0,
         ];
     }
 }
