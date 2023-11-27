@@ -34,5 +34,6 @@ class CarIntroduction extends Model
         'allowable_deficit',
         'deficit_or_surplus',
         'unloading_receipt',
+        'is_canceled',
     ];
 }

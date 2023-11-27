@@ -57,4 +57,6 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
     Route::post('car_introductions/update/{model}/{driver}/{truck}/{tank}', [CarIntroductionController::class, 'update']);
     Route::post('car_introductions/update_2/{model}', [CarIntroductionController::class, 'updateStep2']);
     Route::post('car_introductions/update_3/{model}', [CarIntroductionController::class, 'updateStep3']);
+    Route::post('car_introductions/update_report/{model}', [CarIntroductionController::class, 'updateReport']);
+    Route::post('car_introductions/update_status/{model}', [CarIntroductionController::class, 'updateStatus']);
 });

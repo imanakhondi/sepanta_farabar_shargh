@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CarIntroduction\UpdateCarIntroductionReportRequest;
 use App\Http\Requests\CarIntroduction\UpdateCarIntroductionStep2Request;
 use App\Http\Requests\CarIntroduction\UpdateCarIntroductionStep3Request;
 use App\Models\Driver;
@@ -13,6 +14,7 @@ use App\Models\Truck;
 use App\Packages\JsonResponse;
 use App\Services\CarIntroductionService;
 use Illuminate\Http\JsonResponse as HttpJsonResponse;
+use Illuminate\Http\Request;
 
 class CarIntroductionController extends Controller
 {
@@ -44,5 +46,15 @@ class CarIntroductionController extends Controller
     public function updateStep3(Model $model, UpdateCarIntroductionStep3Request $request): HttpJsonResponse
     {
         return $this->onUpdate($this->service->updateStep3($model, $request->unloading_date, $request->unloading_tonnage, $request->difference, $request->allowable_deficit, $request->deficit_or_surplus, $request->unloading_receipt));
+    }
+
+    public function updateReport(Model $model, UpdateCarIntroductionReportRequest $request): HttpJsonResponse
+    {
+        return $this->onUpdate($this->service->updateReport($model, $request->registry_date, $request->remittance_name, $request->loading_date, $request->loading_tonnage, $request->carrier_unit_usd, $request->carrier_total_usd, $request->carrier_unit_irr, $request->carrier_total_irr, $request->owner_total_usd, $request->owner_total_irr, $request->carrier_loading_commission, $request->forwarding_loading_commission, $request->unloading_date, $request->unloading_tonnage, $request->difference, $request->allowable_deficit, $request->deficit_or_surplus, $request->unloading_receipt));
+    }
+
+    public function updateStatus(Model $model, Request $request): HttpJsonResponse
+    {
+        return $this->onUpdate($this->service->updateStatus($model, $request->is_canceled));
     }
 }

@@ -4520,7 +4520,7 @@ var FormikForm = function FormikForm(_ref) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
       className: "text-primaryColor text-sm mt-2 mb-5",
       children: subTitle
-    }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Loading__WEBPACK_IMPORTED_MODULE_1__["default"], {}), error.message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+    }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Loading__WEBPACK_IMPORTED_MODULE_1__["default"], {}), (error === null || error === void 0 ? void 0 : error.message) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
       className: "py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500",
       children: error.message
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
@@ -6517,6 +6517,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "editRepairTankPage": () => (/* binding */ editRepairTankPage),
 /* harmony export */   "editTankPage": () => (/* binding */ editTankPage),
 /* harmony export */   "editUserPage": () => (/* binding */ editUserPage),
+/* harmony export */   "editreportsPage": () => (/* binding */ editreportsPage),
 /* harmony export */   "footer": () => (/* binding */ footer),
 /* harmony export */   "forgotPasswordPage": () => (/* binding */ forgotPasswordPage),
 /* harmony export */   "general": () => (/* binding */ general),
@@ -7571,6 +7572,88 @@ var reportsPage = {
   endPoint: "مقصد",
   endPointPlaceholder: "مقصد"
 };
+var editreportsPage = {
+  _title: "ایجاد معرفی‌نامه جدید",
+  _subTitle: "معرفی‌نامه جدید را وارد کنید",
+  description: "",
+  name: "نام",
+  namePlaceholder: "نام",
+  family: "نام خانوادگی",
+  familyPlaceholder: "نام خانوادگی",
+  nationalNo: "کد‌ملی",
+  nationalNoPlaceholder: "کد‌ملی",
+  mobile: "موبایل",
+  mobilePlaceholder: "موبایل",
+  introductionNo: "شماره معرفی‌نامه",
+  introductionNoPlaceholder: "شماره معرفی‌نامه",
+  introductionDate: "تاریخ معرفی‌نامه",
+  introductionDatePlaceholder: "تاریخ معرفی‌نامه",
+  barOwner: "صاحب کالا",
+  barOwnerPlaceholder: "صاحب کالا",
+  tankNo: "شماره تانک",
+  tankNoPlaceholder: "شماره تانک",
+  driverName: "نام راننده",
+  driverNamePlaceholder: "نام راننده",
+  irNo: "شماره پلاک شهربانی ماشین",
+  irNoPlaceholder: "شماره پلاک شهربانی ماشین",
+  transitNo: "شماره پلاک ترانزیت ماشین",
+  transitNoPlaceholder: "شماره پلاک ترانزیت ماشین",
+  carrier: "شرکت کریر",
+  carrierPlaceholder: "شرکت کریر",
+  startPoint: "مبدا",
+  startPointPlaceholder: "مبدا",
+  endPoint: "مقصد",
+  endPointPlaceholder: "مقصد",
+  ownerUnitUSD: "واحد صاحب کالا (دلار)",
+  ownerUnitUSDPlaceholder: "واحد صاحب کالا (دلار)",
+  ownerTotalUSD: "کل صاحب کالا (دلار)",
+  ownerTotalUSDPlaceholder: "کل صاحب کالا (دلار)",
+  ownerUnitIRR: "واحد صاحب کالا (تومان)",
+  ownerUnitIRRPlaceholder: "واحد صاحب کالا (تومان)",
+  ownerTotalIRR: "کل صاحب کالا (تومان)",
+  ownerTotalIRRPlaceholder: "کل صاحب کالا (تومان)",
+  registryDate: "تاریخ ثبت",
+  registryDatePlaceholder: "تاریخ ثبت",
+  remittanceName: "نام حواله",
+  remittanceNamePlaceholder: "نام حواله",
+  loadingDate: "تاریخ بارگیری",
+  loadingDatePlaceholder: "تاریخ بارگیری",
+  loadingTonnage: "تناژ بارگیری",
+  loadingTonnagePlaceholder: "تناژ بارگیری",
+  carrierUnitUSD: "واحد شرکت کریر (دلار)",
+  carrierUnitUSDPlaceholder: "واحد شرکت کریر (دلار)",
+  carrierTotalUSD: "کل شرکت کریر (دلار)",
+  carrierTotalUSDPlaceholder: "کل شرکت کریر (دلار)",
+  carrierUnitIRR: "واحد شرکت کریر (تومان)",
+  carrierUnitIRRPlaceholder: "واحد شرکت کریر (تومان)",
+  carrierTotalIRR: "کل شرکت کریر (تومان)",
+  carrierTotalIRRPlaceholder: "کل شرکت کریر (تومان)",
+  carrierLoadingCommission: "کمیسیون بارگیری کریری",
+  carrierLoadingCommissionPlaceholder: "کمیسیون بارگیری کریری",
+  forwardingLoadingCommission: "کمیسیون بارگیری فورواردی",
+  forwardingLoadingCommissionPlaceholder: "کمیسیون بارگیری فورواردی",
+  unloadingDate: "تاریخ تخلیه",
+  unloadingDatePlaceholder: "تاریخ تخلیه",
+  unloadingTonnage: "تناژ تخلیه",
+  unloadingTonnagePlaceholder: "تناژ تخلیه",
+  difference: "اختلاف تناژ بارگیری و تخلیه",
+  differencePlaceholder: "اختلاف تناژ بارگیری و تخلیه",
+  deficitOrSurplus: "کسری یا مازاد",
+  deficitOrSurplusPlaceholder: "کسری یا مازاد",
+  allowableDeficit: "کسری مجاز",
+  allowableDeficitPlaceholder: "کسری مجاز",
+  allowed: "مجاز",
+  allowedPlaceholder: "مجاز",
+  notAllowed: "غیرمجاز",
+  notAllowedPlaceholder: "غیرمجاز",
+  unloadingReceipt: "رسید تخلیه",
+  unloadingReceiptPlaceholder: "رسید تخلیه",
+  confirm: "تایید",
+  submit: "ورود به سامانه",
+  submitted: "افزودن معرفی‌نامه با موفقیت انجام گردید.",
+  submittedTwo: "مرحله 2 با موفقیت انجام گردید.",
+  submittedThree: "مرحله 3 با موفقیت انجام گردید."
+};
 
 /***/ }),
 
@@ -8203,12 +8286,24 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
   }, {
     key: "storeCarIntroductionThirdStep",
     value: function () {
-      var _storeCarIntroductionThirdStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(id, unloadingDate, unloadingTonnage, difference, allowableDeficit, deficitOrSurplus, unloadingReceipt) {
+      var _storeCarIntroductionThirdStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(id, registryDate, remittanceName, loadingDate, loadingTonnage, carrierUnitUSD, carrierTotalUSD, carrierUnitIRR, carrierTotalIRR, ownerTotalUSD, ownerTotalIRR, carrierLoadingCommission, forwardingLoadingCommission, unloadingDate, unloadingTonnage, difference, allowableDeficit, deficitOrSurplus, unloadingReceipt) {
         return _regeneratorRuntime().wrap(function _callee9$(_context9) {
           while (1) switch (_context9.prev = _context9.next) {
             case 0:
               _context9.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/update_3/").concat(id), {
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/store/").concat(id), {
+                registry_date: registryDate,
+                remittance_name: remittanceName,
+                loading_date: loadingDate,
+                loading_tonnage: loadingTonnage,
+                carrier_unit_usd: carrierUnitUSD,
+                carrier_total_usd: carrierTotalUSD,
+                carrier_unit_irr: carrierUnitIRR,
+                carrier_total_irr: carrierTotalIRR,
+                owner_total_usd: ownerTotalUSD,
+                owner_total_irr: ownerTotalIRR,
+                carrier_loading_commission: carrierLoadingCommission,
+                forwarding_loading_commission: forwardingLoadingCommission,
                 unloading_date: unloadingDate,
                 unloading_tonnage: unloadingTonnage,
                 difference: difference,
@@ -8224,20 +8319,20 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee9, this);
       }));
-      function storeCarIntroductionThirdStep(_x44, _x45, _x46, _x47, _x48, _x49, _x50) {
+      function storeCarIntroductionThirdStep(_x44, _x45, _x46, _x47, _x48, _x49, _x50, _x51, _x52, _x53, _x54, _x55, _x56, _x57, _x58, _x59, _x60, _x61, _x62) {
         return _storeCarIntroductionThirdStep.apply(this, arguments);
       }
       return storeCarIntroductionThirdStep;
     }()
   }, {
-    key: "updateCarIntroductionThirdStep",
+    key: "storeCarIntroductionReport",
     value: function () {
-      var _updateCarIntroductionThirdStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(id, unloadingDate, unloadingTonnage, difference, allowableDeficit, deficitOrSurplus, unloadingReceipt) {
+      var _storeCarIntroductionReport = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(id, unloadingDate, unloadingTonnage, difference, allowableDeficit, deficitOrSurplus, unloadingReceipt) {
         return _regeneratorRuntime().wrap(function _callee10$(_context10) {
           while (1) switch (_context10.prev = _context10.next) {
             case 0:
               _context10.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/update/").concat(id), {
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/update_3/").concat(id), {
                 unloading_date: unloadingDate,
                 unloading_tonnage: unloadingTonnage,
                 difference: difference,
@@ -8253,20 +8348,27 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee10, this);
       }));
-      function updateCarIntroductionThirdStep(_x51, _x52, _x53, _x54, _x55, _x56, _x57) {
-        return _updateCarIntroductionThirdStep.apply(this, arguments);
+      function storeCarIntroductionReport(_x63, _x64, _x65, _x66, _x67, _x68, _x69) {
+        return _storeCarIntroductionReport.apply(this, arguments);
       }
-      return updateCarIntroductionThirdStep;
+      return storeCarIntroductionReport;
     }()
   }, {
-    key: "deleteCarIntroduction",
+    key: "updateCarIntroductionThirdStep",
     value: function () {
-      var _deleteCarIntroduction = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(id) {
+      var _updateCarIntroductionThirdStep = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(id, unloadingDate, unloadingTonnage, difference, allowableDeficit, deficitOrSurplus, unloadingReceipt) {
         return _regeneratorRuntime().wrap(function _callee11$(_context11) {
           while (1) switch (_context11.prev = _context11.next) {
             case 0:
               _context11.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/delete/").concat(id));
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/update/").concat(id), {
+                unloading_date: unloadingDate,
+                unloading_tonnage: unloadingTonnage,
+                difference: difference,
+                allowable_deficit: allowableDeficit,
+                deficit_or_surplus: deficitOrSurplus,
+                unloading_receipt: unloadingReceipt
+              });
             case 2:
               return _context11.abrupt("return", _context11.sent);
             case 3:
@@ -8275,7 +8377,29 @@ var CarIntroduction = /*#__PURE__*/function (_Entity) {
           }
         }, _callee11, this);
       }));
-      function deleteCarIntroduction(_x58) {
+      function updateCarIntroductionThirdStep(_x70, _x71, _x72, _x73, _x74, _x75, _x76) {
+        return _updateCarIntroductionThirdStep.apply(this, arguments);
+      }
+      return updateCarIntroductionThirdStep;
+    }()
+  }, {
+    key: "deleteCarIntroduction",
+    value: function () {
+      var _deleteCarIntroduction = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(id) {
+        return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+          while (1) switch (_context12.prev = _context12.next) {
+            case 0:
+              _context12.next = 2;
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/car_introductions/delete/").concat(id));
+            case 2:
+              return _context12.abrupt("return", _context12.sent);
+            case 3:
+            case "end":
+              return _context12.stop();
+          }
+        }, _callee12, this);
+      }));
+      function deleteCarIntroduction(_x77) {
         return _deleteCarIntroduction.apply(this, arguments);
       }
       return deleteCarIntroduction;
@@ -10245,6 +10369,9 @@ function authRoute() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "reports",
         element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_pages__WEBPACK_IMPORTED_MODULE_1__.Reports, {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+        path: "report/edit/:id",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_pages__WEBPACK_IMPORTED_MODULE_1__.EditReport, {})
       })]
     })]
   });
@@ -13239,24 +13366,23 @@ var CarsIntroduction = function CarsIntroduction() {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             driverInfo = values.driverInfo, carInfo = values.carInfo, tankInfo = values.tankInfo;
-            console.log(driverInfo, carInfo, tankInfo);
             setLoading(true);
-            _context.next = 5;
+            _context.next = 4;
             return carIntroduction.storeCarIntroductionFirstStep(introductionId, driverInfo, carInfo, tankInfo);
-          case 5:
+          case 4:
             result = _context.sent;
             if (!(result === null)) {
-              _context.next = 10;
+              _context.next = 9;
               break;
             }
             dispatch((0,_state_message_messageAction__WEBPACK_IMPORTED_MODULE_10__.setMessageAction)(carIntroduction.errorMessage, carIntroduction.errorCode));
             setLoading(false);
             return _context.abrupt("return");
-          case 10:
+          case 9:
             setLoading(false);
             react_toastify__WEBPACK_IMPORTED_MODULE_13__.toast.success("".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_1__.addCarIntroductionPage.submitted));
             window.location.reload();
-          case 13:
+          case 12:
           case "end":
             return _context.stop();
         }
@@ -15327,10 +15453,292 @@ var ShowIntroduction = function ShowIntroduction() {
 
 /***/ }),
 
-/***/ "./resources/js/resources/pages/Reports/index.jsx":
-/*!********************************************************!*\
-  !*** ./resources/js/resources/pages/Reports/index.jsx ***!
-  \********************************************************/
+/***/ "./resources/js/resources/pages/Reports/EditReport/index.jsx":
+/*!*******************************************************************!*\
+  !*** ./resources/js/resources/pages/Reports/EditReport/index.jsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _state_message_messageAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../state/message/messageAction */ "./resources/js/resources/state/message/messageAction.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! yup */ "./node_modules/yup/index.esm.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.mjs");
+/* harmony import */ var _common_FormikForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../common/FormikForm */ "./resources/js/resources/common/FormikForm.jsx");
+/* harmony import */ var _common_FormikControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../common/FormikControl */ "./resources/js/resources/common/FormikControl.jsx");
+/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../constants/strings/fa */ "./resources/js/resources/constants/strings/fa.js");
+/* harmony import */ var _http_entities_CarIntroduction__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../http/entities/CarIntroduction */ "./resources/js/resources/http/entities/CarIntroduction.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+var initialValues = {
+  registryDate: "",
+  remittanceName: "",
+  loadingDate: "",
+  loadingTonnage: "",
+  carrierUnitUSD: "",
+  carrierTotalUSD: "",
+  carrierUnitIRR: "",
+  carrierTotalIRR: "",
+  ownerTotalUSD: "",
+  ownerTotalIRR: "",
+  carrierLoadingCommission: "",
+  forwardingLoadingCommission: "",
+  unloadingDate: "",
+  unloadingTonnage: "",
+  difference: "",
+  allowableDeficit: "",
+  deficitOrSurplus: "",
+  unloadingReceipt: ""
+};
+var validationSchema = yup__WEBPACK_IMPORTED_MODULE_4__.object({
+  unloadingDate: yup__WEBPACK_IMPORTED_MODULE_4__.string(),
+  unloadingTonnage: yup__WEBPACK_IMPORTED_MODULE_4__.string(),
+  deficitOrSurplus: yup__WEBPACK_IMPORTED_MODULE_4__.string(),
+  unloadingReceipt: yup__WEBPACK_IMPORTED_MODULE_4__.string()
+});
+var EditReport = function EditReport() {
+  var carIntroduction = new _http_entities_CarIntroduction__WEBPACK_IMPORTED_MODULE_9__.CarIntroduction();
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_11__.useParams)();
+  var introductionId = params.id;
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    loading = _useState2[0],
+    setLoading = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    formValues = _useState4[0],
+    setFormValues = _useState4[1];
+  var messageState = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.messageReducer;
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_state_message_messageAction__WEBPACK_IMPORTED_MODULE_2__.clearMessageAction)());
+    var getCarIntroduction = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var result;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              setLoading(true);
+              _context.next = 3;
+              return carIntroduction.getCarIntroduction(introductionId);
+            case 3:
+              result = _context.sent;
+              if (!(result === null)) {
+                _context.next = 8;
+                break;
+              }
+              dispatch((0,_state_message_messageAction__WEBPACK_IMPORTED_MODULE_2__.setMessageAction)(carIntroduction.errorMessage, carIntroduction.errorCode));
+              setLoading(false);
+              return _context.abrupt("return");
+            case 8:
+              setLoading(false);
+              setFormValues(result.item);
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee);
+      }));
+      return function getCarIntroduction() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    getCarIntroduction();
+  }, []);
+  var onSubmit = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(values) {
+      var registryDate, remittanceName, loadingDate, loadingTonnage, carrierUnitUSD, carrierTotalUSD, carrierUnitIRR, carrierTotalIRR, ownerTotalUSD, ownerTotalIRR, carrierLoadingCommission, forwardingLoadingCommission, unloadingDate, unloadingTonnage, difference, allowableDeficit, deficitOrSurplus, unloadingReceipt, result;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            registryDate = values.registryDate, remittanceName = values.remittanceName, loadingDate = values.loadingDate, loadingTonnage = values.loadingTonnage, carrierUnitUSD = values.carrierUnitUSD, carrierTotalUSD = values.carrierTotalUSD, carrierUnitIRR = values.carrierUnitIRR, carrierTotalIRR = values.carrierTotalIRR, ownerTotalUSD = values.ownerTotalUSD, ownerTotalIRR = values.ownerTotalIRR, carrierLoadingCommission = values.carrierLoadingCommission, forwardingLoadingCommission = values.forwardingLoadingCommission, unloadingDate = values.unloadingDate, unloadingTonnage = values.unloadingTonnage, difference = values.difference, allowableDeficit = values.allowableDeficit, deficitOrSurplus = values.deficitOrSurplus, unloadingReceipt = values.unloadingReceipt;
+            setLoading(true);
+            _context2.next = 4;
+            return carIntroduction.storeCarIntroductionReport(introductionId, registryDate, remittanceName, loadingDate, loadingTonnage, carrierUnitUSD, carrierTotalUSD, carrierUnitIRR, carrierTotalIRR, ownerTotalUSD, ownerTotalIRR, carrierLoadingCommission, forwardingLoadingCommission, unloadingDate, unloadingTonnage, difference, allowableDeficit, deficitOrSurplus, unloadingReceipt);
+          case 4:
+            result = _context2.sent;
+            if (!(result === null)) {
+              _context2.next = 9;
+              break;
+            }
+            dispatch((0,_state_message_messageAction__WEBPACK_IMPORTED_MODULE_2__.setMessageAction)(carIntroduction.errorMessage, carIntroduction.errorCode));
+            setLoading(false);
+            return _context2.abrupt("return");
+          case 9:
+            setLoading(false);
+            react_toastify__WEBPACK_IMPORTED_MODULE_5__.toast.success("".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage.submittedThree));
+            window.location.reload();
+          case 12:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2);
+    }));
+    return function onSubmit(_x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var formik = (0,formik__WEBPACK_IMPORTED_MODULE_3__.useFormik)({
+    initialValues: formValues || initialValues,
+    onSubmit: onSubmit,
+    validationSchema: validationSchema,
+    validateOnMount: true,
+    enableReinitialize: true
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_common_FormikForm__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    onSubmit: formik.handleSubmit,
+    loading: loading,
+    error: messageState,
+    showEditBTN: formValues,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "date",
+      name: "registryDate",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage,
+      onChange: function onChange(event) {
+        formik.setFieldValue("registryDate", event.toString());
+      }
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "remittanceName",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "date",
+      name: "loadingDate",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage,
+      onChange: function onChange(event) {
+        formik.setFieldValue("loadingDate", event.toString());
+      }
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "loadingTonnage",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage,
+      type: "number"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "carrierUnitUSD",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "carrierTotalUSD",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage,
+      readOnly: true
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "carrierUnitIRR",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "carrierTotalIRR",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage,
+      readOnly: true
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "ownerTotalUSD",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage,
+      readOnly: true
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "ownerTotalIRR",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage,
+      readOnly: true
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "carrierLoadingCommission",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "forwardingLoadingCommission",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "date",
+      name: "unloadingDate",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage,
+      onChange: function onChange(event) {
+        formik.setFieldValue("unloadingDate", event.toString());
+      }
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "unloadingTonnage",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "difference",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage,
+      readOnly: true
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "allowableDeficit",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "deficitOrSurplus",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage,
+      readOnly: true
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      control: "input",
+      name: "unloadingReceipt",
+      formik: formik,
+      pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_8__.editreportsPage
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditReport);
+
+/***/ }),
+
+/***/ "./resources/js/resources/pages/Reports/Reports/index.jsx":
+/*!****************************************************************!*\
+  !*** ./resources/js/resources/pages/Reports/Reports/index.jsx ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -15339,23 +15747,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var _common_FormikForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/FormikForm */ "./resources/js/resources/common/FormikForm.jsx");
+/* harmony import */ var _common_FormikForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/FormikForm */ "./resources/js/resources/common/FormikForm.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! yup */ "./node_modules/yup/index.esm.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../constants/strings/fa */ "./resources/js/resources/constants/strings/fa.js");
-/* harmony import */ var _common_FormikControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/FormikControl */ "./resources/js/resources/common/FormikControl.jsx");
-/* harmony import */ var _components_Table_Table__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Table/Table */ "./resources/js/resources/components/Table/Table.jsx");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../constants */ "./resources/js/resources/constants/index.js");
-/* harmony import */ var _components_Table_Operation__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Table/Operation */ "./resources/js/resources/components/Table/Operation.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../constants/strings/fa */ "./resources/js/resources/constants/strings/fa.js");
+/* harmony import */ var _common_FormikControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../common/FormikControl */ "./resources/js/resources/common/FormikControl.jsx");
+/* harmony import */ var _components_Table_Table__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/Table/Table */ "./resources/js/resources/components/Table/Table.jsx");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../constants */ "./resources/js/resources/constants/index.js");
+/* harmony import */ var _components_Table_Operation__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../components/Table/Operation */ "./resources/js/resources/components/Table/Operation.jsx");
+/* harmony import */ var _http_entities_CarIntroduction__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../http/entities/CarIntroduction */ "./resources/js/resources/http/entities/CarIntroduction.js");
+/* harmony import */ var _state_message_messageAction__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../state/message/messageAction */ "./resources/js/resources/state/message/messageAction.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -15376,6 +15792,7 @@ var validationSchema = yup__WEBPACK_IMPORTED_MODULE_3__.object({
   date: yup__WEBPACK_IMPORTED_MODULE_3__.string()
 });
 var Reports = function Reports() {
+  var carIntroduction = new _http_entities_CarIntroduction__WEBPACK_IMPORTED_MODULE_10__.CarIntroduction();
   var messageState = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
     return state.messageReducer;
   });
@@ -15404,9 +15821,68 @@ var Reports = function Reports() {
   var filterdData = data.sort(function (a, b) {
     return b.id - a.id;
   });
-  var onSubmit = function onSubmit(values) {
-    console.log(values);
-  };
+  var onSubmit = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(values) {
+      var date, name, result, _filterdData, _filterdData2, _filterdData3;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            date = values.date, name = values.name;
+            setLoading(true);
+            _context.next = 4;
+            return carIntroduction.getCarsIntroductionReport(pageSize, currentPage);
+          case 4:
+            result = _context.sent;
+            if (!(result === null)) {
+              _context.next = 9;
+              break;
+            }
+            dispatch((0,_state_message_messageAction__WEBPACK_IMPORTED_MODULE_11__.setMessageAction)(carIntroduction.errorMessage, carIntroduction.errorCode));
+            setLoading(false);
+            return _context.abrupt("return");
+          case 9:
+            setLoading(false);
+            if (!(date && !name)) {
+              _context.next = 14;
+              break;
+            }
+            _filterdData = result.items.filter(function (item) {
+              return item.registryDate === date ? item : "";
+            });
+            setData(_filterdData);
+            return _context.abrupt("return");
+          case 14:
+            if (!(name && !date)) {
+              _context.next = 18;
+              break;
+            }
+            _filterdData2 = result.items.filter(function (item) {
+              return item.driverName === name ? item : "";
+            });
+            setData(_filterdData2);
+            return _context.abrupt("return");
+          case 18:
+            if (!(name && date)) {
+              _context.next = 22;
+              break;
+            }
+            _filterdData3 = result.items.filter(function (item) {
+              return item.driverName === name && item.registryDate === date ? item : "";
+            });
+            setData(_filterdData3);
+            return _context.abrupt("return");
+          case 22:
+            setData([]);
+          case 23:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }));
+    return function onSubmit(_x2) {
+      return _ref.apply(this, arguments);
+    };
+  }();
   var formik = (0,formik__WEBPACK_IMPORTED_MODULE_0__.useFormik)({
     initialValues: initialValues,
     onSubmit: onSubmit,
@@ -15414,23 +15890,23 @@ var Reports = function Reports() {
     validateOnMount: true
   });
   var renderHeader = function renderHeader() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("tr", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
         className: "border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl",
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.reportsPage.driverName
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
         className: "border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl",
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.reportsPage.irNo
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
         className: "border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl",
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.reportsPage.tankNo
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
         className: "border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl",
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.reportsPage.startPoint
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
         className: "border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl",
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.reportsPage.endPoint
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
         className: "border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 text-right first:rounded-r-xl last:rounded-l-xl",
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.general.actions
       })]
@@ -15441,26 +15917,26 @@ var Reports = function Reports() {
       console.log(id);
     };
     return filterdData.map(function (item) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("tr", {
         id: item.id,
         className: "",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("td", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("td", {
           className: "dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl",
           children: [item.driverName, " ", item.driverFamily]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
           className: "dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ",
           children: item.truckIrlNo
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
           className: "dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ",
           children: item.tankNo
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
           className: "dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ",
           children: item.firstPointName
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
           className: "dark:border-slate-700 p-4 pl-8 first:rounded-r-xl last:rounded-l-xl ",
           children: item.endPointName
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Table_Operation__WEBPACK_IMPORTED_MODULE_9__["default"], {
-          link: "".concat(_constants__WEBPACK_IMPORTED_MODULE_8__.BASE_PATH, "/introduction/car/edit/").concat(item.id)
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_Table_Operation__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          link: "".concat(_constants__WEBPACK_IMPORTED_MODULE_8__.BASE_PATH, "/report/edit/").concat(item.id)
           // continueLink={`${BASE_PATH}/introduction/car/complete/${introductionId}/${item.id}`}
           ,
           onCancel: function onCancel() {
@@ -15470,48 +15946,44 @@ var Reports = function Reports() {
       }, item.id);
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_common_FormikForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_common_FormikForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
       onSubmit: formik.handleSubmit,
       loading: loading,
       error: messageState,
       title: "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.reportsPage._title),
       subTitle: "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.reportsPage._subTitle),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
         control: "date",
         name: "date",
         formik: formik,
         pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.reportsPage,
         onChange: function onChange(event) {
-          formik.setFieldValue("date", event.toString());
+          formik.setFieldValue("date", event !== null && event !== void 0 && event.toString() ? event.toString() : "");
         }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_FormikControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
         control: "input",
         name: "name",
         formik: formik,
         pageString: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.reportsPage
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
       className: "container flex flex-col",
-      children: [messageState.message !== null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
-        className: "py-2 text-center rounded-lg bg-red-200 text-red-500 border border-red-500",
-        children: messageState.message
-      }),  true && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Table_Table__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      children: data && messageState.message === null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_Table_Table__WEBPACK_IMPORTED_MODULE_7__["default"], {
           pageSize: pageSize,
           renderHeader: renderHeader,
           renderItems: renderItems,
           items: data,
           count: count,
           currentPage: currentPage,
-          setCurrentPage: setCurrentPage,
-          loading: loading
+          setCurrentPage: setCurrentPage
           // showBTN
           // modal={modal}
           // setModal={setModal}
           // addLink={`${BASE_PATH}/company/tank/add/${companyId}`}
         })
-      })]
+      })
     })]
   });
 };
@@ -18279,6 +18751,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "EditDrivers": () => (/* reexport safe */ _Driver_EditDriver__WEBPACK_IMPORTED_MODULE_17__["default"]),
 /* harmony export */   "EditIntroduction": () => (/* reexport safe */ _Introduction_Introductions_EditIntroduction__WEBPACK_IMPORTED_MODULE_34__["default"]),
 /* harmony export */   "EditRepairTank": () => (/* reexport safe */ _Tank_Tanks_EditRepairTank__WEBPACK_IMPORTED_MODULE_26__["default"]),
+/* harmony export */   "EditReport": () => (/* reexport safe */ _Reports_EditReport__WEBPACK_IMPORTED_MODULE_42__["default"]),
 /* harmony export */   "EditTanks": () => (/* reexport safe */ _Tank_Tanks_EditTank__WEBPACK_IMPORTED_MODULE_24__["default"]),
 /* harmony export */   "Edituser": () => (/* reexport safe */ _User_EditUser__WEBPACK_IMPORTED_MODULE_7__["default"]),
 /* harmony export */   "ForgetPassword": () => (/* reexport safe */ _User_ForgetPassword__WEBPACK_IMPORTED_MODULE_9__["default"]),
@@ -18286,7 +18759,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Introductions": () => (/* reexport safe */ _Introduction_Introductions_Introductions__WEBPACK_IMPORTED_MODULE_31__["default"]),
 /* harmony export */   "LoginUser": () => (/* reexport safe */ _User_LoginUser__WEBPACK_IMPORTED_MODULE_3__["default"]),
 /* harmony export */   "RepairsTank": () => (/* reexport safe */ _Tank_Tanks_RepairTank__WEBPACK_IMPORTED_MODULE_25__["default"]),
-/* harmony export */   "Reports": () => (/* reexport safe */ _Reports__WEBPACK_IMPORTED_MODULE_41__["default"]),
+/* harmony export */   "Reports": () => (/* reexport safe */ _Reports_Reports__WEBPACK_IMPORTED_MODULE_41__["default"]),
 /* harmony export */   "ShowBarOwner": () => (/* reexport safe */ _BarOwner_ShowBarOwner__WEBPACK_IMPORTED_MODULE_28__["default"]),
 /* harmony export */   "ShowCar": () => (/* reexport safe */ _Car_ShowCar__WEBPACK_IMPORTED_MODULE_11__["default"]),
 /* harmony export */   "ShowDriver": () => (/* reexport safe */ _Driver_ShowDriver__WEBPACK_IMPORTED_MODULE_15__["default"]),
@@ -18338,7 +18811,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _City_Cities__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./City/Cities */ "./resources/js/resources/pages/City/Cities/index.jsx");
 /* harmony import */ var _City_AddCity__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./City/AddCity */ "./resources/js/resources/pages/City/AddCity/index.jsx");
 /* harmony import */ var _City_EditCity__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./City/EditCity */ "./resources/js/resources/pages/City/EditCity/index.jsx");
-/* harmony import */ var _Reports__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./Reports */ "./resources/js/resources/pages/Reports/index.jsx");
+/* harmony import */ var _Reports_Reports__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./Reports/Reports */ "./resources/js/resources/pages/Reports/Reports/index.jsx");
+/* harmony import */ var _Reports_EditReport__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./Reports/EditReport */ "./resources/js/resources/pages/Reports/EditReport/index.jsx");
+
 
 
 
